@@ -1,0 +1,43 @@
+*** trusteddomainhelper.php.orig	2016-06-14 11:42:58.000000000 +0000
+--- trusteddomainhelper.php	2016-06-18 23:32:49.866739201 +0000
+*************** class TrustedDomainHelper {
+*** 86,90 ****
+  
+! 		return in_array($domain, $trustedList, true);
+! 	}
+  
+  }
+--- 86,118 ----
+  
+! 		if(in_array($domain, $trustedList, true)) {
+! 			return true;
+! 		}
+  
++  		// If a value contains a *, apply glob-style matching. Any second * is ignored.
++  		foreach ($trustedList as $trusted) {
++  			if($trusted == '*') {
++  				return true;
++  			}
++  			$star = strpos($trusted, '*');
++  			if($star === false) {
++  				next;
++  			}
++  			if($star === 0) {
++  				if(strrpos($domain, substr($trusted, 1)) !== FALSE) {
++  					return true;
++  				}
++ 			} elseif($star === strlen($trusted)-1) {
++  				if(strpos($domain, substr($trusted, 0, strlen($trusted)-1 )) !== FALSE) {
++  					return true;
++  				}
++  			} else {
++  				if(strpos($domain, substr($trusted, 0, $star)) !== false
++  				&& strrpos($domain, substr($trusted, $star+1 ), -strlen($trusted-$star-1)) !== false )
++  				{
++  					return true;
++  				}
++  			}
++  		}
++  		return false;
++ 	}
+  }
