@@ -28,7 +28,7 @@ package() {
 #    install -m644 ${startdir}/appicons/{72x72,144x144}.png ${pkgdir}/srv/http/_appicons/$pkgname/
 
 # Data
-    mkdir -p ${pkgdir}/var/lib/nextcloud
+    mkdir -p ${pkgdir}/var/lib/nextcloud9
     
 # Code
     mkdir -p ${pkgdir}/usr/share/${pkgname}/bin
