@@ -48,7 +48,7 @@
                         "themes",
                         "version.php"
                     ],
-                    "source" : "owncloud/$1",
+                    "source" : "nextcloud/$1",
                     "uname" : "root",
                     "gname" : "root",
                     "filepermissions" : "preserve",
