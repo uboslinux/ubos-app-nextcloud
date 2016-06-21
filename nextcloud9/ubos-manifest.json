@@ -29,6 +29,9 @@
                     "type" : "directorytree",
                     "names" : [
                         ".htaccess",
+                        ".user.ini",
+                        "AUTHORS",
+                        "COPYING-AGPL",
                         "3rdparty",
                         "apps",
                         "console.php",
@@ -45,6 +48,7 @@
                         "public.php",
                         "remote.php",
                         "resources",
+                        "robots.txt",
                         "settings",
                         "status.php",
                         "themes",
