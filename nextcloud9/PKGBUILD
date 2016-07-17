@@ -3,7 +3,7 @@ url=${developer}
 maintainer=http://indiecomputing.com/
 pkgname=$(basename $(pwd))
 pkgver=9.0.52
-pkgrel=1
+pkgrel=2
 pkgdesc="A safe home for all your data"
 arch=('any')
 license=("AGPL")
@@ -25,7 +25,7 @@ package() {
 
 # Icons
     mkdir -p ${pkgdir}/srv/http/_appicons/$pkgname
-#    install -m644 ${startdir}/appicons/{72x72,144x144}.png ${pkgdir}/srv/http/_appicons/$pkgname/
+    install -m644 ${startdir}/appicons/{72x72,144x144}.png ${pkgdir}/srv/http/_appicons/$pkgname/
 
 # Data
     mkdir -p ${pkgdir}/var/lib/nextcloud9
