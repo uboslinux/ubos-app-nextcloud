@@ -21,7 +21,7 @@
 use strict;
 use warnings;
 
-package NextCloudTest;
+package NextcloudTest;
 
 use File::Basename;
 use UBOS::Logging;
