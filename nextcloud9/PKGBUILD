@@ -2,8 +2,8 @@ developer=http://owncloud.org/
 url=${developer}
 maintainer=http://indiecomputing.com/
 pkgname=$(basename $(pwd))
-pkgver=9.0.52
-pkgrel=2
+pkgver=9.0.54
+pkgrel=1
 pkgdesc="A safe home for all your data"
 arch=('any')
 license=("AGPL")
@@ -12,7 +12,7 @@ depends=(
     'php'
     'smtp-server')
 options=('!strip')
-sha512sums=('0bc73982e96c69c452830c0b391bffc790d7dedf94a212ab49754ef258bfee3fee118fc6f3eaa758cac884178eaf5a47789eb4bc3a01a63a8d627301ba504928')
+sha512sums=('32f079f814d209f36445c1cc5120b461968ff5d9634cee57d35d114154b41afca083cfec120fcc32d5437c180dbc1a8cc667ca5673099a043ee7fcaf1d8fd99d')
 
 prepare() {
     patch ${startdir}/src/nextcloud/lib/private/security/trusteddomainhelper.php ${startdir}/allow-wildcard-trusted.patch
