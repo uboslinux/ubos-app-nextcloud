@@ -8,7 +8,6 @@ use warnings;
 
 use UBOS::Logging;
 use UBOS::Utils;
-use POSIX;
 
 my $dir         = $config->getResolve( 'appconfig.apache2.dir' );
 my $datadir     = $config->getResolve( 'appconfig.datadir' ) . '/data';

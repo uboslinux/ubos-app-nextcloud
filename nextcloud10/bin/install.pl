@@ -7,24 +7,24 @@ use strict;
 
 use UBOS::Logging;
 use UBOS::Utils;
-use POSIX;
+
+my $apacheUname = $config->getResolve( 'apache2.uname' );
+my $apacheGname = $config->getResolve( 'apache2.gname' );
 
 my $dir         = $config->getResolve( 'appconfig.apache2.dir' );
 my $datadir     = $config->getResolve( 'appconfig.datadir' ) . '/data';
-my $apacheUname = $config->getResolve( 'apache2.uname' );
-my $hostname    = $config->getResolve( 'site.hostname' );
-
 my $dbname      = $config->getResolve( 'appconfig.mysql.dbname.maindb' );
 my $dbuser      = $config->getResolve( 'appconfig.mysql.dbuser.maindb' );
 my $dbpass      = $config->getResolve( 'appconfig.mysql.dbusercredential.maindb' );
 my $dbhost      = $config->getResolve( 'appconfig.mysql.dbhost.maindb' );
 
-my $hostname    = $config->getResolve( 'site.hostname' );
 my $adminlogin  = $config->getResolve( 'site.admin.userid' );
 my $adminpass   = $config->getResolve( 'site.admin.credential' );
+my $hostname    = $config->getResolve( 'site.hostname' );
+
+my $confFile    = "$dir/config/config.php";
 
 my $ret = 1;
-
 
 if( 'install' eq $operation ) {
 
@@ -50,6 +50,19 @@ if( 'install' eq $operation ) {
         # something else happened
         error( "occ maintenance:install failed:\n$out\n$err" );
         $ret = 0;
+    }
+
+    # need to insert trusted_domains into config file
+    if( -r $confFile ) {
+        my $conf = UBOS::Utils::slurpFile( $confFile );
+
+        unless( $conf =~ s!(['"]trusted_domains['"]\s+=>\s*array\s*\(\s*0\s*=>\s*["'])\S*(\s*['"])!$1$hostname$2!m ) {
+            error( 'Cannot find entry trusted_domains in', $confFile, '-- nextcloud10 likely to be flaky' );
+        }
+        UBOS::Utils::saveFile( $confFile, $conf, 0640, $apacheUname, $apacheGname );
+
+    } else {
+        error( 'Cannot read config file', $confFile );
     }
 }
 

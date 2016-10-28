@@ -3,7 +3,7 @@ url=${developer}
 maintainer=http://indiecomputing.com/
 pkgname=$(basename $(pwd))
 pkgver=10.0.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A safe home for all your data"
 arch=('any')
 license=("AGPL")
@@ -32,12 +32,11 @@ package() {
     
 # Code
     mkdir -p ${pkgdir}/usr/share/${pkgname}/bin
-#    install -m755 ${startdir}/bin/{create-ocdata,fix-permissions,fix-restore,generate-autoconfig,upgrade,web-install}.pl ${pkgdir}/usr/share/${pkgname}/bin/
+    install -m755 ${startdir}/bin/{fix-permissions,fix-restore,install,upgrade}.pl ${pkgdir}/usr/share/${pkgname}/bin/
     install -m755 ${startdir}/bin/{install,upgrade}.pl ${pkgdir}/usr/share/${pkgname}/bin/
 
-#    mkdir -p ${pkgdir}/usr/share/${pkgname}/tmpl
-#    install -m644 ${startdir}/tmpl/htaccess.tmpl ${pkgdir}/usr/share/${pkgname}/tmpl/
-#    touch ${pkgdir}/usr/share/${pkgname}/tmpl/ocdata
+    mkdir -p ${pkgdir}/usr/share/${pkgname}/tmpl
+    install -m644 ${startdir}/tmpl/*.tmpl ${pkgdir}/usr/share/${pkgname}/tmpl/
 
     cp -dr --no-preserve=ownership ${startdir}/src/nextcloud ${pkgdir}/usr/share/${pkgname}/
 }

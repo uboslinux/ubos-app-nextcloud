@@ -8,7 +8,6 @@ use warnings;
 
 use UBOS::Logging;
 use UBOS::Utils;
-use POSIX;
 
 my $dir         = $config->getResolve( 'appconfig.apache2.dir' );
 my $datadir     = $config->getResolve( 'appconfig.datadir' ) . '/data';
@@ -16,7 +15,7 @@ my $apacheUname = $config->getResolve( 'apache2.uname' );
 my $ret         = 1;
 
 if( 'upgrade' eq $operation ) {
-
+# Run occ upgrade
     my $cmd = "cd '$dir';";
     $cmd .= "sudo -u '$apacheUname' php";
     $cmd .= " -d 'open_basedir=$dir:/tmp/:/usr/share/:$datadir'";

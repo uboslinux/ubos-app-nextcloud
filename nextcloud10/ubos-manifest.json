@@ -96,6 +96,10 @@
                     "name"         : "${appconfig.apache2.appconfigfragmentfile}",
                     "template"     : "tmpl/htaccess.tmpl",
                     "templatelang" : "varsubst"
+                },
+                {
+                    "type"   : "perlscript",
+                    "source" : "bin/fix-permissions.pl"
                 }
             ],
             "installers" : [
@@ -105,6 +109,10 @@
                 }
             ],
             "upgraders" : [
+                {
+                    "type"   : "perlscript",
+                    "source" : "bin/fix-restore.pl"
+                },
                 {
                     "type"   : "perlscript",
                     "source" : "bin/upgrade.pl"
