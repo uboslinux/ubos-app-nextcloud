@@ -1,4 +1,4 @@
-developer=http://owncloud.org/
+developer=https://nextcloud.com/
 url=${developer}
 maintainer=http://indiecomputing.com/
 pkgname=$(basename $(pwd))
