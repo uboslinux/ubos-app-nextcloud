@@ -97,16 +97,10 @@ my $TEST = new UBOS::WebAppTest(
                     name  => 'virgin',
                     check => sub {
                         my $c = shift;
-                        
-                        # Accessing the front page for the first time will cause a redirect to /index.php/post-setup-check,
-                        # which will redirect back to the front if everything is okay. When accessed the second time, however,
-                        # the redirect may not occur.
-                        my $response = $c->get( '/' );
-                        if( $c->redirects( $response, '/index.php/post-setup-check' )) {
-                            $c->getMustRedirect( '/index.php/post-setup-check', '/' );
-                        }
 
-                        $response = $c->getMustContain( '/', '<label for="user" class="infield">Username</label>', 200, 'Wrong (before log-on) front page' );
+                        my $response = $c->getMustRedirect( '/', '/index.php/login' );
+
+                        $response = $c->getMustContain( '/index.php/login', '<label for="user" class="infield">Username or email</label>', 200, 'Wrong (before log-on) front page' );
                         my $requestToken;
                         if( $response->{content} =~ m!requesttoken="([^"]+)"! ) {
                             $requestToken = $1;
@@ -120,9 +114,9 @@ my $TEST = new UBOS::WebAppTest(
                                 'requesttoken'    => $requestToken
                             };
 
-                            $response = $c->post( '/', $postData );
+                            $response = $c->post( '/index.php/login', $postData );
                             $c->mustRedirect( $response, $filesAppRelativeUrl, 302, 'Not redirected to files app' );
-                            
+
                             $c->getMustContain( $filesAppRelativeUrl, '<span id="expandDisplayName">' . $adminData->{userid} . '</span>', 200, 'Wrong (logged-on) front page (display name)' );
                             $c->getMustContain( $filesAppRelativeUrl, '/index.php/settings/admin', 200, 'Wrong (logged-on) front page (admin)' );
 
@@ -143,7 +137,7 @@ my $TEST = new UBOS::WebAppTest(
                         my $c = shift;
 
                         # need to login first, and find requesttoken. we tested that earlier
-                        my $response = $c->get( '/' );
+                        my $response = $c->get( '/index.php/login' );
 
                         my $requestToken;
                         if( $response->{content} =~ m!requesttoken="([^"]+)"! ) {
@@ -159,7 +153,7 @@ my $TEST = new UBOS::WebAppTest(
                             'timezone-offset' => 0,
                             'requesttoken'    => $requestToken
                         };
-                        $c->post( '/', $postData );
+                        $c->post( '/index.php/login', $postData );
                         
                         $response = $c->get( $filesAppRelativeUrl );
 
@@ -182,7 +176,7 @@ my $TEST = new UBOS::WebAppTest(
                         my $c = shift;
 
                         # need to login first, and find requesttoken. we tested that earlier
-                        my $response = $c->get( '/' );
+                        my $response = $c->get( '/index.php/login' );
 
                         my $requestToken;
                         if( $response->{content} =~ m!requesttoken="([^"]+)"! ) {
@@ -198,7 +192,7 @@ my $TEST = new UBOS::WebAppTest(
                             'timezone-offset' => 0,
                             'requesttoken'    => $requestToken
                         };
-                        $c->post( '/', $postData );
+                        $c->post( '/index.php/login', $postData );
 
                         $response = $c->get( $filesAppRelativeUrl . '/ajax/download.php?dir=%2F&files=' . $testFile );
                         $c->mustStatus( $response, 200, 'Test file not found' );
