@@ -30,9 +30,7 @@ if( 'install' eq $operation ) {
 
     my $cmd = "cd '$dir';";
     $cmd .= "sudo -u '$apacheUname' php";
-    $cmd .= " -d 'open_basedir=$dir:/tmp/:/usr/share/:$datadir'";
     $cmd .= ' -d always_populate_raw_post_data=-1';
-    $cmd .= ' -d extension=posix.so';
     $cmd .= ' occ maintenance:install';
     $cmd .= ' --database "mysql"';
     $cmd .= " --database-name '$dbname'";
@@ -45,10 +43,9 @@ if( 'install' eq $operation ) {
     $cmd .= ' -n'; # non-interactive
 
     my $out;
-    my $err;
-    if( UBOS::Utils::myexec( $cmd, undef, \$out, \$err )) {
+    if( UBOS::Utils::myexec( $cmd, undef, \$out, \$out )) {
         # something else happened
-        error( "occ maintenance:install failed:\n$out\n$err" );
+        error( "occ maintenance:install failed:\n$cmd\n$out" );
         $ret = 0;
     }
 

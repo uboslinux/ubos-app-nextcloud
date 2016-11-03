@@ -18,9 +18,7 @@ if( 'upgrade' eq $operation ) {
 # Run occ upgrade
     my $cmd = "cd '$dir';";
     $cmd .= "sudo -u '$apacheUname' php";
-    $cmd .= " -d 'open_basedir=$dir:/tmp/:/usr/share/:$datadir'";
     $cmd .= ' -d always_populate_raw_post_data=-1';
-    $cmd .= ' -d extension=posix.so';
     $cmd .= ' occ upgrade';
 
     my $out;
