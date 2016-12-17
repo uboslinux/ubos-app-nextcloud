@@ -1,0 +1,132 @@
+{
+    "type" : "app",
+
+    "roles" : {
+        "apache2" : {
+            "defaultcontext" : "/nextcloud",
+            "depends" : [
+                "php-apache",
+                "php-apcu",
+                "php-gd",
+                "sudo"
+            ],
+            "apache2modules" : [
+                "php7",
+                "rewrite",
+                "headers",
+                "env",
+                "setenvif"
+            ],
+            "phpmodules" : [
+                "apcu",
+                "iconv",
+                "mysqli",
+                "pdo_mysql"
+            ],
+            "appconfigitems" : [
+                {
+                    "type" : "directorytree",
+                    "names" : [
+                        ".htaccess",
+                        ".user.ini",
+                        "3rdparty",
+                        "apps",
+                        "AUTHORS",
+                        "console.php",
+                        "core",
+                        "cron.php",
+                        "db_structure.xml",
+                        "index.html",
+                        "index.php",
+                        "l10n",
+                        "lib",
+                        "occ",
+                        "ocs",
+                        "ocs-provider",
+                        "public.php",
+                        "remote.php",
+                        "resources",
+                        "robots.txt",
+                        "settings",
+                        "status.php",
+                        "themes",
+                        "version.php"
+                    ],
+                    "source" : "nextcloud/$1",
+                    "uname" : "root",
+                    "gname" : "root",
+                    "filepermissions" : "preserve",
+                    "dirpermissions"  : "preserve"
+                },
+                {
+                    "type"  : "directory",
+                    "name"  : "data",
+                    "dirpermissions"  : "0750",
+                    "uname"       : "${apache2.uname}",
+                    "gname"       : "${apache2.gname}"
+                },
+                {
+                    "type"  : "directory",
+                    "name"  : "${appconfig.datadir}"
+                },
+                {
+                    "type"  : "directory",
+                    "name"  : "${appconfig.datadir}/data",
+                    "retentionpolicy" : "keep",
+                    "retentionbucket" : "datadir",
+                    "dirpermissions"  : "0750",
+                    "filepermissions" : "0640",
+                    "uname"       : "${apache2.uname}",
+                    "gname"       : "${apache2.gname}"
+                },
+                {
+                    "type"  : "directory",
+                    "name"  : "config",
+                    "retentionpolicy" : "keep",
+                    "retentionbucket" : "configdir",
+                    "dirpermissions"  : "0750",
+                    "filepermissions" : "0640",
+                    "uname"       : "${apache2.uname}",
+                    "gname"       : "${apache2.gname}"
+                },
+                {
+                    "type"         : "file",
+                    "name"         : "${appconfig.apache2.appconfigfragmentfile}",
+                    "template"     : "tmpl/htaccess.tmpl",
+                    "templatelang" : "varsubst"
+                },
+                {
+                    "type"   : "perlscript",
+                    "source" : "bin/fix-permissions.pl"
+                }
+            ],
+            "installers" : [
+                {
+                    "type"   : "perlscript",
+                    "source" : "bin/install.pl"
+                }
+            ],
+            "upgraders" : [
+                {
+                    "type"   : "perlscript",
+                    "source" : "bin/fix-restore.pl"
+                },
+                {
+                    "type"   : "perlscript",
+                    "source" : "bin/upgrade.pl"
+                }
+            ]
+        },
+        "mysql" : {
+            "appconfigitems" : [
+                {
+                    "type"       : "database",
+                    "name"       : "maindb",
+                    "retentionpolicy"  : "keep",
+                    "retentionbucket"  : "maindb",
+                    "privileges" : "all privileges"
+                }
+            ]
+        }
+    }
+}

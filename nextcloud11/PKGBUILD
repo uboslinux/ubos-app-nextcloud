@@ -1,0 +1,38 @@
+developer=https://nextcloud.com/
+url=${developer}
+maintainer=http://indiecomputing.com/
+pkgname=$(basename $(pwd))
+pkgver=11.0.0
+pkgrel=1
+pkgdesc="A safe home for all your data"
+arch=('any')
+license=("AGPL")
+source=("https://download.nextcloud.com/server/releases/nextcloud-${pkgver}.tar.bz2")
+depends=(
+    'php'
+    'smtp-server')
+options=('!strip')
+sha512sums=('50efb8d821e3e8dc34249a110cd95f8e7c24ed767842c4aae9e5a50e3f70ea6d382675e9d858c9281c20ed68953d42f69e74eba87a1276bbfb8b52a0fbf8fa52')
+
+package() {
+# Manifest
+    mkdir -p ${pkgdir}/var/lib/ubos/manifests
+    install -m0644 ${startdir}/ubos-manifest.json ${pkgdir}/var/lib/ubos/manifests/${pkgname}.json
+
+# Icons
+    mkdir -p ${pkgdir}/srv/http/_appicons/$pkgname
+    install -m644 ${startdir}/appicons/{72x72,144x144}.png ${pkgdir}/srv/http/_appicons/$pkgname/
+
+# Data
+    mkdir -p ${pkgdir}/var/lib/${pkgname}
+    
+# Code
+    mkdir -p ${pkgdir}/usr/share/${pkgname}/bin
+    install -m755 ${startdir}/bin/{fix-permissions,fix-restore,install,upgrade}.pl ${pkgdir}/usr/share/${pkgname}/bin/
+    install -m755 ${startdir}/bin/{install,upgrade}.pl ${pkgdir}/usr/share/${pkgname}/bin/
+
+    mkdir -p ${pkgdir}/usr/share/${pkgname}/tmpl
+    install -m644 ${startdir}/tmpl/*.tmpl ${pkgdir}/usr/share/${pkgname}/tmpl/
+
+    cp -dr --no-preserve=ownership ${startdir}/src/nextcloud ${pkgdir}/usr/share/${pkgname}/
+}
