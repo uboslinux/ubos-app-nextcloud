@@ -19,6 +19,7 @@
             ],
             "phpmodules" : [
                 "apcu",
+                "gd",
                 "iconv",
                 "mysqli",
                 "pdo_mysql"
