@@ -28,10 +28,17 @@ my $ret = 1;
 
 if( 'install' eq $operation ) {
 
-    my $cmd = "cd '$dir';";
-    $cmd .= "sudo -u '$apacheUname' php";
-    $cmd .= ' -d always_populate_raw_post_data=-1';
-    $cmd .= ' occ maintenance:install';
+    my $cmdPrefix;
+    my $out;
+    my $cmd;
+
+    $cmdPrefix = "cd '$dir';";
+    $cmdPrefix .= "sudo -u '$apacheUname' php";
+    $cmdPrefix .= ' -d always_populate_raw_post_data=-1';
+    $cmdPrefix .= ' occ';
+
+    $cmd = $cmdPrefix;
+    $cmd .= ' maintenance:install';
     $cmd .= ' --database "mysql"';
     $cmd .= " --database-name '$dbname'";
     $cmd .= " --database-user '$dbuser'";
@@ -42,24 +49,28 @@ if( 'install' eq $operation ) {
     $cmd .= " --data-dir '$datadir'";
     $cmd .= ' -n'; # non-interactive
 
-    my $out;
     if( UBOS::Utils::myexec( $cmd, undef, \$out, \$out )) {
         # something else happened
-        error( "occ maintenance:install failed:\n$cmd\n$out" );
+        error( "Nextcloud command failed:\n$cmd\n$out" );
         $ret = 0;
     }
 
-    # need to insert trusted_domains into config file
-    if( -r $confFile ) {
-        my $conf = UBOS::Utils::slurpFile( $confFile );
+    $cmd = $cmdPrefix;
+    $cmd .= ' config:system:set appstoreenabled --type boolean --value false';
 
-        unless( $conf =~ s!(['"]trusted_domains['"]\s+=>\s*array\s*\(\s*0\s*=>\s*["'])\S*(\s*['"])!$1$hostname$2!m ) {
-            error( 'Cannot find entry trusted_domains in', $confFile, '-- nextcloud10 likely to be flaky' );
-        }
-        UBOS::Utils::saveFile( $confFile, $conf, 0640, $apacheUname, $apacheGname );
+    if( UBOS::Utils::myexec( $cmd, undef, \$out, \$out )) {
+        # something else happened
+        error( "Nextcloud command failed:\n$cmd\n$out" );
+        $ret = 0;
+    }
 
-    } else {
-        error( 'Cannot read config file', $confFile );
+    $cmd = $cmdPrefix;
+    $cmd .= ' config:system:set trusted_domains 0 --value ' . $hostname;
+
+    if( UBOS::Utils::myexec( $cmd, undef, \$out, \$out )) {
+        # something else happened
+        error( "Nextcloud command failed:\n$cmd\n$out" );
+        $ret = 0;
     }
 }
 
