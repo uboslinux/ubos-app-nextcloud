@@ -28,7 +28,7 @@ package() {
     
 # Code
     mkdir -p ${pkgdir}/usr/share/${pkgname}/bin
-    install -m755 ${startdir}/bin/{fix-permissions,fix-restore,install,upgrade}.pl ${pkgdir}/usr/share/${pkgname}/bin/
+    install -m755 ${startdir}/bin/*.pl ${pkgdir}/usr/share/${pkgname}/bin/
     install -m755 ${startdir}/bin/{install,upgrade}.pl ${pkgdir}/usr/share/${pkgname}/bin/
 
     mkdir -p ${pkgdir}/usr/share/${pkgname}/tmpl
