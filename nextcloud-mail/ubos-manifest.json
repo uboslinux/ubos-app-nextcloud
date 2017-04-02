@@ -1,0 +1,28 @@
+{
+    "type"  : "accessory",
+
+    "accessoryinfo" : {
+        "appid"         : "nextcloud11",
+        "accessoryid"   : "mail",
+        "accessorytype" : "app"
+    },
+
+    "roles" : {
+        "apache2" : {
+            "appconfigitems" : [
+                {
+                    "type"   : "directorytree",
+                    "name"   : "apps/mail",
+                    "source" : "/usr/share/nextcloud11/apps/mail",
+                }
+            ],
+            "installers" : [
+                {
+                    "type"   : "perlscript",
+                    "source" : "/usr/share/nextcloud11/bin/activate-app.pl"
+                }
+            ]
+        }
+    }
+}
+

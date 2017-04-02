@@ -2,18 +2,18 @@ developer=https://nextcloud.com/
 url=${developer}
 maintainer=http://indiecomputing.com/
 pkgname=$(basename $(pwd))
-pkgver=0.9.5
+pkgver=0.6.2
 pkgrel=1
-pkgdesc="Add multi-user task management to Nextcloud"
+pkgdesc="The Nextcloud mail app"
 _app=nextcloud11
-_acc=tasks
+_acc=mail
 arch=('any')
 license=("AGPL")
 source=("https://github.com/nextcloud/${_acc}/releases/download/v${pkgver}/${_acc}.tar.gz")
 depends=(
     'nextcloud11')
 options=('!strip')
-sha512sums=('302c9668671222bd53ef6a95d669a1879205bc52adef4bd6269f0dc33fd2ff052c34a903711bd5f25c2e1a79fa02480a54228023403f217a59a88e18f0b67f84')
+sha512sums=('fdb2e769be3369b541fc680edff5411efef3478c08fd706aaf2b544f8838cab295b9dcd5c58a085aa30d4223dc9d806b5b3272adc57f3d2d2eb4607afbc17686')
 
 package() {
 # Manifest

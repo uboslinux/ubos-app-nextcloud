@@ -2,18 +2,18 @@ developer=https://nextcloud.com/
 url=${developer}
 maintainer=http://indiecomputing.com/
 pkgname=$(basename $(pwd))
-pkgver=0.9.5
+pkgver=1.5.3
 pkgrel=1
-pkgdesc="Add multi-user task management to Nextcloud"
+pkgdesc="The Nextcloud contacts app"
 _app=nextcloud11
-_acc=tasks
+_acc=contacts
 arch=('any')
 license=("AGPL")
 source=("https://github.com/nextcloud/${_acc}/releases/download/v${pkgver}/${_acc}.tar.gz")
 depends=(
     'nextcloud11')
 options=('!strip')
-sha512sums=('302c9668671222bd53ef6a95d669a1879205bc52adef4bd6269f0dc33fd2ff052c34a903711bd5f25c2e1a79fa02480a54228023403f217a59a88e18f0b67f84')
+sha512sums=('ad6c2cbfa62674d43b8efa1b588e92804f1677cde401b95525e428f059f46a6bd7edb218c5c371e914efeb38c953eb7a1fb0a5e8a6b6fc53aa9ce313b8d0fc5a')
 
 package() {
 # Manifest

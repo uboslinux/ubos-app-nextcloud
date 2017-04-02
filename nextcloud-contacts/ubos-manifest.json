@@ -1,0 +1,28 @@
+{
+    "type"  : "accessory",
+
+    "accessoryinfo" : {
+        "appid"         : "nextcloud11",
+        "accessoryid"   : "contacts",
+        "accessorytype" : "app"
+    },
+
+    "roles" : {
+        "apache2" : {
+            "appconfigitems" : [
+                {
+                    "type"   : "directorytree",
+                    "name"   : "apps/contacts",
+                    "source" : "/usr/share/nextcloud11/apps/contacts",
+                }
+            ],
+            "installers" : [
+                {
+                    "type"   : "perlscript",
+                    "source" : "/usr/share/nextcloud11/bin/activate-app.pl"
+                }
+            ]
+        }
+    }
+}
+

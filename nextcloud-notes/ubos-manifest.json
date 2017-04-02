@@ -1,0 +1,28 @@
+{
+    "type"  : "accessory",
+
+    "accessoryinfo" : {
+        "appid"         : "nextcloud11",
+        "accessoryid"   : "notes",
+        "accessorytype" : "app"
+    },
+
+    "roles" : {
+        "apache2" : {
+            "appconfigitems" : [
+                {
+                    "type"   : "directorytree",
+                    "name"   : "apps/notes",
+                    "source" : "/usr/share/nextcloud11/apps/notes",
+                }
+            ],
+            "installers" : [
+                {
+                    "type"   : "perlscript",
+                    "source" : "/usr/share/nextcloud11/bin/activate-app.pl"
+                }
+            ]
+        }
+    }
+}
+

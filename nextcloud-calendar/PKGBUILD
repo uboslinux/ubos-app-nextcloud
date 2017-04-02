@@ -2,18 +2,18 @@ developer=https://nextcloud.com/
 url=${developer}
 maintainer=http://indiecomputing.com/
 pkgname=$(basename $(pwd))
-pkgver=0.9.5
+pkgver=1.5.2
 pkgrel=1
-pkgdesc="Add multi-user task management to Nextcloud"
+pkgdesc="The Nextcloud calendar app"
 _app=nextcloud11
-_acc=tasks
+_acc=calendar
 arch=('any')
 license=("AGPL")
 source=("https://github.com/nextcloud/${_acc}/releases/download/v${pkgver}/${_acc}.tar.gz")
 depends=(
     'nextcloud11')
 options=('!strip')
-sha512sums=('302c9668671222bd53ef6a95d669a1879205bc52adef4bd6269f0dc33fd2ff052c34a903711bd5f25c2e1a79fa02480a54228023403f217a59a88e18f0b67f84')
+sha512sums=('dda8df87d5c55e1b3b3ef362a0573e41645dfdf81b1fd11ff294cbfb43f1509a23b0912b7c09e9f3ffe0359f98c90c5886d14b7538331904be7b0660db093af7')
 
 package() {
 # Manifest
