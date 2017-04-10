@@ -12,7 +12,7 @@ depends=(
     'php'
     'smtp-server')
 options=('!strip')
-sha512sums=('d86f2f924f4ced1a94cb42af39dbbc94e95893da23dbe67e41a92385d9202d36513f166bc295ff8c52c7c8fefab76332810c137bcefeb3f9fc1102a4063dc4d5')
+sha512sums=('4bb7a760b56088780eee7be83dd4c645703095f8bf11818f3d4cbf52c6636637d8724c3d972df068c54b0d98836ae29cd7c206e6fb5845ee646aeacc098e701d')
 
 xxprepare() {
     patch ${startdir}/src/nextcloud/lib/private/security/trusteddomainhelper.php ${startdir}/allow-wildcard-trusted.patch
