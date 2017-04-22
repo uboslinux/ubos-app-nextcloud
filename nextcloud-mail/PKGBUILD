@@ -5,13 +5,13 @@ pkgname=$(basename $(pwd))
 pkgver=0.6.2
 pkgrel=1
 pkgdesc="The Nextcloud mail app"
-_app=nextcloud11
+_app=nextcloud
 _acc=mail
 arch=('any')
 license=("AGPL")
 source=("https://github.com/nextcloud/${_acc}/releases/download/v${pkgver}/${_acc}.tar.gz")
 depends=(
-    'nextcloud11')
+    'nextcloud')
 options=('!strip')
 sha512sums=('fdb2e769be3369b541fc680edff5411efef3478c08fd706aaf2b544f8838cab295b9dcd5c58a085aa30d4223dc9d806b5b3272adc57f3d2d2eb4607afbc17686')
 

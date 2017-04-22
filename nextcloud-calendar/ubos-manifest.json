@@ -2,7 +2,7 @@
     "type"  : "accessory",
 
     "accessoryinfo" : {
-        "appid"         : "nextcloud11",
+        "appid"         : "nextcloud",
         "accessoryid"   : "calendar",
         "accessorytype" : "app"
     },
@@ -13,13 +13,13 @@
                 {
                     "type"   : "directorytree",
                     "name"   : "apps/calendar",
-                    "source" : "/usr/share/nextcloud11/apps/calendar",
+                    "source" : "/usr/share/nextcloud/apps/calendar",
                 }
             ],
             "installers" : [
                 {
                     "type"   : "perlscript",
-                    "source" : "/usr/share/nextcloud11/bin/activate-app.pl"
+                    "source" : "/usr/share/nextcloud/bin/activate-app.pl"
                 }
             ]
         }

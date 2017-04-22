@@ -5,13 +5,13 @@ pkgname=$(basename $(pwd))
 pkgver=2.2.0
 pkgrel=1
 pkgdesc="The Nextcloud notes app"
-_app=nextcloud11
+_app=nextcloud
 _acc=notes
 arch=('any')
 license=("AGPL")
 source=("https://github.com/nextcloud/${_acc}/releases/download/v${pkgver}/${_acc}.tar.gz")
 depends=(
-    'nextcloud11')
+    'nextcloud')
 options=('!strip')
 sha512sums=('c4329123623aa1018237376eec46b6bb4f2705554df8a4b7d4109591749db952dd4c21b6a612df1a7f26e32cd0668331569196782229c0d7fcb0af714d41c482')
 

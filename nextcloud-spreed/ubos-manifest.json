@@ -2,7 +2,7 @@
     "type"  : "accessory",
 
     "accessoryinfo" : {
-        "appid"         : "nextcloud11",
+        "appid"         : "nextcloud",
         "accessoryid"   : "spreed",
         "accessorytype" : "app"
     },
@@ -13,13 +13,13 @@
                 {
                     "type"   : "directorytree",
                     "name"   : "apps/spreed",
-                    "source" : "/usr/share/nextcloud11/apps/spreed",
+                    "source" : "/usr/share/nextcloud/apps/spreed",
                 }
             ],
             "installers" : [
                 {
                     "type"   : "perlscript",
-                    "source" : "/usr/share/nextcloud11/bin/activate-app.pl"
+                    "source" : "/usr/share/nextcloud/bin/activate-app.pl"
                 }
             ]
         }

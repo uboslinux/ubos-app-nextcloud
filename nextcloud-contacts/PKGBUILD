@@ -5,13 +5,13 @@ pkgname=$(basename $(pwd))
 pkgver=1.5.3
 pkgrel=1
 pkgdesc="The Nextcloud contacts app"
-_app=nextcloud11
+_app=nextcloud
 _acc=contacts
 arch=('any')
 license=("AGPL")
 source=("https://github.com/nextcloud/${_acc}/releases/download/v${pkgver}/${_acc}.tar.gz")
 depends=(
-    'nextcloud11')
+    'nextcloud')
 options=('!strip')
 sha512sums=('ad6c2cbfa62674d43b8efa1b588e92804f1677cde401b95525e428f059f46a6bd7edb218c5c371e914efeb38c953eb7a1fb0a5e8a6b6fc53aa9ce313b8d0fc5a')
 
