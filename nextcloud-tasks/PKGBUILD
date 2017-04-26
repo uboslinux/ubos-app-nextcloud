@@ -3,7 +3,7 @@ url=${developer}
 maintainer=http://indiecomputing.com/
 pkgname=$(basename $(pwd))
 pkgver=0.9.5
-pkgrel=2
+pkgrel=3
 pkgdesc="Add multi-user task management to Nextcloud"
 _app=nextcloud
 _acc=tasks
@@ -27,5 +27,5 @@ package() {
 # Code
     mkdir -p ${pkgdir}/usr/share/${_app}/apps
 
-    cp -dr --no-preserve=ownership ${srcdir}/${calendar} ${pkgdir}/usr/share/${_app}/apps/
+    cp -dr --no-preserve=ownership ${srcdir}/${_acc} ${pkgdir}/usr/share/${_app}/apps/
 }

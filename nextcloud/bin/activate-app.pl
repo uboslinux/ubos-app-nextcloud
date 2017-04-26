@@ -17,12 +17,12 @@ my $out;
 if( 'install' eq $operation ) {
 
     if( UBOS::Utils::myexec( "$cmdPrefix app:enable $appName", undef, \$out, \$out ) != 0 ) {
-        error( "Activating Nextcloud11 app $appName failed:", $out );
+        error( "Activating Nextcloud app $appName failed:", $out );
     }
 
 } else {
     if( UBOS::Utils::myexec( "$cmdPrefix app:disable $appName", undef, \$out, \$out ) != 0 ) {
-        error( "Activating Nextcloud11 app $appName failed:", $out );
+        error( "Activating Nextcloud app $appName failed:", $out );
     }
 }
 

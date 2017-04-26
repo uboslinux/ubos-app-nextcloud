@@ -3,7 +3,7 @@ url=${developer}
 maintainer=http://indiecomputing.com/
 pkgname=$(basename $(pwd))
 pkgver=0.6.2
-pkgrel=2
+pkgrel=3
 pkgdesc="The Nextcloud mail app"
 _app=nextcloud
 _acc=mail
@@ -27,5 +27,5 @@ package() {
 # Code
     mkdir -p ${pkgdir}/usr/share/${_app}/apps
 
-    cp -dr --no-preserve=ownership ${srcdir}/${calendar} ${pkgdir}/usr/share/${_app}/apps/
+    cp -dr --no-preserve=ownership ${srcdir}/${_acc} ${pkgdir}/usr/share/${_app}/apps/
 }
