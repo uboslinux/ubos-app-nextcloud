@@ -9,7 +9,7 @@ _app=nextcloud
 _acc=notes
 arch=('any')
 license=("AGPL")
-source=("https://github.com/nextcloud/${_acc}/releases/download/v${pkgver}/${_acc}.tar.gz")
+source=("${_acc}-${pkgver}.tar.gz::https://github.com/nextcloud/${_acc}/releases/download/v${pkgver}/${_acc}.tar.gz")
 depends=(
     'nextcloud')
 options=('!strip')
