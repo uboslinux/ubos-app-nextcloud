@@ -65,7 +65,7 @@ if( 'install' eq $operation ) {
     }
 
     $cmd = $cmdPrefix;
-    $cmd .= ' config:system:set trusted_domains 0 --value ' . $hostname;
+    $cmd .= " config:system:set trusted_domains 0 --value '$hostname'";
 
     if( UBOS::Utils::myexec( $cmd, undef, \$out, \$out )) {
         # something else happened
