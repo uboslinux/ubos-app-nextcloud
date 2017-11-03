@@ -1,0 +1,17 @@
+{
+   "hostname" : "*",
+   "appconfigs" : [
+      {
+         "appid" : "nextcloud",
+         "appconfigid" : "a1034be74de50b6f57d032a0ed7a153b71aa52e67",
+         "context" : "/next"
+      }
+   ],
+   "siteid" : "s37fd9411a2735a8473f6fd5f935caa94b2e8d09e",
+   "admin" : {
+      "credential" : "qwerqwer",
+      "username" : "admin",
+      "email" : "test@ubos.net",
+      "userid" : "admin"
+   }
+}

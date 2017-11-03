@@ -1,0 +1,26 @@
+{
+   "hostname" : "*",
+   "appconfigs" : [
+      {
+         "appconfigid" : "a412f14cc997d1d3de69dae416a811ce1e21a7bd8",
+         "context" : "/next",
+         "appid" : "nextcloud",
+         "accessoryids" : [
+            "nextcloud-tasks",
+            "nextcloud-mail",
+            "nextcloud-contacts",
+            "nextcloud-calendar",
+            "nextcloud-spreed",
+            "nextcloud-news",
+            "nextcloud-notes"
+         ]
+      }
+   ],
+   "admin" : {
+      "email" : "test@ubos.net",
+      "username" : "admin",
+      "credential" : "qwerqwer",
+      "userid" : "admin"
+   },
+   "siteid" : "s7febb0b4cd348d86f95b47eb8b1292e220460321"
+}
