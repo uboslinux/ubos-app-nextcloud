@@ -2,7 +2,7 @@ developer=https://nextcloud.com/
 url=${developer}
 maintainer=http://indiecomputing.com/
 pkgname=$(basename $(pwd))
-pkgver=2.3.1
+pkgver=2.3.2
 pkgrel=1
 pkgdesc="The Nextcloud notes app"
 _app=nextcloud
@@ -10,6 +10,7 @@ _acc=notes
 arch=('any')
 license=("AGPL")
 source=("${_acc}-${pkgver}.tar.gz::https://github.com/nextcloud/${_acc}/releases/download/v${pkgver}/${_acc}.tar.gz")
+releasepage=("https://apps.nextcloud.com/apps/${_acc}") 
 depends=(
     'nextcloud')
 options=('!strip')

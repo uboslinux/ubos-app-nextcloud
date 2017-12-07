@@ -10,6 +10,7 @@ _acc=news
 arch=('any')
 license=("AGPL")
 source=("${_acc}-${pkgver}.tar.gz::https://github.com/nextcloud/${_acc}/releases/download/${pkgver}/${_acc}.tar.gz")
+releasepage=("https://apps.nextcloud.com/apps/${_acc}") 
 depends=(
     'nextcloud')
 options=('!strip')
