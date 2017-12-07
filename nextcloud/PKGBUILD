@@ -13,7 +13,7 @@ depends=(
     'php'
     'smtp-server')
 options=('!strip')
-sha512sums=('4aae61cb201f3c8b7ba7fa6c2789fb72930b1190ff40ef96494bc2763f268f321b2c2d1ec70c9add8cd45307818ddee39749a5d0a7d0667997980e4b5087c308')
+sha512sums=('30426e6998ccc38026ab584fbec2e8e64419dc500a62066fefa8efd29eae94c7d11104e1ecfa6307ac754dbb82d4eaa499c2b38459af6353845ea741b304a4bf')
 
 package() {
 # Manifest
