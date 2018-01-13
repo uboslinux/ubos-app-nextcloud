@@ -2,6 +2,8 @@
 #
 # Perform the installation using occ.
 #
+# Copyright (C) 2016 and later, Indie Computing Corp. All rights reserved. License: see package.
+#
 
 use strict;
 

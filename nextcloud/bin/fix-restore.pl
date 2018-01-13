@@ -2,6 +2,8 @@
 #
 # Modify the database info in the restore config.php
 #
+# Copyright (C) 2016 and later, Indie Computing Corp. All rights reserved. License: see package.
+#
 
 use strict;
 use warnings;

@@ -2,6 +2,8 @@
 #
 # Activate a Nextcloud app. Only invoke from ubos-manifest.json.
 #
+# Copyright (C) 2016 and later, Indie Computing Corp. All rights reserved. License: see package.
+#
 
 use strict;
 
