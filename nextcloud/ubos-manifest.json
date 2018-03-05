@@ -36,7 +36,6 @@
                         "console.php",
                         "core",
                         "cron.php",
-                        "db_structure.xml",
                         "index.html",
                         "index.php",
                         "l10n",
@@ -51,6 +50,7 @@
                         "settings",
                         "status.php",
                         "themes",
+                        "updater",
                         "version.php"
                     ],
                     "source" : "nextcloud/$1",
