@@ -13,13 +13,13 @@
                 {
                     "type"   : "directorytree",
                     "name"   : "apps/mail",
-                    "source" : "/usr/share/nextcloud/apps/mail",
+                    "source" : "/ubos/share/nextcloud/apps/mail",
                 }
             ],
             "installers" : [
                 {
                     "type"   : "perlscript",
-                    "source" : "/usr/share/nextcloud/bin/activate-app.pl"
+                    "source" : "/ubos/share/nextcloud/bin/activate-app.pl"
                 }
             ]
         }

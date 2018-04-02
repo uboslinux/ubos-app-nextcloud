@@ -18,15 +18,13 @@ sha512sums=('e04ea5e16a355bf977c9df9f00c58b7d201a9d6b59cb0ba76fd335902357005e04f
 
 package() {
 # Manifest
-    mkdir -p ${pkgdir}/var/lib/ubos/manifests
-    install -m0644 ${startdir}/ubos-manifest.json ${pkgdir}/var/lib/ubos/manifests/${pkgname}.json
+    install -D -m0644 ${startdir}/ubos-manifest.json ${pkgdir}/ubos/lib/ubos/manifests/${pkgname}.json
 
 # Icons
-#    mkdir -p ${pkgdir}/srv/http/_appicons/$pkgname
-#    install -m644 ${startdir}/appicons/{72x72,144x144}.png ${pkgdir}/srv/http/_appicons/$pkgname/
+#    install -D -m644 ${startdir}/appicons/{72x72,144x144}.png ${pkgdir}/ubos/http/_appicons/$pkgname/
 
 # Code
-    mkdir -p ${pkgdir}/usr/share/${_app}/apps
+    mkdir -p ${pkgdir}/ubos/share/${_app}/apps
 
-    cp -dr --no-preserve=ownership ${srcdir}/${_acc} ${pkgdir}/usr/share/${_app}/apps/
+    cp -dr --no-preserve=ownership ${srcdir}/${_acc} ${pkgdir}/ubos/share/${_app}/apps/
 }

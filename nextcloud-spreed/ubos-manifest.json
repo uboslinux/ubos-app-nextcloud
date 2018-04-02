@@ -13,16 +13,15 @@
                 {
                     "type"   : "directorytree",
                     "name"   : "apps/spreed",
-                    "source" : "/usr/share/nextcloud/apps/spreed",
+                    "source" : "/ubos/share/nextcloud/apps/spreed",
                 }
             ],
             "installers" : [
                 {
                     "type"   : "perlscript",
-                    "source" : "/usr/share/nextcloud/bin/activate-app.pl"
+                    "source" : "/ubos/share/nextcloud/bin/activate-app.pl"
                 }
             ]
         }
     }
 }
-

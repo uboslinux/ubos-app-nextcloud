@@ -13,16 +13,15 @@
                 {
                     "type"   : "directorytree",
                     "name"   : "apps/notes",
-                    "source" : "/usr/share/nextcloud/apps/notes",
+                    "source" : "/ubos/share/nextcloud/apps/notes",
                 }
             ],
             "installers" : [
                 {
                     "type"   : "perlscript",
-                    "source" : "/usr/share/nextcloud/bin/activate-app.pl"
+                    "source" : "/ubos/share/nextcloud/bin/activate-app.pl"
                 }
             ]
         }
     }
 }
-

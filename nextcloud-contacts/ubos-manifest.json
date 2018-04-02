@@ -13,13 +13,13 @@
                 {
                     "type"   : "directorytree",
                     "name"   : "apps/contacts",
-                    "source" : "/usr/share/nextcloud/apps/contacts",
+                    "source" : "/ubos/share/nextcloud/apps/contacts",
                 }
             ],
             "installers" : [
                 {
                     "type"   : "perlscript",
-                    "source" : "/usr/share/nextcloud/bin/activate-app.pl"
+                    "source" : "/ubos/share/nextcloud/bin/activate-app.pl"
                 }
             ]
         }

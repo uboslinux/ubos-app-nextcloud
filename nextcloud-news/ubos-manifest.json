@@ -13,16 +13,15 @@
                 {
                     "type"   : "directorytree",
                     "name"   : "apps/news",
-                    "source" : "/usr/share/nextcloud/apps/news",
+                    "source" : "/ubos/share/nextcloud/apps/news",
                 }
             ],
             "installers" : [
                 {
                     "type"   : "perlscript",
-                    "source" : "/usr/share/nextcloud/bin/activate-app.pl"
+                    "source" : "/ubos/share/nextcloud/bin/activate-app.pl"
                 }
             ]
         }
     }
 }
-

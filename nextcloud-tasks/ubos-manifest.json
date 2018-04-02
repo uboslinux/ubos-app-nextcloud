@@ -13,16 +13,15 @@
                 {
                     "type"   : "directorytree",
                     "name"   : "apps/tasks",
-                    "source" : "/usr/share/nextcloud/apps/tasks",
+                    "source" : "/ubos/share/nextcloud/apps/tasks",
                 }
             ],
             "installers" : [
                 {
                     "type"   : "perlscript",
-                    "source" : "/usr/share/nextcloud/bin/activate-app.pl"
+                    "source" : "/ubos/share/nextcloud/bin/activate-app.pl"
                 }
             ]
         }
     }
 }
-

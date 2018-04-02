@@ -2,8 +2,8 @@ developer=https://nextcloud.com/
 url=${developer}
 maintainer=http://indiecomputing.com/
 pkgname=$(basename $(pwd))
-pkgver=13.0.0
-pkgrel=2
+pkgver=13.0.1
+pkgrel=1
 pkgdesc="A safe home for all your data"
 arch=('any')
 license=("AGPL3")
@@ -17,23 +17,18 @@ sha512sums=('c2a3be174b43b27667c3e1894a942d4dd77c29a4e043cbb0c7d7f516aa299b83dc4
 
 package() {
 # Manifest
-    mkdir -p ${pkgdir}/var/lib/ubos/manifests
-    install -m0644 ${startdir}/ubos-manifest.json ${pkgdir}/var/lib/ubos/manifests/${pkgname}.json
+    install -D -m0644 ${startdir}/ubos-manifest.json ${pkgdir}/ubos/lib/ubos/manifests/${pkgname}.json
 
 # Icons
-    mkdir -p ${pkgdir}/srv/http/_appicons/$pkgname
-    install -m644 ${startdir}/appicons/{72x72,144x144}.png ${pkgdir}/srv/http/_appicons/$pkgname/
+    install -D -m0644 ${startdir}/appicons/{72x72,144x144}.png -t ${pkgdir}/ubos/http/_appicons/${pkgname}/
 
 # Data
-    mkdir -p ${pkgdir}/var/lib/${pkgname}
+    mkdir -p ${pkgdir}/ubos/lib/${pkgname}
 
 # Code
-    mkdir -p ${pkgdir}/usr/share/${pkgname}/bin
-    install -m755 ${startdir}/bin/*.pl ${pkgdir}/usr/share/${pkgname}/bin/
-    install -m755 ${startdir}/bin/{install,upgrade}.pl ${pkgdir}/usr/share/${pkgname}/bin/
+    install -D -m0755 ${startdir}/bin/*.pl -t ${pkgdir}/ubos/share/${pkgname}/bin/
 
-    mkdir -p ${pkgdir}/usr/share/${pkgname}/tmpl
-    install -m644 ${startdir}/tmpl/*.tmpl ${pkgdir}/usr/share/${pkgname}/tmpl/
+    install -D -m0644 ${startdir}/tmpl/*.tmpl -t ${pkgdir}/ubos/share/${pkgname}/tmpl/
 
-    cp -dr --no-preserve=ownership ${startdir}/src/nextcloud ${pkgdir}/usr/share/${pkgname}/
+    cp -dr --no-preserve=ownership ${startdir}/src/nextcloud ${pkgdir}/ubos/share/${pkgname}/
 }
