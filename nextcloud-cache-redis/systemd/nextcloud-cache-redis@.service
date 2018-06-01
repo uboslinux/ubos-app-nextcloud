@@ -1,0 +1,22 @@
+[Unit]
+Description=Advanced key-value store, configured as Nextcloud Cache
+After=network.target
+
+[Service]
+ExecStartPre=/usr/share/ubos-admin/bin/ubos-service-prestart nextcloud-cache-redis@%I
+ExecStopPost=/usr/share/ubos-admin/bin/ubos-service-poststop nextcloud-cache-redis@%I
+
+Type=simple
+User=http
+Group=http
+ExecStart=/usr/bin/redis-server /etc/nextcloud-cache-redis/nextcloud-cache-redis-%i.conf
+# Does not work with non-default port: ExecStop=/usr/bin/redis-cli shutdown
+CapabilityBoundingSet=
+PrivateTmp=true
+PrivateDevices=true
+ProtectSystem=full
+ProtectHome=true
+NoNewPrivileges=true
+
+[Install]
+WantedBy=multi-user.target

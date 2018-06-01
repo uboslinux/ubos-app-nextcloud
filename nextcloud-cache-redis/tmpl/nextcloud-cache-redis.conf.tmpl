@@ -1,0 +1,90 @@
+bind 127.0.0.1
+
+protected-mode yes
+
+port 0
+
+unixsocket /run/nextcloud-cache-redis/${appconfig.appconfigid}.sock
+unixsocketperm 700
+
+timeout 30
+
+daemonize no
+supervised no
+pidfile /run/nextcloud-cache-redis/${appconfig.appconfigid}.pid
+
+loglevel notice
+logfile ""
+
+databases 1
+
+always-show-logo no
+
+save 900 1
+save 300 10
+save 60 10000
+
+stop-writes-on-bgsave-error yes
+
+rdbcompression yes
+rdbchecksum yes
+dbfilename dump.rdb
+dir /ubos/lib/nextcloud-cache-redis/${appconfig.appconfigid}/redis/
+
+requirepass ${installable.customizationpoints.redispass.value}
+
+maxclients 64
+
+maxmemory-policy allkeys-lfu
+maxmemory-samples 5
+
+lazyfree-lazy-eviction no
+lazyfree-lazy-expire no
+lazyfree-lazy-server-del no
+slave-lazy-flush no
+
+appendonly no
+appendfilename "appendonly.aof"
+
+appendfsync no
+no-appendfsync-on-rewrite no
+
+auto-aof-rewrite-percentage 100
+auto-aof-rewrite-min-size 64mb
+
+aof-load-truncated yes
+aof-use-rdb-preamble yes
+
+lua-time-limit 5000
+
+slowlog-log-slower-than 10000
+slowlog-max-len 128
+
+latency-monitor-threshold 0
+
+notify-keyspace-events ""
+
+hash-max-ziplist-entries 512
+hash-max-ziplist-value 64
+
+list-max-ziplist-size -1
+
+list-compress-depth 2
+
+set-max-intset-entries 512
+
+zset-max-ziplist-entries 128
+zset-max-ziplist-value 64
+
+hll-sparse-max-bytes 3000
+
+activerehashing yes
+
+client-output-buffer-limit normal 0 0 0
+client-output-buffer-limit slave 256mb 64mb 60
+client-output-buffer-limit pubsub 32mb 8mb 60
+
+hz 10
+
+aof-rewrite-incremental-fsync yes
+

@@ -1,0 +1,58 @@
+{
+    "type"  : "accessory",
+
+    "accessoryinfo" : {
+        "appid" : "nextcloud"
+    },
+
+    "roles" : {
+        "apache2" : {
+            "depends" : [
+                "php-redis"
+            ],
+            "phpmodules" : [
+                "redis"
+            ],
+            "appconfigitems" : [
+                {
+                    "type"             : "directory",
+                    "name"             : "${appconfig.datadir}"
+                },
+                {
+                    "type"             : "directory",
+                    "name"             : "${appconfig.datadir}/redis",
+                    "uname"            : "http",
+                    "gname"            : "http",
+                    "retentionpolicy"  : "keep",
+                    "retentionbucket"  : "redis"
+                },
+                {
+                    "type"         : "file",
+                    "name"         : "/etc/${package.name}/${package.name}-${appconfig.appconfigid}.conf",
+                    "template"     : "tmpl/${package.name}.conf.tmpl",
+                    "templatelang" : "varsubst"
+                },
+                {
+                    "type" : "systemd-service",
+                    "name" : "${package.name}@${appconfig.appconfigid}",
+                }
+            ],
+            "installers" : [
+                {
+                    "type"   : "perlscript",
+                    "source" : "bin/activate-deactivate.pl"
+                }
+            ]
+        }
+    },
+    "customizationpoints" : {
+        "redispass" : {
+            "type"        : "string",
+            "required"    : false,
+            "private"     : true,
+            "default" : {
+                "expression" : "${randomPassword(16)}"
+            }
+        }
+    }
+}

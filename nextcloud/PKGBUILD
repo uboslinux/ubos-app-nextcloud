@@ -3,7 +3,7 @@ url=${developer}
 maintainer=http://indiecomputing.com/
 pkgname=$(basename $(pwd))
 pkgver=13.0.2
-pkgrel=1
+pkgrel=2
 pkgdesc="A safe home for all your data"
 arch=('any')
 license=("AGPL3")
@@ -21,6 +21,9 @@ package() {
 
 # Icons
     install -D -m0644 ${startdir}/appicons/{72x72,144x144}.png -t ${pkgdir}/ubos/http/_appicons/${pkgname}/
+
+# Systemd
+    install -D -m0644 ${startdir}/systemd/nextcloud@.timer -t ${pkgdir}/etc/systemd/system/
 
 # Data
     mkdir -p ${pkgdir}/ubos/lib/${pkgname}

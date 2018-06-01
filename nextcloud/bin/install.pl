@@ -39,40 +39,27 @@ if( 'install' eq $operation ) {
     $cmdPrefix .= ' -d always_populate_raw_post_data=-1';
     $cmdPrefix .= ' occ';
 
-    $cmd = $cmdPrefix;
-    $cmd .= ' maintenance:install';
-    $cmd .= ' --database "mysql"';
-    $cmd .= " --database-name '$dbname'";
-    $cmd .= " --database-user '$dbuser'";
-    $cmd .= " --database-pass '$dbpass'";
-    $cmd .= " --database-host '$dbhost'";
-    $cmd .= " --admin-user '$adminlogin'";
-    $cmd .= " --admin-pass '$adminpass'";
-    $cmd .= " --data-dir '$datadir'";
-    $cmd .= ' -n'; # non-interactive
-
-    if( UBOS::Utils::myexec( $cmd, undef, \$out, \$out )) {
-        # something else happened
-        error( "Nextcloud command failed:\n$cmd\n$out" );
-        $ret = 0;
-    }
-
-    $cmd = $cmdPrefix;
-    $cmd .= ' config:system:set appstoreenabled --type boolean --value false';
-
-    if( UBOS::Utils::myexec( $cmd, undef, \$out, \$out )) {
-        # something else happened
-        error( "Nextcloud command failed:\n$cmd\n$out" );
-        $ret = 0;
-    }
-
-    $cmd = $cmdPrefix;
-    $cmd .= " config:system:set trusted_domains 0 --value '$hostname'";
-
-    if( UBOS::Utils::myexec( $cmd, undef, \$out, \$out )) {
-        # something else happened
-        error( "Nextcloud command failed:\n$cmd\n$out" );
-        $ret = 0;
+    for my $cmd ( 
+            'maintenance:install'
+                . ' --database "mysql"'
+                . " --database-name '$dbname'"
+                . " --database-user '$dbuser'"
+                . " --database-pass '$dbpass'"
+                . " --database-host '$dbhost'"
+                . " --admin-user '$adminlogin'"
+                . " --admin-pass '$adminpass'"
+                . " --data-dir '$datadir'"
+                . ' -n', # non-interactive
+            'config:system:set appstoreenabled --type boolean --value false',
+            'config:system:set mail_smtpmode --value=smtp',
+            "config:system:set trusted_domains 0 --value '$hostname'",
+            'background:cron',
+            'app:disable updatenotification' )
+    {
+        if( UBOS::Utils::myexec( "$cmdPrefix $cmd", undef, \$out, \$out )) {
+            error( "Nextcloud command failed:\n$cmd\n$out" );
+            $ret = 0;
+        }
     }
 }
 

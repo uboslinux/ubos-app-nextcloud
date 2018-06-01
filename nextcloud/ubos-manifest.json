@@ -98,6 +98,16 @@
                 {
                     "type"   : "perlscript",
                     "source" : "bin/fix-permissions.pl"
+                },
+                {
+                    "type"         : "file",
+                    "name"         : "/etc/systemd/system/nextcloud@${appconfig.appconfigid}.service",
+                    "template"     : "tmpl/nextcloud@.service.tmpl",
+                    "templatelang" : "varsubst"
+                },
+                {
+                    "type"         : "systemd-timer",
+                    "name"         : "nextcloud@${appconfig.appconfigid}"
                 }
             ],
             "installers" : [
