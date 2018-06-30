@@ -3,17 +3,24 @@ url=${developer}
 maintainer=http://indiecomputing.com/
 pkgname=$(basename $(pwd))
 pkgver=13.0.2
-pkgrel=2
+pkgrel=3
 pkgdesc="A safe home for all your data"
 arch=('any')
 license=("AGPL3")
-source=("https://download.nextcloud.com/server/releases/nextcloud-${pkgver}.tar.bz2")
+# source=("https://download.nextcloud.com/server/releases/nextcloud-${pkgver}.tar.bz2")
+source=("git+https://github.com/jernst/nextcloud-server.git#branch=jernst")
 releasepage=('https://nextcloud.com/changelog/')
 depends=(
     'php'
     'smtp-server')
 options=('!strip')
-sha512sums=('b787ed03937588dd84d41b85ea1ef2868173c7353d0b9c6d81f4df97780278a7a78254c9a3cc39a0e69cc1c4472120130c1064cf1f343d9cc06519cae1bf0dc7')
+# sha512sums=('b787ed03937588dd84d41b85ea1ef2868173c7353d0b9c6d81f4df97780278a7a78254c9a3cc39a0e69cc1c4472120130c1064cf1f343d9cc06519cae1bf0dc7')
+sha512sums=('SKIP')
+
+prepare() {
+    cd ${startdir}/src/nextcloud-server
+    git submodule update --init
+}
 
 package() {
 # Manifest
@@ -33,5 +40,6 @@ package() {
 
     install -D -m0644 ${startdir}/tmpl/*.tmpl -t ${pkgdir}/ubos/share/${pkgname}/tmpl/
 
-    cp -dr --no-preserve=ownership ${startdir}/src/nextcloud ${pkgdir}/ubos/share/${pkgname}/
+#    cp -dr --no-preserve=ownership ${startdir}/src/nextcloud ${pkgdir}/ubos/share/${pkgname}/
+    cp -dr --no-preserve=ownership ${startdir}/src/nextcloud-server ${pkgdir}/ubos/share/${pkgname}/nextcloud
 }

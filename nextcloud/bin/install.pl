@@ -13,6 +13,7 @@ use UBOS::Utils;
 my $apacheUname = $config->getResolve( 'apache2.uname' );
 my $apacheGname = $config->getResolve( 'apache2.gname' );
 
+my $appConfigId = $config->getResolve( 'appconfig.appconfigid' );
 my $dir         = $config->getResolve( 'appconfig.apache2.dir' );
 my $datadir     = $config->getResolve( 'appconfig.datadir' ) . '/data';
 my $dbname      = $config->getResolve( 'appconfig.mysql.dbname.maindb' );
@@ -50,9 +51,11 @@ if( 'install' eq $operation ) {
                 . " --admin-pass '$adminpass'"
                 . " --data-dir '$datadir'"
                 . ' -n', # non-interactive
+            'config:system:set syslog_tag --value=nextcloud@' . $appConfigId,
             'config:system:set appstoreenabled --type boolean --value false',
             'config:system:set mail_smtpmode --value=smtp',
             "config:system:set trusted_domains 0 --value '$hostname'",
+            'config:system:set log_type --value=systemd',
             'background:cron',
             'app:disable updatenotification' )
     {

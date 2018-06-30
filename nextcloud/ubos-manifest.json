@@ -8,7 +8,8 @@
                 "php-apache",
                 "php-apcu",
                 "php-gd",
-                "sudo"
+                "sudo",
+                "php-systemd"
             ],
             "apache2modules" : [
                 "php7",
@@ -22,7 +23,8 @@
                 "gd",
                 "iconv",
                 "mysqli",
-                "pdo_mysql"
+                "pdo_mysql",
+                "systemd"
             ],
             "appconfigitems" : [
                 {
@@ -49,7 +51,6 @@
                         "settings",
                         "status.php",
                         "themes",
-                        "updater",
                         "version.php"
                     ],
                     "source" : "nextcloud/$1",
