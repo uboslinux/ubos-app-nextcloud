@@ -25,12 +25,12 @@ my $out;
 if( 'install' eq $operation ) {
     # Set the parameters first, then that we use Redis, otherwise failure
     for my $cmd (
-            'config:system:set redis host --value=/var/run/redis/redis.sock',
+            'config:system:set redis host --value=/var/run/nextcloud-cache-redis/' . $appconfigid . '.sock',
             'config:system:set redis port --value=0',
             'config:system:set redis dbindex --value=0',
             'config:system:set redis password --value=' . $redispass,
             'config:system:set redis timeout --value=1.5',
-            'config:system:set memcache.local --value=\\OC\\Memcache\\Redis'
+            'config:system:set memcache.local --value=\\\\OC\\\\Memcache\\\\Redis' )
     {
         if( UBOS::Utils::myexec( "$cmdPrefix $cmd", undef, \$out, \$out )) {
             error( "Nextcloud command failed:\n$cmd\n$out" );
