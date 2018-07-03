@@ -18,41 +18,30 @@ my $redispass   = $config->getResolve( 'installable.customizationpoints.redispas
 my $cmdPrefix = "cd '$dir';";
 $cmdPrefix .= "sudo -u '$apacheUname' php";
 $cmdPrefix .= ' -d always_populate_raw_post_data=-1';
+$cmdPrefix .= ' occ';
 
-my $occCmdPrefix = "$cmdPrefix occ";
 
 my $out;
-
 if( 'install' eq $operation ) {
-    if( UBOS::Utils::myexec( "$occCmdPrefix config:system:set memcache.local --value '\\OC\\Memcache\\Redis'", undef, \$out, \$out ) != 0 ) {
-        error( "Activating Nextcloud Redis cache failed:", $out );
+    # Set the parameters first, then that we use Redis, otherwise failure
+    for my $cmd (
+            'config:system:set redis host --value=/var/run/redis/redis.sock',
+            'config:system:set redis port --value=0',
+            'config:system:set redis dbindex --value=0',
+            'config:system:set redis password --value=' . $redispass,
+            'config:system:set redis timeout --value=1.5',
+            'config:system:set memcache.local --value=\\OC\\Memcache\\Redis'
+    {
+        if( UBOS::Utils::myexec( "$cmdPrefix $cmd", undef, \$out, \$out )) {
+            error( "Nextcloud command failed:\n$cmd\n$out" );
+        }
     }
-    if( UBOS::Utils::myexec( $cmdPrefix, <<PHP, \$out, \$out ) != 0 ) {
-<?php
-
-require_once 'lib/base.php';
-
-\$config = \\OC::\$server->getConfig()->getSystemConfig();
-
-\$config->setValues( [
-    'redis' => [
-        'host' => '/run/nextcloud-cache-redis/$appconfigid.sock',
-        'port' => 0,
-        'dbindex' => 0,
-        'password' => '$redispass',
-        'timeout' => 1.5
-    ]] );
-PHP
-        error( "Adding Nextcloud Redis configuration failed:", $out );
-    }
-
-    # apparently occ cannot currently insert hierarchical values, so we bypass it
 
 } else {
-    if( UBOS::Utils::myexec( "$occCmdPrefix config:system:delete memcache.local", undef, \$out, \$out ) != 0 ) {
+    if( UBOS::Utils::myexec( "$cmdPrefix config:system:delete memcache.local", undef, \$out, \$out ) != 0 ) {
         error( "Dectivating Nextcloud Redis cache failed:", $out );
     }
-    if( UBOS::Utils::myexec( "$occCmdPrefix config:system:delete redis", undef, \$out, \$out ) != 0 ) {
+    if( UBOS::Utils::myexec( "$cmdPrefix config:system:delete redis", undef, \$out, \$out ) != 0 ) {
         error( "Removing Nextcloud Redis cache configuration failed:", $out );
     }
 }
