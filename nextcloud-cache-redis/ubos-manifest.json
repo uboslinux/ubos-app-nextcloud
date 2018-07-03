@@ -11,7 +11,8 @@
                 "php-redis"
             ],
             "phpmodules" : [
-                "redis"
+                "redis",
+                "igbinary"
             ],
             "appconfigitems" : [
                 {
