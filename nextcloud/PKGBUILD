@@ -3,7 +3,7 @@ url=${developer}
 maintainer=http://indiecomputing.com/
 pkgname=$(basename $(pwd))
 pkgver=13.0.2
-pkgrel=3
+pkgrel=4
 pkgdesc="A safe home for all your data"
 arch=('any')
 license=("AGPL3")
@@ -41,5 +41,6 @@ package() {
     install -D -m0644 ${startdir}/tmpl/*.tmpl -t ${pkgdir}/ubos/share/${pkgname}/tmpl/
 
 #    cp -dr --no-preserve=ownership ${startdir}/src/nextcloud ${pkgdir}/ubos/share/${pkgname}/
-    cp -dr --no-preserve=ownership ${startdir}/src/nextcloud-server ${pkgdir}/ubos/share/${pkgname}/nextcloud
+    mkdir ${pkgdir}/ubos/share/${pkgname}/nextcloud
+    cp -dr --no-preserve=ownership ${startdir}/src/nextcloud-server/* ${pkgdir}/ubos/share/${pkgname}/nextcloud/
 }
