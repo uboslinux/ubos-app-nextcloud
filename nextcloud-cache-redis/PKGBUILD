@@ -2,13 +2,14 @@ developer=http://indiecomputing.com/
 url=${developer}
 maintainer=${developer}
 pkgname=$(basename $(pwd))
-pkgver=0.3
+pkgver=0.4
 pkgrel=1
 pkgdesc="Redis-based caching for Nextcloud"
 arch=('any')
 license=("AGPL3")
 depends=(
     'nextcloud'
+    'php-redis'
     'redis'
 )
 options=('!strip')
