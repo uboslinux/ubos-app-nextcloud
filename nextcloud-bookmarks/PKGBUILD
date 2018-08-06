@@ -2,29 +2,28 @@ developer=https://nextcloud.com/
 url=${developer}
 maintainer=http://indiecomputing.com/
 pkgname=$(basename $(pwd))
-pkgver=2.4.0
+pkgver=0.11.0
 pkgrel=1
-pkgdesc="The Nextcloud notes app"
+pkgdesc="The Nextcloud bookmarks app"
 _app=nextcloud
-_acc=notes
+_acc=bookmarks
 arch=('any')
 license=("AGPL3")
-source=("${_acc}-${pkgver}.tar.gz::https://github.com/nextcloud/${_acc}/releases/download/v${pkgver}/${_acc}.tar.gz")
+source=("${_acc}-${pkgver}.tar.gz::https://github.com/nextcloud/${_acc}/releases/download/v${pkgver}/${_acc}-${pkgver}.tar.gz")
 releasepage=("https://apps.nextcloud.com/apps/${_acc}") 
 depends=(
     'nextcloud')
 options=('!strip')
-sha512sums=('729456d7f4961e9591ef0fca68be5270eae38da0bddadb1f8e56dfc95fbbe2561369bef2230290c2b8345fa55e8fd67d5051c623845508e906c36ffcddc3ddc1')
+sha512sums=('7025df7dbf95e1076e8e7dd4243d0be825442694c411e1ec60022b0750f84eb777028eec25a807cc9f097cd739d21c24645bb9fadb41fe1f4d9c7731e1e09548')
 
 package() {
 # Manifest
     install -D -m0644 ${startdir}/ubos-manifest.json ${pkgdir}/ubos/lib/ubos/manifests/${pkgname}.json
 
 # Icons
-#    install -D -m0644 ${startdir}/appicons/{72x72,144x144}.png -t ${pkgdir}/ubos/http/_appicons/${pkgname}/
+#    install -D -m644 ${startdir}/appicons/{72x72,144x144}.png ${pkgdir}/ubos/http/_appicons/${pkgname}/
 
 # Code
     mkdir -p ${pkgdir}/ubos/share/${_app}/apps
-
     cp -dr --no-preserve=ownership ${srcdir}/${_acc} ${pkgdir}/ubos/share/${_app}/apps/
 }

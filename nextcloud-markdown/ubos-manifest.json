@@ -1,0 +1,28 @@
+{
+    "type"  : "accessory",
+
+    "accessoryinfo" : {
+        "appid"         : "nextcloud",
+        "accessoryid"   : "files_markdown",
+        "accessorytype" : "app"
+    },
+
+    "roles" : {
+        "apache2" : {
+            "appconfigitems" : [
+                {
+                    "type"   : "directorytree",
+                    "name"   : "apps/mail",
+                    "source" : "/ubos/share/nextcloud/apps/markdown",
+                }
+            ],
+            "installers" : [
+                {
+                    "type"   : "perlscript",
+                    "source" : "/ubos/share/nextcloud/bin/activate-app.pl"
+                }
+            ]
+        }
+    }
+}
+
