@@ -35,7 +35,7 @@
                 },
                 {
                     "type" : "systemd-service",
-                    "name" : "${package.name}@${appconfig.appconfigid}",
+                    "name" : "${package.name}@${appconfig.appconfigid}"
                 }
             ],
             "installers" : [
