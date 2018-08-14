@@ -12,8 +12,8 @@
             "appconfigitems" : [
                 {
                     "type"   : "directorytree",
-                    "name"   : "apps/mail",
-                    "source" : "/ubos/share/nextcloud/apps/markdown",
+                    "name"   : "apps/files_markdown",
+                    "source" : "/ubos/share/nextcloud/apps/files_markdown",
                 }
             ],
             "installers" : [

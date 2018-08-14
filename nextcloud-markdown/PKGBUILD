@@ -3,14 +3,14 @@ url=${developer}
 maintainer=http://indiecomputing.com/
 pkgname=$(basename $(pwd))
 pkgver=2.0.4
-pkgrel=1
+pkgrel=2
 pkgdesc="The Nextcloud markdown editor"
 _app=nextcloud
 _acc=files_markdown
 arch=('any')
 license=("AGPL3")
 source=("${_acc}-${pkgver}.tar.gz::https://github.com/icewind1991/${_acc}/releases/download/v${pkgver}/${_acc}.tar.gz")
-releasepage=("https://apps.nextcloud.com/apps/${_acc}") 
+releasepage=("https://apps.nextcloud.com/apps/${_acc}")
 depends=(
     'nextcloud')
 options=('!strip')
