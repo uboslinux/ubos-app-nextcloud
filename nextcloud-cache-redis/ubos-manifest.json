@@ -16,16 +16,14 @@
             ],
             "appconfigitems" : [
                 {
-                    "type"             : "directory",
-                    "name"             : "${appconfig.datadir}"
+                    "type"         : "directory",
+                    "name"         : "${appconfig.datadir}"
                 },
                 {
-                    "type"             : "directory",
-                    "name"             : "${appconfig.datadir}/redis",
-                    "uname"            : "http",
-                    "gname"            : "http",
-                    "retentionpolicy"  : "keep",
-                    "retentionbucket"  : "redis"
+                    "type"         : "directory",
+                    "name"         : "${appconfig.datadir}/redis",
+                    "uname"        : "http",
+                    "gname"        : "http"
                 },
                 {
                     "type"         : "file",

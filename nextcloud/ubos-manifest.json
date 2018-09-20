@@ -42,6 +42,7 @@
                         "index.php",
                         "lib",
                         "occ",
+                        "ocm-provider",
                         "ocs",
                         "ocs-provider",
                         "public.php",

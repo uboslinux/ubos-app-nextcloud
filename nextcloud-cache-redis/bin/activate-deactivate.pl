@@ -22,7 +22,7 @@ $cmdPrefix .= ' occ';
 
 
 my $out;
-if( 'install' eq $operation ) {
+if( 'install' eq $operation || 'update' eq $operation ) {
     # Set the parameters first, then that we use Redis, otherwise failure
     for my $cmd (
             'config:system:set redis host --value=/var/run/nextcloud-cache-redis/' . $appconfigid . '.sock',

@@ -12,7 +12,7 @@
             "appconfigitems" : [
                 {
                     "type"   : "directorytree",
-                    "name"   : "apps/mail",
+                    "name"   : "apps/bookmarks",
                     "source" : "/ubos/share/nextcloud/apps/bookmarks",
                 }
             ],

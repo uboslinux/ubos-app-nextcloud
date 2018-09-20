@@ -2,7 +2,7 @@ developer=https://nextcloud.com/
 url=${developer}
 maintainer=http://indiecomputing.com/
 pkgname=$(basename $(pwd))
-pkgver=1.6.1
+pkgver=1.6.2
 pkgrel=1
 pkgdesc="The Nextcloud calendar app"
 _app=nextcloud
@@ -14,7 +14,7 @@ releasepage=("https://apps.nextcloud.com/apps/${_acc}")
 depends=(
     'nextcloud')
 options=('!strip')
-sha512sums=('8ddeff606e97710f8c9d6fdc37452fb33159957652441b462f22f747986563025032ad702dfdd7c2e98dd1dc23aaa6b7db3a85fbff3e279dc62dffbf37b4acf8')
+sha512sums=('3e0c22b1ff865ec9477602b76c4c7f0d42c2cc848b8bf9e95f3c8988ecaa2537385a66258e5acf763b12930e412779f34f45a7a1d753bbfba3cfd02b0ee147dc')
 
 package() {
 # Manifest

@@ -26,6 +26,7 @@ my $dbuser      = $config->getResolve( 'appconfig.mysql.dbuser.maindb' );
 my $dbpass      = $config->getResolve( 'appconfig.mysql.dbusercredential.maindb' );
 my $dbhost      = $config->getResolve( 'appconfig.mysql.dbhost.maindb' );
 
+my $appconfigid = $config->getResolve( 'appconfig.appconfigid' );
 my $datadir     = $config->getResolve( 'appconfig.datadir' ) . '/data';
 
 if( 'upgrade' eq $operation ) {
@@ -33,27 +34,54 @@ if( 'upgrade' eq $operation ) {
     if( -r $confFile ) {
         # We have a conf file, so let's upgrade. This is very likely Nextcloud
 
-        my $conf = UBOS::Utils::slurpFile( $confFile );
+        # Best to execute this to get the values we need. This will also remove
+        # all traces of config info provided only later by accessories
+        # (like the Redis Cache)
 
-        unless( $conf =~ s!(['"]dbname['"]\s+=>\s["'])\S*(["'],?)!$1$dbname$2! ) {
-            error( 'Cannot find entry dbname in', $confFile, '-- nextcloud likely to be flaky' );
+        my $php = <<PHP;
+<?php
+require "$confFile";
+print( \$CONFIG['passwordsalt'] . "\n" );
+print( \$CONFIG['secret'] . "\n" );
+print( \$CONFIG['version'] . "\n" );
+print( \$CONFIG['instanceid'] . "\n" );
+PHP
+        my $out;
+        my $err;
+        if( UBOS::Utils::myexec( 'php', $php, \$out, \$err )) {
+            error( 'PHP execution failed:', $php, $err );
         }
-        unless( $conf =~ s!(['"]dbhost['"]\s+=>\s["'])\S*(["'],?)!$1$dbhost$2! ) {
-            error( 'Cannot find entry dbhost in', $confFile, '-- nextcloud likely to be flaky' );
-        }
-        unless( $conf =~ s!(['"]dbuser['"]\s+=>\s["'])\S*(["'],?)!$1$dbuser$2! ) {
-            error( 'Cannot finhttpd entry dbuser in', $confFile, '-- nextcloud likely to be flaky' );
-        }
-        unless( $conf =~ s!(['"]dbpassword['"]\s+=>\s["'])\S*(["'],?)!$1$dbpass$2! ) {
-            error( 'Cannot find entry dbpassword in', $confFile, '-- nextcloud likely to be flaky' );
-        }
-        unless( $conf =~ s!(['"]trusted_domains['"]\s+=>\s*array\s*\(\s*0\s*=>\s*["'])\S*(\s*['"])!$1$hostname$2!m ) {
-            error( 'Cannot find entry trusted_domains in', $confFile, '-- nextcloud likely to be flaky' );
-        }
-        unless( $conf =~ s!(['"]datadirectory['"]\s+=>\s["'])\S*(["'],?)!$1$datadir$2! ) {
-            error( 'Cannot find entry datadirectory in', $confFile, '-- nextcloud likely to be flaky' );
-        }
-        UBOS::Utils::saveFile( $confFile, $conf, 0640, $apacheUname, $apacheGname );
+        my( $passwordsalt, $secret, $version, $instanceid ) = split( /\n/, $out );
+
+        my $config = <<CONFIG;
+<?php
+\$CONFIG = array (
+  'passwordsalt' => '$passwordsalt',
+  'secret' => '$secret',
+  'trusted_domains' =>
+    array (
+      0 => '$hostname',
+    ),
+  'datadirectory' => '$datadir',
+  'dbtype' => 'mysql',
+  'version' => '$version',
+  'overwrite.cli.url' => 'http://localhost',
+  'dbname' => '$dbname',
+  'dbhost' => '$dbhost',
+  'dbport' => '',
+  'dbtableprefix' => 'oc_',
+  'dbuser' => '$dbuser',
+  'dbpassword' => '$dbpass',
+  'installed' => true,
+  'instanceid' => '$instanceid',
+  'syslog_tag' => 'nextcloud\@$appconfigid',
+  'appstoreenabled' => false,
+  'mail_smtpmode' => 'smtp',
+  'log_type' => 'systemd'
+);
+CONFIG
+
+        UBOS::Utils::saveFile( $confFile, $config, 0640, $apacheUname, $apacheGname );
 
     } else {
         # We don't have a conf file, so this might be an old ownCloud upgrade
@@ -91,7 +119,7 @@ if( 'upgrade' eq $operation ) {
 \$CONFIG = array (
   'passwordsalt' => '$pwSalt/DM4IfXh0GI6b',
   'secret' => '$secret',
-  'trusted_domains' => 
+  'trusted_domains' =>
   array (
     0 => '$hostname',
   ),
