@@ -2,7 +2,7 @@ developer=https://nextcloud.com/
 url=${developer}
 maintainer=http://indiecomputing.com/
 pkgname=$(basename $(pwd))
-pkgver=1.6.2
+pkgver=1.6.4
 pkgrel=1
 pkgdesc="The Nextcloud calendar app"
 _app=nextcloud
@@ -10,7 +10,7 @@ _acc=calendar
 arch=('any')
 license=("AGPL3")
 source=("${_acc}-${pkgver}.tar.gz::https://github.com/nextcloud/${_acc}/releases/download/v${pkgver}/${_acc}.tar.gz")
-releasepage=("https://apps.nextcloud.com/apps/${_acc}") 
+releasepage=("https://apps.nextcloud.com/apps/${_acc}")
 depends=(
     'nextcloud')
 options=('!strip')

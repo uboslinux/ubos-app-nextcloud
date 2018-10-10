@@ -2,7 +2,7 @@ developer=https://nextcloud.com/
 url=${developer}
 maintainer=http://indiecomputing.com/
 pkgname=$(basename $(pwd))
-pkgver=12.0.4
+pkgver=13.0.1
 pkgrel=1
 pkgdesc="The Nextcloud news app"
 _app=nextcloud
@@ -10,7 +10,7 @@ _acc=news
 arch=('any')
 license=("AGPL3")
 source=("${_acc}-${pkgver}.tar.gz::https://github.com/nextcloud/${_acc}/releases/download/${pkgver}/${_acc}.tar.gz")
-releasepage=("https://apps.nextcloud.com/apps/${_acc}") 
+releasepage=("https://apps.nextcloud.com/apps/${_acc}")
 depends=(
     'nextcloud')
 options=('!strip')
