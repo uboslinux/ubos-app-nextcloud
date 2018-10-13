@@ -14,6 +14,8 @@
                     "type"   : "directorytree",
                     "name"   : "apps/mail",
                     "source" : "/ubos/share/nextcloud/apps/mail",
+                    "uname"  : "http",
+                    "gname"  : "http"
                 }
             ],
             "installers" : [

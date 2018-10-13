@@ -14,6 +14,8 @@
                     "type"   : "directorytree",
                     "name"   : "apps/calendar",
                     "source" : "/ubos/share/nextcloud/apps/calendar",
+                    "uname"  : "http",
+                    "gname"  : "http"
                 }
             ],
             "installers" : [

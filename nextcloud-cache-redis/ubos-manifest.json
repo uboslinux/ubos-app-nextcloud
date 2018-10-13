@@ -41,6 +41,12 @@
                     "type"   : "perlscript",
                     "source" : "bin/activate-deactivate.pl"
                 }
+            ],
+            "upgraders" : [
+                {
+                    "type"   : "perlscript",
+                    "source" : "bin/activate-deactivate.pl"
+                }
             ]
         }
     },

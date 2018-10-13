@@ -14,6 +14,8 @@
                     "type"   : "directorytree",
                     "name"   : "apps/files_markdown",
                     "source" : "/ubos/share/nextcloud/apps/files_markdown",
+                    "uname"  : "http",
+                    "gname"  : "http"
                 }
             ],
             "installers" : [

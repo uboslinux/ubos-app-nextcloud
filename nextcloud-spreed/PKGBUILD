@@ -3,14 +3,14 @@ url=${developer}
 maintainer=http://indiecomputing.com/
 pkgname=$(basename $(pwd))
 pkgver=4.0.0
-pkgrel=1
-pkgdesc="The Nextcloud calendar app"
+pkgrel=2
+pkgdesc="The Nextcloud talk app"
 _app=nextcloud
 _acc=spreed
 arch=('any')
 license=("AGPL3")
 source=("${_acc}-${pkgver}.tar.gz::https://github.com/nextcloud/${_acc}/releases/download/v${pkgver}/${_acc}-${pkgver}.tar.gz")
-releasepage=("https://apps.nextcloud.com/apps/${_acc}") 
+releasepage=("https://apps.nextcloud.com/apps/${_acc}")
 depends=(
     'nextcloud')
 options=('!strip')
