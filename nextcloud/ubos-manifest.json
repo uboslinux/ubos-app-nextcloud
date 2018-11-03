@@ -117,10 +117,6 @@
                 {
                     "type"   : "perlscript",
                     "source" : "bin/install.pl"
-                },
-                {
-                    "type"   : "perlscript",
-                    "source" : "bin/prime-caches.pl"
                 }
             ],
             "upgraders" : [
@@ -131,10 +127,6 @@
                 {
                     "type"   : "perlscript",
                     "source" : "bin/upgrade.pl"
-                },
-                {
-                    "type"   : "perlscript",
-                    "source" : "bin/prime-caches.pl"
                 }
             ]
         },
