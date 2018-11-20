@@ -2,8 +2,8 @@ developer=https://nextcloud.com/
 url=${developer}
 maintainer=http://indiecomputing.com/
 pkgname=$(basename $(pwd))
-pkgver=4.0.0
-pkgrel=2
+pkgver=4.0.1
+pkgrel=1
 pkgdesc="The Nextcloud talk app"
 _app=nextcloud
 _acc=spreed
@@ -14,7 +14,7 @@ releasepage=("https://apps.nextcloud.com/apps/${_acc}")
 depends=(
     'nextcloud')
 options=('!strip')
-sha512sums=('ea119cdf0eb5cb375fb088ef30b82c7bc6591ba7d8c62020fddec7d705471739b2d5eff9c513b03b39cf76025f2a45818e07df30b5b09cfe12433ccce2846700')
+sha512sums=('9389bef3d27d1001878c2943837c75b5606cab4d5aee7eaec2978185c559940f90420e73ad3e4a5ad6aeb1268b188ca7e41ce05cf134013f6a71c71aac36c7c9')
 
 package() {
 # Manifest
