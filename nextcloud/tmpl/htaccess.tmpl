@@ -21,6 +21,10 @@
     Header always set Referrer-Policy "strict-origin-when-cross-origin"
   </IfModule>
 
+  <IfModule mod_dav.c>
+   Dav off
+  </IfModule>
+
   # From .htaccess
 
 <IfModule mod_headers.c>
