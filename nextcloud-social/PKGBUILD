@@ -1,0 +1,29 @@
+developer=https://nextcloud.com/
+url=${developer}
+maintainer=http://indiecomputing.com/
+pkgname=$(basename $(pwd))
+pkgver=0.1.0
+pkgrel=1
+pkgdesc="Nextcloud support for federated social networks"
+_app=nextcloud
+_acc=social
+arch=('any')
+license=("AGPL3")
+source=("${_acc}-${pkgver}.tar.gz::https://github.com/nextcloud/${_acc}/releases/download/v${pkgver}/${_acc}-${pkgver}.tar.gz")
+releasepage=("https://apps.nextcloud.com/apps/${_acc}")
+depends=(
+    'nextcloud')
+options=('!strip')
+sha512sums=('75cbe7bbc01deccb6a2f7928beae167a0d99ce9e8afa8367d8b38e0f09fb071a62c4d1fb81274e83265d0f814dce91ffa9a3dddee65fab3cdc49b2bbe1917fcb')
+
+package() {
+# Manifest
+    install -D -m0644 ${startdir}/ubos-manifest.json ${pkgdir}/ubos/lib/ubos/manifests/${pkgname}.json
+
+# Icons
+#    install -D -m644 ${startdir}/appicons/{72x72,144x144}.png ${pkgdir}/ubos/http/_appicons/${pkgname}/
+
+# Code
+    mkdir -p ${pkgdir}/ubos/share/${_app}/apps
+    cp -dr --no-preserve=ownership ${srcdir}/${_acc} ${pkgdir}/ubos/share/${_app}/apps/
+}

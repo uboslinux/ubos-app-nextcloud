@@ -1,0 +1,30 @@
+{
+    "type"  : "accessory",
+
+    "accessoryinfo" : {
+        "appid"         : "nextcloud",
+        "accessoryid"   : "social",
+        "accessorytype" : "app"
+    },
+
+    "roles" : {
+        "apache2" : {
+            "appconfigitems" : [
+                {
+                    "type"   : "directorytree",
+                    "name"   : "apps/social",
+                    "source" : "/ubos/share/nextcloud/apps/social",
+                    "uname"  : "http",
+                    "gname"  : "http"
+                }
+            ],
+            "installers" : [
+                {
+                    "type"   : "perlscript",
+                    "source" : "/ubos/share/nextcloud/bin/activate-app.pl"
+                }
+            ]
+        }
+    }
+}
+
