@@ -8,14 +8,13 @@
                 "php-apache",
                 "php-apcu",
                 "php-gd",
-                "sudo",
                 "php-systemd"
             ],
             "apache2modules" : [
+                "env",
+                "headers",
                 "php7",
                 "rewrite",
-                "headers",
-                "env",
                 "setenvif"
             ],
             "phpmodules" : [

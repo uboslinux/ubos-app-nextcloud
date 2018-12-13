@@ -23,6 +23,7 @@ my $dbhost      = $config->getResolve( 'appconfig.mysql.dbhost.maindb' );
 
 my $adminlogin  = $config->getResolve( 'site.admin.userid' );
 my $adminpass   = $config->getResolve( 'site.admin.credential' );
+my $adminemail  = $config->getResolve( 'site.admin.email' );
 my $hostname    = $config->getResolve( 'site.hostname' );
 
 my $confFile    = "$dir/config/config.php";
@@ -40,7 +41,7 @@ if( 'install' eq $operation ) {
     $cmdPrefix .= ' -d always_populate_raw_post_data=-1';
     $cmdPrefix .= ' occ';
 
-    for my $cmd ( 
+    for my $cmd (
             'maintenance:install'
                 . ' --database "mysql"'
                 . " --database-name '$dbname'"
@@ -49,6 +50,7 @@ if( 'install' eq $operation ) {
                 . " --database-host '$dbhost'"
                 . " --admin-user '$adminlogin'"
                 . " --admin-pass '$adminpass'"
+                . " --admin-email '$adminemail'"
                 . " --data-dir '$datadir'"
                 . ' -n', # non-interactive
             'config:system:set syslog_tag --value=nextcloud@' . $appConfigId,
@@ -56,6 +58,8 @@ if( 'install' eq $operation ) {
             'config:system:set mail_smtpmode --value=smtp',
             "config:system:set trusted_domains 0 --value '$hostname'",
             'config:system:set log_type --value=systemd',
+            'db:add-missing-indices --no-interaction',
+            'db:convert-filecache-bigint --no-interaction',
             'background:cron',
             'app:disable updatenotification' )
     {
