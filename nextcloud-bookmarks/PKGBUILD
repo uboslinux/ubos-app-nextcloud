@@ -2,7 +2,7 @@ developer=https://nextcloud.com/
 url=${developer}
 maintainer=http://indiecomputing.com/
 pkgname=$(basename $(pwd))
-pkgver=0.14.3
+pkgver=0.15.1
 pkgrel=1
 pkgdesc="The Nextcloud bookmarks app"
 _app=nextcloud
@@ -14,7 +14,7 @@ releasepage=("https://apps.nextcloud.com/apps/${_acc}")
 depends=(
     'nextcloud')
 options=('!strip')
-sha512sums=('9ff66505ec7a114d075f950215c1e8e9512f4df5e7d36040241768a47db932cbb9374b607afc7aa9893b429fb0d3346cfdc1a731679df7875b50b4144cbdddf2')
+sha512sums=('ca05511dd21bbac46fe7c01742fe4688765d4304ba3c0b447462ef562cd7bf3f83aea2c755b8959e09a38bb8d2398e6289f55d2f3c69982cfe055c07e7e83900')
 
 package() {
 # Manifest
