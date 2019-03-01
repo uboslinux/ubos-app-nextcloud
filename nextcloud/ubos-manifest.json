@@ -8,6 +8,7 @@
                 "php-apache",
                 "php-apcu",
                 "php-gd",
+                "php-imagick",
                 "php-systemd"
             ],
             "apache2modules" : [
@@ -21,6 +22,7 @@
                 "apcu",
                 "gd",
                 "iconv",
+                "imagick",
                 "mysqli",
                 "pdo_mysql",
                 "systemd"
