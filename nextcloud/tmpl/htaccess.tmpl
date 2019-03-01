@@ -54,7 +54,7 @@
   </FilesMatch>
 
   # Let browsers cache WOFF files for a week
-  <FilesMatch "\.woff$">
+  <FilesMatch "\.woff2?$">
     Header set Cache-Control "max-age=604800"
   </FilesMatch>
 </IfModule>
@@ -88,6 +88,7 @@
   RewriteRule .* - [env=HTTP_AUTHORIZATION:%{HTTP:Authorization}]
   RewriteRule ^\.well-known/host-meta /public.php?service=host-meta [QSA,L]
   RewriteRule ^\.well-known/host-meta\.json /public.php?service=host-meta-json [QSA,L]
+  RewriteRule ^\.well-known/webfinger /public.php?service=webfinger [QSA,L]
   RewriteRule ^\.well-known/carddav /remote.php/dav/ [R=301,L]
   RewriteRule ^\.well-known/caldav /remote.php/dav/ [R=301,L]
   RewriteRule ^remote/(.*) remote.php [QSA,L]
