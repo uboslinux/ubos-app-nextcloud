@@ -25,7 +25,11 @@ if( 'upgrade' eq $operation ) {
 
     my $out;
     my $err;
-    for my $cmd ( 'maintenance:mimetype:update-db', 'maintenance:mimetype:update-js', 'db:add-missing-indices' ) {
+    for my $cmd ( 'maintenance:mimetype:update-db',
+                  'maintenance:mimetype:update-js',
+                  'db:add-missing-indices',
+                  'maintenance:data-fingerprint' )
+    {
         if( UBOS::Utils::myexec( "$cmdPrefix $cmd", undef, \$out, \$err )) {
             error( "occ $cmd failed:\n$out\n$err" );
             $ret = 0;
