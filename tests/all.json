@@ -6,13 +6,17 @@
          "context" : "/next",
          "appid" : "nextcloud",
          "accessoryids" : [
-            "nextcloud-tasks",
-            "nextcloud-mail",
-            "nextcloud-contacts",
+            "nextcloud-bookmarks",
+            "nextcloud-cache-redis",
             "nextcloud-calendar",
-            "nextcloud-spreed",
+            "nextcloud-contacts",
+            "nextcloud-mail",
+            "nextcloud-markdown",
             "nextcloud-news",
             "nextcloud-notes"
+            "nextcloud-social",
+            "nextcloud-spreed",
+            "nextcloud-tasks"
          ]
       }
    ],
