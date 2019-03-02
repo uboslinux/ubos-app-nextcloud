@@ -6,7 +6,7 @@
 
 <Directory "${appconfig.apache2.dir}">
   <IfModule php7_module>
-    php_admin_value open_basedir ${appconfig.apache2.dir}:/tmp/:/ubos/share/:/dev:${appconfig.datadir}:/proc/meminfo
+    php_admin_value open_basedir ${appconfig.apache2.dir}:/tmp/:/ubos/tmp:/ubos/share/:/dev:${appconfig.datadir}:/proc/meminfo
   </IfModule>
 
   <IfModule mod_autoindex.c>
