@@ -5,9 +5,10 @@
 # the integrity checks.
 #
 # Note: To update this correctly, run
-# php maintenance:update:htaccess
+#     php maintenance:update:htaccess
 # and see what it did.
-#
+# There is no need to update the path names, as they are matched correctly
+# in the <Directory> Apache context
 
 <Directory "${appconfig.apache2.dir}">
   <IfModule php7_module>
