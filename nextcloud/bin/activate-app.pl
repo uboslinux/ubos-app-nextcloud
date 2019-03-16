@@ -14,6 +14,8 @@ my $appName = $config->getResolve( 'installable.accessoryinfo.accessoryid' );
 my $dir     = $config->getResolve( 'appconfig.apache2.dir' );
 
 my $cmdPrefix = "cd $dir; sudo -u http php occ";
+$cmdPrefix .= ' -d memory_limit=512M';
+
 my $out;
 
 if( 'install' eq $operation ) {

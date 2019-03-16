@@ -39,6 +39,8 @@ if( 'install' eq $operation ) {
     $cmdPrefix = "cd '$dir';";
     $cmdPrefix .= "sudo -u '$apacheUname' php";
     $cmdPrefix .= ' -d always_populate_raw_post_data=-1';
+    $cmdPrefix .= ' -d memory_limit=512M';
+
     $cmdPrefix .= ' occ';
 
     for my $cmd (
