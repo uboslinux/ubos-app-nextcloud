@@ -77,7 +77,8 @@ PHP
   'syslog_tag' => 'nextcloud\@$appconfigid',
   'appstoreenabled' => false,
   'mail_smtpmode' => 'smtp',
-  'log_type' => 'systemd'
+  'log_type' => 'systemd',
+  'mysql.utf8mb4' => true
 );
 CONFIG
 

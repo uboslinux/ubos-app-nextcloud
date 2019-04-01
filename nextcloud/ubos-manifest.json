@@ -138,7 +138,8 @@
                     "name"       : "maindb",
                     "retentionpolicy"  : "keep",
                     "retentionbucket"  : "maindb",
-                    "privileges" : "all privileges"
+                    "privileges" : "all privileges",
+                    "charset"    : "utf8mb4"
                 }
             ]
         }

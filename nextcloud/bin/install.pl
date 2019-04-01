@@ -60,6 +60,7 @@ if( 'install' eq $operation ) {
             'config:system:set mail_smtpmode --value=smtp',
             "config:system:set trusted_domains 0 --value '$hostname'",
             'config:system:set log_type --value=systemd',
+            'config:system:set mysql.utf8mb4 --type boolean --value=true',
             'db:add-missing-indices --no-interaction',
             'db:convert-filecache-bigint --no-interaction',
             'background:cron',
