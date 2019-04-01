@@ -2,7 +2,7 @@ developer=https://nextcloud.com/
 url=${developer}
 maintainer=http://indiecomputing.com/
 pkgname=$(basename $(pwd))
-pkgver=3.0.3
+pkgver=3.0.5
 pkgrel=1
 pkgdesc="The Nextcloud contacts app"
 _app=nextcloud
@@ -14,11 +14,13 @@ releasepage=("https://apps.nextcloud.com/apps/${_acc}")
 depends=(
     'nextcloud')
 options=('!strip')
-sha512sums=('c759521eeb89fb67a08621a7fbb6396e6d112703b91a669ffa177554bbca9dcb0add707c75e538485cd9026e094f21ab9ebac2598fe3eab6c0ad3faf72261d38')
+sha512sums=('b89e2389c2086de34767b76106de6370e3eb1aa2de982d5069e7e4bf94ab2a62cd9d539abf4e01b1a4ccb4ff94e6c21612af7d7a8a3e0f2b028f37f2eccfbc56')
 
 package() {
 # Manifest
-    install -D -m0644 ${startdir}/ubos-manifest.json ${pkgdir}/ubos/lib/ubos/manifests/${pkgname}.json
+    mkdir -p -m 0755 ${pkgdir}/ubos/lib/ubos/manifests
+    sed -e "s!@ACCESSORYID@!$_acc!g" ${startdir}/../shared/ubos-manifest-accessory.tmpl.json > ${pkgdir}/ubos/lib/ubos/manifests/${pkgname}.json
+    chmod 0644 ${pkgdir}/ubos/lib/ubos/manifests/${pkgname}.json
 
 # Icons
 #    install -D -m0644 ${startdir}/appicons/{72x72,144x144}.png ${pkgdir}/ubos/http/_appicons/${pkgname}/

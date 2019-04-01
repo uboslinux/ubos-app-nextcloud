@@ -2,19 +2,19 @@ developer=https://nextcloud.com/
 url=${developer}
 maintainer=http://indiecomputing.com/
 pkgname=$(basename $(pwd))
-pkgver=2.0.5
+pkgver=0.1.1
 pkgrel=1
-pkgdesc="The Nextcloud markdown editor"
+pkgdesc="The Nextcloud everyone group app"
 _app=nextcloud
-_acc=files_markdown
+_acc=group_everyone
 arch=('any')
 license=("AGPL3")
-source=("${_acc}-${pkgver}.tar.gz::https://github.com/icewind1991/${_acc}/releases/download/v${pkgver}/${_acc}.tar.gz")
+source=("${_acc}-${pkgver}.tar.gz::https://github.com/icewind1991/${_acc}/releases/download/v${pkgver}/${_acc}-${pkgver}.tar.gz")
 releasepage=("https://apps.nextcloud.com/apps/${_acc}")
 depends=(
     'nextcloud')
 options=('!strip')
-sha512sums=('b4e4084a76b5282aedc48bce681843fb9488aa6f3bbd0c60e5835de5e66aad94bb9533aadb6d0c596fdbdde7b268cfc8b69be6b2a5be864df02c61375a6eecec')
+sha512sums=('5b98f8b78d485463050f3097a9b0837a26842280ea58e52b026dd37cc09353b5148ba9d705160b1c21dbb8e7197149d65926df17c285377897324b8729bf220d')
 
 package() {
 # Manifest

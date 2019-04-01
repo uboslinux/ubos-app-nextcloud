@@ -2,19 +2,19 @@ developer=https://nextcloud.com/
 url=${developer}
 maintainer=http://indiecomputing.com/
 pkgname=$(basename $(pwd))
-pkgver=2.0.5
+pkgver=1.3.0
 pkgrel=1
-pkgdesc="The Nextcloud markdown editor"
+pkgdesc="The Nextcloud bruteforce settings app"
 _app=nextcloud
-_acc=files_markdown
+_acc=bruteforcesettings
 arch=('any')
 license=("AGPL3")
-source=("${_acc}-${pkgver}.tar.gz::https://github.com/icewind1991/${_acc}/releases/download/v${pkgver}/${_acc}.tar.gz")
+source=("${_acc}-${pkgver}.tar.gz::https://github.com/nextcloud/${_acc}/releases/download/v${pkgver}/${_acc}-${pkgver}.tar.gz")
 releasepage=("https://apps.nextcloud.com/apps/${_acc}")
 depends=(
     'nextcloud')
 options=('!strip')
-sha512sums=('b4e4084a76b5282aedc48bce681843fb9488aa6f3bbd0c60e5835de5e66aad94bb9533aadb6d0c596fdbdde7b268cfc8b69be6b2a5be864df02c61375a6eecec')
+sha512sums=('674585d50de0435dbbd1387546d95d468cf1a95b1c01280d0878df94ebe827391279b5bc5f5370e109f6a54fca2a5c190bbdef07f01358ed7164cacf695088d6')
 
 package() {
 # Manifest

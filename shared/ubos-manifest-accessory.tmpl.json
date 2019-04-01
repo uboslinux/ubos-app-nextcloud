@@ -3,7 +3,7 @@
 
     "accessoryinfo" : {
         "appid"         : "nextcloud",
-        "accessoryid"   : "bookmarks",
+        "accessoryid"   : "@ACCESSORYID@",
         "accessorytype" : "app"
     },
 
@@ -12,8 +12,8 @@
             "appconfigitems" : [
                 {
                     "type"   : "directorytree",
-                    "name"   : "apps/bookmarks",
-                    "source" : "/ubos/share/nextcloud/apps/bookmarks",
+                    "name"   : "apps/@ACCESSORYID@",
+                    "source" : "/ubos/share/nextcloud/apps/@ACCESSORYID@",
                     "uname"  : "http",
                     "gname"  : "http"
                 }

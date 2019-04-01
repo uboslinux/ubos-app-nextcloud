@@ -2,19 +2,19 @@ developer=https://nextcloud.com/
 url=${developer}
 maintainer=http://indiecomputing.com/
 pkgname=$(basename $(pwd))
-pkgver=2.0.5
+pkgver=2019.4.0
 pkgrel=1
-pkgdesc="The Nextcloud markdown editor"
+pkgdesc="The Nextcloud password app"
 _app=nextcloud
-_acc=files_markdown
+_acc=passwords
 arch=('any')
 license=("AGPL3")
-source=("${_acc}-${pkgver}.tar.gz::https://github.com/icewind1991/${_acc}/releases/download/v${pkgver}/${_acc}.tar.gz")
+source=("${_acc}-${pkgver}.tar.gz::https://git.mdns.eu/nextcloud/${_acc}/-/jobs/7708/artifacts/raw/${_acc}.tar.gz")
 releasepage=("https://apps.nextcloud.com/apps/${_acc}")
 depends=(
     'nextcloud')
 options=('!strip')
-sha512sums=('b4e4084a76b5282aedc48bce681843fb9488aa6f3bbd0c60e5835de5e66aad94bb9533aadb6d0c596fdbdde7b268cfc8b69be6b2a5be864df02c61375a6eecec')
+sha512sums=('3a28bde40570ffb68a730d06383f8bcc4581f7946beb695cec99cba3f52f631d9ee8e73ef2e6afd13416b69df61d56873aa03ce917f5bfd904e4118ab2b87ae7')
 
 package() {
 # Manifest

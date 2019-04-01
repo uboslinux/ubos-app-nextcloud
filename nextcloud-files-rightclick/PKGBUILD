@@ -2,19 +2,19 @@ developer=https://nextcloud.com/
 url=${developer}
 maintainer=http://indiecomputing.com/
 pkgname=$(basename $(pwd))
-pkgver=2.0.5
+pkgver=0.13.0
 pkgrel=1
-pkgdesc="The Nextcloud markdown editor"
+pkgdesc="The Nextcloud right click app"
 _app=nextcloud
-_acc=files_markdown
+_acc=files_rightclick
 arch=('any')
 license=("AGPL3")
-source=("${_acc}-${pkgver}.tar.gz::https://github.com/icewind1991/${_acc}/releases/download/v${pkgver}/${_acc}.tar.gz")
+source=("${_acc}-${pkgver}.tar.gz::https://github.com/nextcloud/${_acc}/releases/download/v${pkgver}/${_acc}.tar.gz")
 releasepage=("https://apps.nextcloud.com/apps/${_acc}")
 depends=(
     'nextcloud')
 options=('!strip')
-sha512sums=('b4e4084a76b5282aedc48bce681843fb9488aa6f3bbd0c60e5835de5e66aad94bb9533aadb6d0c596fdbdde7b268cfc8b69be6b2a5be864df02c61375a6eecec')
+sha512sums=('52096f85eb4ac6dd96d681f86ac37b65c614344c34c7af874ac5c56c71976529d8fb52abb72e05fc3006b20e8b26bee9ad51e3ac1fc2829157fe0b2bd69a59d5')
 
 package() {
 # Manifest
