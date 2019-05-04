@@ -29,7 +29,8 @@ if( 'upgrade' eq $operation ) {
     for my $cmd ( 'maintenance:mimetype:update-db',
                   'maintenance:mimetype:update-js',
                   'db:add-missing-indices',
-                  'maintenance:data-fingerprint' )
+                  'maintenance:data-fingerprint',
+                  'config:app:set password_policy enforceNonCommonPassword --value 0' )
     {
         if( UBOS::Utils::myexec( "$cmdPrefix $cmd", undef, \$out, \$err )) {
             error( "occ $cmd failed:\n$out\n$err" );

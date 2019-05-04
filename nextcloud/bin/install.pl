@@ -64,7 +64,8 @@ if( 'install' eq $operation ) {
             'db:add-missing-indices --no-interaction',
             'db:convert-filecache-bigint --no-interaction',
             'background:cron',
-            'app:disable updatenotification' )
+            'app:disable updatenotification',
+            'config:app:set password_policy enforceNonCommonPassword --value 0' )
     {
         if( UBOS::Utils::myexec( "$cmdPrefix $cmd", undef, \$out, \$out )) {
             error( "Nextcloud command failed:\n$cmd\n$out" );
