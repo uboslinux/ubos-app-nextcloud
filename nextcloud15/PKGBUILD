@@ -15,8 +15,6 @@ depends=(
     'smtp-server')
 options=('!strip')
 sha512sums=('e31f3dbfec288f87fca220dd509999d0cc221c27e2b923418fce4bd598288881e2ce1c10dca929710a332380fee4f04e43e7302b3406785f23727acf5735d64c')
-provides=('nextcloud')
-conflicts=('nextcloud')
 
 package() {
 # Manifest
