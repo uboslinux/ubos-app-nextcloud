@@ -1,0 +1,32 @@
+developer=https://nextcloud.com/
+url=${developer}
+maintainer=http://indiecomputing.com/
+pkgname=$(basename $(pwd))
+pkgver=1.0.0
+pkgrel=1
+pkgdesc="The Nextcloud collaborative text editor"
+_app=nextcloud
+_acc=text
+arch=('any')
+license=("AGPL3")
+source=("${_acc}-${pkgver}.tar.gz::https://github.com/nextcloud/${_acc}/releases/download/v${pkgver}/${_acc}.tar.gz")
+releasepage=("https://apps.nextcloud.com/apps/${_acc}")
+depends=(
+    'nextcloud')
+options=('!strip')
+sha512sums=('e17fe7738fc6bcc8451c891eb3d343bf21114a449cbeb2b9f4129735726e0e0b257239a7da9652c69ce20a094c5286b0ac81f5f8ddd7e8d56a341a1e5ec320cf')
+
+package() {
+# Manifest
+    mkdir -p -m 0755 ${pkgdir}/ubos/lib/ubos/manifests
+    sed -e "s!@ACCESSORYID@!$_acc!g" ${startdir}/../shared/ubos-manifest-accessory.tmpl.json > ${pkgdir}/ubos/lib/ubos/manifests/${pkgname}.json
+    chmod 0644 ${pkgdir}/ubos/lib/ubos/manifests/${pkgname}.json
+
+# Icons
+#    install -D -m644 ${startdir}/appicons/{72x72,144x144}.png ${pkgdir}/ubos/http/_appicons/$pkgname/
+
+# Code
+    mkdir -p ${pkgdir}/ubos/share/${_app}/apps
+
+    cp -dr --no-preserve=ownership ${srcdir}/${_acc} ${pkgdir}/ubos/share/${_app}/apps/
+}
