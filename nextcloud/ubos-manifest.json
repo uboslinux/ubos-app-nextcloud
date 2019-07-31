@@ -27,6 +27,30 @@
                 "pdo_mysql",
                 "systemd"
             ],
+
+            "wellknown" : {
+                "robots.txt" : {
+                    "disallow" : [
+                        "/"
+                    ]
+                },
+                "carddav" : {
+                    "location" : "${appconfig.context}/remote.php/dav/"
+                },
+                "caldav" : {
+                    "location" : "${appconfig.context}/remote.php/dav/"
+                },
+                "webfinger" : {
+                    "location" : "${appconfig.context}/public.php?service=webfinger"
+                },
+                "host-meta" : {
+                    "location" : "${appconfig.context}/public.php?service=host-meta"
+                },
+                "host-meta.json" : {
+                    "location" : "${appconfig.context}/public.php?service=host-meta-json"
+                }
+            },
+
             "appconfigitems" : [
                 {
                     "type" : "directorytree",
