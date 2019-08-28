@@ -1,0 +1,76 @@
+{
+    "type"  : "accessory",
+
+    "accessoryinfo" : {
+        "appid"         : "nextcloud",
+        "accessoryid"   : "fulltextsearch_elasticsearch",
+        "accessorytype" : "app"
+    },
+
+    "roles" : {
+        "apache2" : {
+            "appconfigitems" : [
+                {
+                    "type"         : "tcpport",
+                    "name"         : "main"
+                },
+                {
+                    "type"         : "directorytree",
+                    "name"         : "apps/fulltextsearch_elasticsearch",
+                    "source"       : "/ubos/share/nextcloud/apps/fulltextsearch_elasticsearch",
+                    "uname"        : "http",
+                    "gname"        : "http"
+                },
+                {
+                    "type"           : "directory",
+                    "name"           : "/etc/elasticsearch/${appconfig.appconfigid}",
+                    "dirpermissions" : "0750",
+                    "uname"          : "root",
+                    "gname"          : "elasticsearch"
+                },
+                {
+                    "type"         : "file",
+                    "name"         : "/etc/elasticsearch/${appconfig.appconfigid}/elasticsearch.yml",
+                    "template"     : "tmpl/elasticsearch.yml.tmpl",
+                    "templatelang" : "varsubst"
+                },
+                {
+                    "type"         : "file",
+                    "name"         : "/etc/elasticsearch/${appconfig.appconfigid}/jvm.options",
+                    "source"       : "/etc/elasticsearch/jvm.options"
+                },
+                {
+                    "type"         : "file",
+                    "name"         : "/etc/elasticsearch/${appconfig.appconfigid}/log4j2.properties",
+                    "source"       : "/etc/elasticsearch/log4j2.properties"
+                },
+                {
+                    "type"            : "directory",
+                    "name"            : "/ubos/lib/nextcloud/${appconfig.appconfigid}/fulltextsearch-elasticsearch",
+                    "retentionpolicy" : "keep",
+                    "retentionbucket" : "elasticsearch",
+                    "dirpermissions"  : "0750",
+                    "filepermissions" : "0640",
+                    "uname"       : "elasticsearch",
+                    "gname"       : "elasticsearch"
+                },
+                {
+                    "type"  : "directory",
+                    "name"  : "/ubos/logs/nextcloud-fulltextsearch-elasticsearch-${appconfig.appconfigid}",
+                    "uname" : "elasticsearch",
+                    "gname" : "elasticsearch"
+                },
+                {
+                    "type" : "systemd-service",
+                    "name" : "elasticsearch@${appconfig.appconfigid}"
+                }
+            ],
+            "installers" : [
+                {
+                    "type"   : "perlscript",
+                    "source" : "/ubos/share/nextcloud/bin/activate-app.pl"
+                }
+            ]
+        }
+    }
+}
