@@ -41,7 +41,7 @@
                     "location" : "${appconfig.context}/remote.php/dav/"
                 },
                 "webfinger" : {
-                    "location" : "${appconfig.context}/public.php?service=webfinger"
+                    "proxy" : "${site.protocol}://${site.hostname}${appconfig.context}/public.php?service=webfinger"
                 },
                 "host-meta" : {
                     "location" : "${appconfig.context}/public.php?service=host-meta"
