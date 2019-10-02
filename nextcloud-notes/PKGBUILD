@@ -2,19 +2,19 @@ developer=https://nextcloud.com/
 url=${developer}
 maintainer=http://indiecomputing.com/
 pkgname=$(basename $(pwd))
-pkgver=3.0.0
+pkgver=3.0.3
 pkgrel=1
 pkgdesc="The Nextcloud notes app"
 _app=nextcloud
 _acc=notes
 arch=('any')
 license=("AGPL3")
-source=("${_acc}-${pkgver}.tar.gz::https://github.com/nextcloud/${_acc}/releases/download/v${pkgver}/${_acc}.tar.gz")
+source=("${_acc}-${pkgver}.tar.gz::https://github.com/nextcloud/${_acc}/releases/download/${pkgver}/${_acc}.tar.gz")
 releasepage=("https://apps.nextcloud.com/apps/${_acc}")
 depends=(
     'nextcloud')
 options=('!strip')
-sha512sums=('95d861b076fa9a1dd78ca604dbcf0e8bb34cba38e401278f2336d51137ba0689076798c8a5966b0f4ccfb2ffe0c7720bb23af934ab370e6a35e8b7fbfbd7fa84')
+sha512sums=('7e50b16d467cc270433fa992e52672afa1cf048b406b15211d2ea9d696b5d1688f9033015005c0e027760a1e69f943fe2238b672bde6a17dc9f01c64ac4ae5a5')
 
 package() {
 # Manifest

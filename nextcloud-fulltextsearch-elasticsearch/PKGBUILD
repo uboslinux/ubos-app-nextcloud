@@ -2,8 +2,8 @@ developer=https://nextcloud.com/
 url=${developer}
 maintainer=http://indiecomputing.com/
 pkgname=$(basename $(pwd))
-pkgver=1.3.5
-pkgrel=2
+pkgver=1.4.0
+pkgrel=1
 pkgdesc="Extension to the Nextcloud full text search app to communicate with ElasticSearch"
 _app=nextcloud
 _acc=fulltextsearch_elasticsearch
@@ -15,7 +15,7 @@ depends=(
     'nextcloud'
     'elasticsearch')
 options=('!strip')
-sha512sums=('fd331a4380b1d0a1387358a8eee0e7a01e499e5833ffb76d48c0b67526834806496024d72ab0d1915773fbe8a096ea667d16813a47e7c4d9da9a4da5e4076194')
+sha512sums=('8e58e3eccfdc068b4dc28dd680a4c589a29fafe05bb6a11199bfa91e5a5d7c0430b6189e93c83779f014ad5440c0514a30b11989270bad8f730cf7063834266b')
 
 package() {
 # Manifest

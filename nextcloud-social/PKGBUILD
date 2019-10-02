@@ -2,7 +2,7 @@ developer=https://nextcloud.com/
 url=${developer}
 maintainer=http://indiecomputing.com/
 pkgname=$(basename $(pwd))
-pkgver=0.2.6
+pkgver=0.2.101
 pkgrel=1
 pkgdesc="Nextcloud support for federated social networks"
 _app=nextcloud
@@ -14,7 +14,7 @@ releasepage=("https://apps.nextcloud.com/apps/${_acc}")
 depends=(
     'nextcloud')
 options=('!strip')
-sha512sums=('c345632de46afec19933adb38ef1e28b90491c654f9042fb5fb9e3ec336b78728786b3c1d4d94370c9e13a67dddb2068dde45374fe47a4fcf567814ed9a4679c')
+sha512sums=('383234094859f4500e605b219fececfc4f1d4a3ce3a1c559115699d75792c00f6d30934818930f97189eeab391a48cd6e5031fe1661734277e063e4d4186940a')
 
 package() {
 # Manifest

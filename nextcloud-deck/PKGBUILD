@@ -2,7 +2,7 @@ developer=https://nextcloud.com/
 url=${developer}
 maintainer=http://indiecomputing.com/
 pkgname=$(basename $(pwd))
-pkgver=0.6.4
+pkgver=0.7.0
 pkgrel=1
 pkgdesc="The Nextcloud deck app"
 _app=nextcloud
@@ -14,7 +14,7 @@ releasepage=("https://apps.nextcloud.com/apps/${_acc}")
 depends=(
     'nextcloud')
 options=('!strip')
-sha512sums=('f4aba9da582ac23a2b9b7ae615c8e25a4a328d010f78230995c8e8bafa770d5abb36b5e8383e2339e309303fd24dab9597f5d0839c1095e1cbe8ca34ab627de4')
+sha512sums=('bb00540502cf1af24a78bd187ec8a9b9d45d7c53018f43eca38265e11d44dcf366dacbaf85d3c5561d4486f9d8d9c2884fba65c09c42c94aaacad9e4e79ea88a')
 
 package() {
 # Manifest
