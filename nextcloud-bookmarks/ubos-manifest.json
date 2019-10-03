@@ -1,0 +1,33 @@
+{
+    "type"  : "accessory",
+
+    "accessoryinfo" : {
+        "appid"         : "nextcloud",
+        "accessoryid"   : "bookmarks",
+        "accessorytype" : "app"
+    },
+
+    "roles" : {
+        "apache2" : {
+            "phpmodules" : [
+                "gmp"
+            ],
+            "appconfigitems" : [
+                {
+                    "type"   : "directorytree",
+                    "name"   : "apps/bookmarks",
+                    "source" : "/ubos/share/nextcloud/apps/bookmarks",
+                    "uname"  : "http",
+                    "gname"  : "http"
+                }
+            ],
+            "installers" : [
+                {
+                    "type"   : "perlscript",
+                    "source" : "/ubos/share/nextcloud/bin/activate-app.pl"
+                }
+            ]
+        }
+    }
+}
+
