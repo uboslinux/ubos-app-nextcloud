@@ -24,7 +24,7 @@ package() {
     install -D -m0644 ${startdir}/appicons/{72x72,144x144}.png -t ${pkgdir}/ubos/http/_appicons/${pkgname}/
 
 # Systemd
-    install -D -m0644 ${startdir}/systemd/nextcloud@.timer -t ${pkgdir}/etc/systemd/system/
+    install -D -m0644 ${startdir}/systemd/nextcloud16@.timer -t ${pkgdir}/etc/systemd/system/
 
 # Data
     mkdir -p ${pkgdir}/ubos/lib/${pkgname}

@@ -130,12 +130,12 @@
                 {
                     "type"         : "file",
                     "name"         : "/etc/systemd/system/nextcloud@${appconfig.appconfigid}.service",
-                    "template"     : "tmpl/nextcloud@.service.tmpl",
+                    "template"     : "tmpl/nextcloud16@.service.tmpl",
                     "templatelang" : "varsubst"
                 },
                 {
                     "type"         : "systemd-timer",
-                    "name"         : "nextcloud@${appconfig.appconfigid}"
+                    "name"         : "nextcloud16@${appconfig.appconfigid}"
                 }
             ],
             "installers" : [
