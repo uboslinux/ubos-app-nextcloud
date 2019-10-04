@@ -6,13 +6,18 @@
          "context" : "/next",
          "appid" : "nextcloud",
          "accessoryids" : [
+            "nextcloud-audioplayer",
+            "nextcloud-auto-mail-accounts",
             "nextcloud-bookmarks",
             "nextcloud-bruteforcesettings",
             "nextcloud-cache-redis",
             "nextcloud-calendar",
             "nextcloud-contacts",
             "nextcloud-deck",
+            "nextcloud-files-fulltextsearch",
             "nextcloud-files-rightclick",
+            "nextcloud-fulltextsearch-elasticsearch",
+            "nextcloud-fulltextsearch",
             "nextcloud-group-everyone",
             "nextcloud-groupfolders",
             "nextcloud-mail",
@@ -26,7 +31,9 @@
             "nextcloud-socialsharing-facebook",
             "nextcloud-socialsharing-twitter",
             "nextcloud-spreed",
-#            "nextcloud-tasks"
+            "nextcloud-tasks",
+            "nextcloud-text",
+            "nextcloud-twofactor-totp"
          ]
       }
    ],
