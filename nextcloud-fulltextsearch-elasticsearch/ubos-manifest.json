@@ -24,7 +24,7 @@
                 {
                     "type"           : "directory",
                     "name"           : "/etc/elasticsearch/${appconfig.appconfigid}",
-                    "dirpermissions" : "0750",
+                    "dirpermissions" : "0770",
                     "uname"          : "root",
                     "gname"          : "elasticsearch"
                 },
