@@ -9,7 +9,7 @@ _app=nextcloud
 _acc=passwords
 arch=('any')
 license=("AGPL3")
-source=("${_acc}-${pkgver}.tar.gz::https://git.mdns.eu/nextcloud/${_acc}/-/jobs/7708/artifacts/raw/${_acc}.tar.gz")
+source=("${_acc}-${pkgver}.tar.gz::https://git.mdns.eu/nextcloud/${_acc}/-/jobs/8788/artifacts/raw/${_acc}.tar.gz")
 releasepage=("https://apps.nextcloud.com/apps/${_acc}")
 depends=(
     'nextcloud')
