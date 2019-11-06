@@ -2,7 +2,7 @@ developer=https://nextcloud.com/
 url=${developer}
 maintainer=http://indiecomputing.com/
 pkgname=$(basename $(pwd))
-pkgver=2019.9.1
+pkgver=2019.11.0
 pkgrel=1
 pkgdesc="The Nextcloud password app"
 _app=nextcloud
@@ -14,7 +14,7 @@ releasepage=("https://apps.nextcloud.com/apps/${_acc}")
 depends=(
     'nextcloud')
 options=('!strip')
-sha512sums=('3a28bde40570ffb68a730d06383f8bcc4581f7946beb695cec99cba3f52f631d9ee8e73ef2e6afd13416b69df61d56873aa03ce917f5bfd904e4118ab2b87ae7')
+sha512sums=('0ae042121f7bc5cbcf81e0fb871a497567bc9e2b391dc7d84283c48b7ca670e7c10719447f1f8df451b2139a760686c20de3ca71c988fc4d4928577e0fcdea33')
 
 package() {
 # Manifest

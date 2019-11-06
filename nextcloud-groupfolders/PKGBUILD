@@ -2,7 +2,7 @@ developer=https://nextcloud.com/
 url=${developer}
 maintainer=http://indiecomputing.com/
 pkgname=$(basename $(pwd))
-pkgver=5.0.3
+pkgver=5.0.4
 pkgrel=1
 pkgdesc="The Nextcloud group folders app"
 _app=nextcloud
@@ -14,7 +14,7 @@ releasepage=("https://apps.nextcloud.com/apps/${_acc}")
 depends=(
     'nextcloud')
 options=('!strip')
-sha512sums=('f5d2ba1f271f6b6235bf1330214769b1d98d077a2152d4a9206bc26cfa1cba9a8c6cc3b0545a0530b68255e83d8c84cfb8f04e567feab1aef6c7bce18e36fcbd')
+sha512sums=('701a947c4349b0db679a5efa8fd54ddb4b5da1d661d40b8ee291a4714e2e4a600e7f301f73a0a320650c541a35dc86139a401e1de38ff77b71383505c0a8d9f4')
 
 package() {
 # Manifest
