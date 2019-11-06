@@ -14,7 +14,11 @@ use UBOS::Utils;
 my $dir         = $config->getResolve( 'appconfig.apache2.dir' );
 my $datadir     = $config->getResolve( 'appconfig.datadir' ) . '/data';
 my $apacheUname = $config->getResolve( 'apache2.uname' );
-my $ret         = 1;
+my $context     = $config->getResolve( 'appconfig.context' );
+my $hostname    = $config->getResolve( 'site.hostname' );
+my $protocol    = $config->getResolve( 'site.protocol' );
+
+my $ret = 1;
 
 if( 'upgrade' eq $operation ) {
 # Run occ upgrade
@@ -28,8 +32,13 @@ if( 'upgrade' eq $operation ) {
     my $err;
     for my $cmd ( 'maintenance:mimetype:update-db',
                   'maintenance:mimetype:update-js',
-                  'db:add-missing-indices',
+                  'db:add-missing-indices --no-interaction',
                   'maintenance:data-fingerprint',
+                  "config:system:set overwrite.cli.url '--value=$protocol://$hostname$context'",
+                  "config:system:set htaccess.RewriteBase '--value=$context'",
+                  "config:system:set overwritehost '--value=$hostname'",
+                  "config:system:set overwriteprotocol '--value=$protocol'",
+                  "config:system:set overwritewebroot '--value=$context'",
                   'config:app:set password_policy enforceNonCommonPassword --value 0' )
     {
         if( UBOS::Utils::myexec( "$cmdPrefix $cmd", undef, \$out, \$err )) {
@@ -46,7 +55,8 @@ if( 'upgrade' eq $operation ) {
             error( <<MSG );
 Unfortunately, Nextcloud cannot currently upgrade your installation. This is because you skipped at least
 one major Nextcloud version since you last upgraded, and the Nextcloud upgrader does not know how to handle
-this yet. You will have to do the upgrade work manually, unfortunately.
+this yet. You will have to do the upgrade work manually, unfortunately. There is more information at
+https://ubos.net/docs/users/apps/nextcloud.html
 MSG
             $ret = 0;
 

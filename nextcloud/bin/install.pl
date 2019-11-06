@@ -15,6 +15,7 @@ my $apacheGname = $config->getResolve( 'apache2.gname' );
 
 my $appConfigId = $config->getResolve( 'appconfig.appconfigid' );
 my $dir         = $config->getResolve( 'appconfig.apache2.dir' );
+my $context     = $config->getResolve( 'appconfig.context' );
 my $datadir     = $config->getResolve( 'appconfig.datadir' ) . '/data';
 my $dbname      = $config->getResolve( 'appconfig.mysql.dbname.maindb' );
 my $dbuser      = $config->getResolve( 'appconfig.mysql.dbuser.maindb' );
@@ -25,6 +26,7 @@ my $adminlogin  = $config->getResolve( 'site.admin.userid' );
 my $adminpass   = $config->getResolve( 'site.admin.credential' );
 my $adminemail  = $config->getResolve( 'site.admin.email' );
 my $hostname    = $config->getResolve( 'site.hostname' );
+my $protocol    = $config->getResolve( 'site.protocol' );
 
 my $confFile    = "$dir/config/config.php";
 
@@ -61,6 +63,11 @@ if( 'install' eq $operation ) {
             "config:system:set trusted_domains 0 --value '$hostname'",
             'config:system:set log_type --value=systemd',
             'config:system:set mysql.utf8mb4 --type boolean --value=true',
+            "config:system:set overwrite.cli.url '--value=$protocol://$hostname$context'",
+            "config:system:set htaccess.RewriteBase '--value=$context'",
+            "config:system:set overwritehost '--value=$hostname'",
+            "config:system:set overwriteprotocol '--value=$protocol'",
+            "config:system:set overwritewebroot '--value=$context'",
             'db:add-missing-indices --no-interaction',
             'db:convert-filecache-bigint --no-interaction',
             'background:cron',

@@ -46,11 +46,12 @@
 
   <IfModule mod_env.c>
     # Add security and privacy related headers
-    Header set X-Content-Type-Options "nosniff"
-    Header set X-XSS-Protection "1; mode=block"
-    Header set X-Robots-Tag "none"
-    Header set X-Download-Options "noopen"
-    Header set X-Permitted-Cross-Domain-Policies "none"
+    Header always set X-Content-Type-Options "nosniff"
+    Header always set X-XSS-Protection "1; mode=block"
+    Header always set X-Robots-Tag "none"
+    Header always set X-Download-Options "noopen"
+    Header always set X-Frame-Options "SAMEORIGIN"
+    Header always set X-Permitted-Cross-Domain-Policies "none"
     # Removed as it conflicts with the previous setting:
     # Header set Referrer-Policy "no-referrer"
     SetEnv modHeadersAvailable true
@@ -67,9 +68,9 @@
   </FilesMatch>
 </IfModule>
 <IfModule mod_php5.c>
-  php_value upload_max_filesize 511M
-  php_value post_max_size 511M
-  php_value memory_limit 512M
+  php_value upload_max_filesize ${installable.customizationpoints.upload_max_filesize_mb.value}M
+  php_value post_max_size ${installable.customizationpoints.upload_max_filesize_mb.value}M
+  php_value memory_limit ${installable.customizationpoints.memory_limit_mb.value}M
   php_value mbstring.func_overload 0
   php_value always_populate_raw_post_data -1
   php_value default_charset 'UTF-8'
@@ -79,9 +80,9 @@
   </IfModule>
 </IfModule>
 <IfModule mod_php7.c>
-  php_value upload_max_filesize 511M
-  php_value post_max_size 511M
-  php_value memory_limit 512M
+  php_value upload_max_filesize ${installable.customizationpoints.upload_max_filesize_mb.value}M
+  php_value post_max_size ${installable.customizationpoints.upload_max_filesize_mb.value}M
+  php_value memory_limit ${installable.customizationpoints.memory_limit_mb.value}M
   php_value mbstring.func_overload 0
   php_value default_charset 'UTF-8'
   php_value output_buffering 0
@@ -92,11 +93,12 @@
 <IfModule mod_rewrite.c>
   RewriteEngine on
   RewriteCond %{HTTP_USER_AGENT}  DavClnt
-  RewriteRule ^$         /remote.php/webdav/          [L,R=302]
+  RewriteRule ^$ /remote.php/webdav/ [L,R=302]
   RewriteRule .* - [env=HTTP_AUTHORIZATION:%{HTTP:Authorization}]
   RewriteRule ^\.well-known/host-meta /public.php?service=host-meta [QSA,L]
   RewriteRule ^\.well-known/host-meta\.json /public.php?service=host-meta-json [QSA,L]
   RewriteRule ^\.well-known/webfinger /public.php?service=webfinger [QSA,L]
+  RewriteRule ^\.well-known/nodeinfo /public.php?service=nodeinfo [QSA,L]
   RewriteRule ^\.well-known/carddav /remote.php/dav/ [R=301,L]
   RewriteRule ^\.well-known/caldav /remote.php/dav/ [R=301,L]
   RewriteRule ^remote/(.*) remote.php [QSA,L]
@@ -119,5 +121,35 @@ Options -Indexes
 
 ErrorDocument 403 ${appconfig.context}/
 ErrorDocument 404 ${appconfig.context}/
+
+# Clean URLs -- from occ maintenance:update:htaccess
+<IfModule mod_rewrite.c>
+  Options -MultiViews
+  RewriteRule ^core/js/oc.js$ index.php [PT,E=PATH_INFO:$1]
+  RewriteRule ^core/preview.png$ index.php [PT,E=PATH_INFO:$1]
+  RewriteCond %{REQUEST_FILENAME} !\.(css|js|svg|gif|png|html|ttf|woff2?|ico|jpg|jpeg|map)$
+  RewriteCond %{REQUEST_FILENAME} !core/img/favicon.ico$
+  RewriteCond %{REQUEST_FILENAME} !core/img/manifest.json$
+  RewriteCond %{REQUEST_FILENAME} !/remote.php
+  RewriteCond %{REQUEST_FILENAME} !/public.php
+  RewriteCond %{REQUEST_FILENAME} !/cron.php
+  RewriteCond %{REQUEST_FILENAME} !/core/ajax/update.php
+  RewriteCond %{REQUEST_FILENAME} !/status.php
+  RewriteCond %{REQUEST_FILENAME} !/ocs/v1.php
+  RewriteCond %{REQUEST_FILENAME} !/ocs/v2.php
+  RewriteCond %{REQUEST_FILENAME} !/robots.txt
+  RewriteCond %{REQUEST_FILENAME} !/updater/
+  RewriteCond %{REQUEST_FILENAME} !/ocs-provider/
+  RewriteCond %{REQUEST_FILENAME} !/ocm-provider/
+  RewriteCond %{REQUEST_URI} !^/\.well-known/(acme-challenge|pki-validation)/.*
+  RewriteRule . index.php [PT,E=PATH_INFO:$1]
+  RewriteBase ${appconfig.contextorslash}
+  <IfModule mod_env.c>
+    SetEnv front_controller_active true
+    <IfModule mod_dir.c>
+      DirectorySlash off
+    </IfModule>
+  </IfModule>
+</IfModule>
 
 </Directory>

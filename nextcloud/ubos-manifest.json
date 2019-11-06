@@ -9,7 +9,8 @@
                 "php-apcu",
                 "php-gd",
                 "php-imagick",
-                "php-systemd"
+                "php-systemd",
+                "smtp-server"
             ],
             "apache2modules" : [
                 "env",
@@ -136,6 +137,10 @@
                 {
                     "type"         : "systemd-timer",
                     "name"         : "nextcloud@${appconfig.appconfigid}"
+                },
+                {
+                    "type" : "systemd-service",
+                    "name" : "smtp-server@${appconfig.appconfigid}"
                 }
             ],
             "installers" : [
@@ -170,6 +175,22 @@
                     "charset"    : "utf8mb4"
                 }
             ]
+        }
+    },
+    "customizationpoints" : {
+        "upload_max_filesize_mb" : {
+            "type"        : "integer",
+            "required"    : false,
+            "default" : {
+                "expression" : "512"
+            }
+        },
+        "memory_limit_mb" : {
+            "type"        : "integer",
+            "required"    : false,
+            "default" : {
+                "expression" : "512"
+            }
         }
     }
 }
