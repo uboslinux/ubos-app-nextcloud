@@ -35,9 +35,6 @@ my $ret = 1;
 if( 'install' eq $operation ) {
 
     my $cmdPrefix;
-    my $out;
-    my $cmd;
-
     $cmdPrefix = "cd '$dir';";
     $cmdPrefix .= "sudo -u '$apacheUname' php";
     $cmdPrefix .= ' -d always_populate_raw_post_data=-1';
@@ -45,8 +42,9 @@ if( 'install' eq $operation ) {
 
     $cmdPrefix .= ' occ';
 
-    for my $cmd (
-            'maintenance:install'
+    my @cmds = ();
+
+    push @cmds, 'maintenance:install'
                 . ' --database "mysql"'
                 . " --database-name '$dbname'"
                 . " --database-user '$dbuser'"
@@ -56,24 +54,36 @@ if( 'install' eq $operation ) {
                 . " --admin-pass '$adminpass'"
                 . " --admin-email '$adminemail'"
                 . " --data-dir '$datadir'"
-                . ' -n', # non-interactive
-            'config:system:set syslog_tag --value=nextcloud@' . $appConfigId,
-            'config:system:set appstoreenabled --type boolean --value false',
-            'config:system:set mail_smtpmode --value=smtp',
-            "config:system:set trusted_domains 0 --value '$hostname'",
-            'config:system:set log_type --value=systemd',
-            'config:system:set mysql.utf8mb4 --type boolean --value=true',
-            "config:system:set overwrite.cli.url '--value=$protocol://$hostname$context'",
-            "config:system:set htaccess.RewriteBase '--value=$context'",
-            "config:system:set overwritehost '--value=$hostname'",
-            "config:system:set overwriteprotocol '--value=$protocol'",
-            "config:system:set overwritewebroot '--value=$context'",
-            'db:add-missing-indices --no-interaction',
-            'db:convert-filecache-bigint --no-interaction',
-            'background:cron',
-            'app:disable updatenotification',
-            'config:app:set password_policy enforceNonCommonPassword --value 0' )
-    {
+                . ' -n'; # non-interactive
+
+    push @cmds, 'config:system:set syslog_tag --value=nextcloud@' . $appConfigId;
+    push @cmds, 'config:system:set appstoreenabled --type boolean --value false';
+    push @cmds, 'config:system:set mail_smtpmode --value=smtp';
+    push @cmds, "config:system:set trusted_domains 0 --value '$hostname'";
+    push @cmds, 'config:system:set log_type --value=systemd';
+    push @cmds, 'config:system:set mysql.utf8mb4 --type boolean --value=true';
+
+    unless( $hostname eq '*' ) {
+        push @cmds, "config:system:set overwrite.cli.url '--value=$protocol://$hostname$context'";
+            # Required so the social app has the correct values:
+            # occ config:app:get social cloud_url and social_url
+    }
+
+# Apparently not needed:
+#            "config:system:set htaccess.RewriteBase '--value=$context'",
+#            "config:system:set overwritehost '--value=$hostname'",
+#            "config:system:set overwriteprotocol '--value=$protocol'",
+#            "config:system:set overwritewebroot '--value=$context'",
+    push @cmds, 'db:add-missing-indices --no-interaction';
+    push @cmds, 'db:convert-filecache-bigint --no-interaction';
+    push @cmds, 'background:cron';
+    push @cmds, 'app:disable updatenotification';
+    push @cmds, 'config:app:set password_policy enforceNonCommonPassword --value 0';
+
+    my $out;
+    my $err;
+
+    for my $cmd ( @cmds ) {
         if( UBOS::Utils::myexec( "$cmdPrefix $cmd", undef, \$out, \$out )) {
             error( "Nextcloud command failed:\n$cmd\n$out" );
             $ret = 0;

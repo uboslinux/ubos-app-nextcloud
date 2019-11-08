@@ -28,19 +28,31 @@ if( 'upgrade' eq $operation ) {
     $cmdPrefix .= ' -d memory_limit=512M';
     $cmdPrefix .= ' occ';
 
+    my @cmds = ();
+    push @cmds, 'maintenance:mimetype:update-db';
+    push @cmds, 'maintenance:mimetype:update-js';
+    push @cmds, 'db:add-missing-indices --no-interaction';
+    push @cmds, 'maintenance:data-fingerprint';
+
+    if( $hostname eq '*' ) {
+        push @cmds, 'config:system:delete overwrite.cli.url';
+    } else {
+        push @cmds, "config:system:set overwrite.cli.url '--value=$protocol://$hostname$context'";
+            # Required so the social app has the correct values:
+            # occ config:app:get social cloud_url and social_url
+    }
+
+# Apparently not needed:
+#                  "config:system:set htaccess.RewriteBase '--value=$context'",
+#                  "config:system:set overwritehost '--value=$hostname'",
+#                  "config:system:set overwriteprotocol '--value=$protocol'",
+#                  "config:system:set overwritewebroot '--value=$context'",
+    push @cmds, 'config:app:set password_policy enforceNonCommonPassword --value 0';
+
     my $out;
     my $err;
-    for my $cmd ( 'maintenance:mimetype:update-db',
-                  'maintenance:mimetype:update-js',
-                  'db:add-missing-indices --no-interaction',
-                  'maintenance:data-fingerprint',
-                  "config:system:set overwrite.cli.url '--value=$protocol://$hostname$context'",
-                  "config:system:set htaccess.RewriteBase '--value=$context'",
-                  "config:system:set overwritehost '--value=$hostname'",
-                  "config:system:set overwriteprotocol '--value=$protocol'",
-                  "config:system:set overwritewebroot '--value=$context'",
-                  'config:app:set password_policy enforceNonCommonPassword --value 0' )
-    {
+
+    for my $cmd ( @cmds ) {
         if( UBOS::Utils::myexec( "$cmdPrefix $cmd", undef, \$out, \$err )) {
             error( "occ $cmd failed:\n$out\n$err" );
             $ret = 0;

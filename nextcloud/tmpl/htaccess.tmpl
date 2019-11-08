@@ -68,9 +68,11 @@
   </FilesMatch>
 </IfModule>
 <IfModule mod_php5.c>
-  # php_value upload_max_filesize ${installable.customizationpoints.upload_max_filesize_mb.value}M
-  # php_value post_max_size ${installable.customizationpoints.upload_max_filesize_mb.value}M
-  # php_value memory_limit ${installable.customizationpoints.memory_limit_mb.value}M
+  # Not yet: see https://github.com/uboslinux/ubos-app-nextcloud/issues/69
+  # Also see manifest
+  # php_value upload_max_filesize installable.customizationpoints.upload_max_filesize_mb.value M
+  # php_value post_max_size installable.customizationpoints.upload_max_filesize_mb.value M
+  # php_value memory_limit installable.customizationpoints.memory_limit_mb.value M
   php_value upload_max_filesize 512M
   php_value post_max_size 512M
   php_value memory_limit 512M
@@ -83,9 +85,11 @@
   </IfModule>
 </IfModule>
 <IfModule mod_php7.c>
-  # php_value upload_max_filesize ${installable.customizationpoints.upload_max_filesize_mb.value}M
-  # php_value post_max_size ${installable.customizationpoints.upload_max_filesize_mb.value}M
-  # php_value memory_limit ${installable.customizationpoints.memory_limit_mb.value}M
+  # Not yet: see https://github.com/uboslinux/ubos-app-nextcloud/issues/69
+  # Also see manifest
+  # php_value upload_max_filesize installable.customizationpoints.upload_max_filesize_mb.value M
+  # php_value post_max_size installable.customizationpoints.upload_max_filesize_mb.value M
+  # php_value memory_limit installable.customizationpoints.memory_limit_mb.value M
   php_value upload_max_filesize 512M
   php_value post_max_size 512M
   php_value memory_limit 512M
