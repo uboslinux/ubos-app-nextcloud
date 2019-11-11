@@ -2,8 +2,8 @@ developer=https://nextcloud.com/
 url=${developer}
 maintainer=http://indiecomputing.com/
 pkgname=$(basename $(pwd))
-pkgver=17.0.0
-pkgrel=3
+pkgver=17.0.1
+pkgrel=1
 pkgdesc="A safe home for all your data"
 arch=('any')
 license=("AGPL3")
@@ -14,7 +14,7 @@ depends=(
     'php-systemd'
     'smtp-server')
 options=('!strip')
-sha512sums=('d271d6220c72473f0ccc1ca776fb883e0d2cf4e338a7aa0143cce8d8ffeecf825eb5e41d42467d22922995dc6adb2751831158923e0dea29405dbb11bea85b04')
+sha512sums=('74974cd5d19650ecd3f94a397ecce58fea57d62ab0205f87a108f0a57b5745fbe37d5bf272004d5aefef7c17a43558c219afb5304fb14c569beaa8a5fc5fe00d')
 
 package() {
 # Manifest
