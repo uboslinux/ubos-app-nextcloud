@@ -1,0 +1,31 @@
+developer=https://nextcloud.com/
+url=${developer}
+maintainer=http://indiecomputing.com/
+pkgname=$(basename $(pwd))
+pkgver=1.5.0
+pkgrel=1
+pkgdesc="The Nextcloud impersonate app"
+_app=nextcloud
+_acc=impersonate
+arch=('any')
+license=("AGPL3")
+source=("${_acc}-${pkgver}.tar.gz::https://github.com/nextcloud/${_acc}/releases/download/v${pkgver}/${_acc}.tar.gz")
+releasepage=("https://apps.nextcloud.com/apps/${_acc}")
+depends=(
+    'nextcloud')
+options=('!strip')
+sha512sums=('be7c8f20f05555d935b00fb1036a7e46262ace742c5da0514440d84ef32693bcb965669196ec197050dbeeb419fd9d7643643d02ed57e4f8a1468305b82871cb')
+
+package() {
+# Manifest
+    mkdir -p -m 0755 ${pkgdir}/ubos/lib/ubos/manifests
+    sed -e "s!@ACCESSORYID@!$_acc!g" ${startdir}/../shared/ubos-manifest-accessory.tmpl.json > ${pkgdir}/ubos/lib/ubos/manifests/${pkgname}.json
+    chmod 0644 ${pkgdir}/ubos/lib/ubos/manifests/${pkgname}.json
+
+# Icons
+#    install -D -m644 ${startdir}/appicons/{72x72,144x144}.png ${pkgdir}/ubos/http/_appicons/${pkgname}/
+
+# Code
+    mkdir -p ${pkgdir}/ubos/share/${_app}/apps
+    cp -dr --no-preserve=ownership ${srcdir}/${_acc} ${pkgdir}/ubos/share/${_app}/apps/
+}
