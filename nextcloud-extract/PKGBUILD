@@ -1,0 +1,31 @@
+developer=https://nextcloud.com/
+url=${developer}
+maintainer=http://indiecomputing.com/
+pkgname=$(basename $(pwd))
+pkgver=1.2.3
+pkgrel=1
+pkgdesc="The Nextcloud extract app"
+_app=nextcloud
+_acc=extract
+arch=('any')
+license=("AGPL3")
+source=("${_acc}-${pkgver}.tar.gz::https://github.com/PaulLereverend/NextcloudExtract/releases/download/${pkgver}/${_acc}.tar.gz")
+releasepage=("https://apps.nextcloud.com/apps/${_acc}")
+depends=(
+    'nextcloud')
+options=('!strip')
+sha512sums=('4d6bba6ca4cc93cba205c546b1253de0bcc0e9f8c68221ae3b2fa56997159bf242928a0cc24ebb14fef3d24cf56baa9d3b6494b1681482c84dc4c6577f836dcf')
+
+package() {
+# Manifest
+    mkdir -p -m 0755 ${pkgdir}/ubos/lib/ubos/manifests
+    sed -e "s!@ACCESSORYID@!$_acc!g" ${startdir}/../shared/ubos-manifest-accessory.tmpl.json > ${pkgdir}/ubos/lib/ubos/manifests/${pkgname}.json
+    chmod 0644 ${pkgdir}/ubos/lib/ubos/manifests/${pkgname}.json
+
+# Icons
+#    install -D -m644 ${startdir}/appicons/{72x72,144x144}.png ${pkgdir}/ubos/http/_appicons/${pkgname}/
+
+# Code
+    mkdir -p ${pkgdir}/ubos/share/${_app}/apps
+    cp -dr --no-preserve=ownership ${srcdir}/${_acc} ${pkgdir}/ubos/share/${_app}/apps/
+}
