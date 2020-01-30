@@ -2,7 +2,7 @@ developer=https://nextcloud.com/
 url=${developer}
 maintainer=http://indiecomputing.com/
 pkgname=$(basename $(pwd))
-pkgver=17.0.1
+pkgver=17.0.2
 pkgrel=1
 pkgdesc="A safe home for all your data"
 arch=('any')
@@ -14,7 +14,14 @@ depends=(
     'php-systemd'
     'smtp-server')
 options=('!strip')
-sha512sums=('74974cd5d19650ecd3f94a397ecce58fea57d62ab0205f87a108f0a57b5745fbe37d5bf272004d5aefef7c17a43558c219afb5304fb14c569beaa8a5fc5fe00d')
+sha512sums=('ea3788958b37e68c88e03d8a39c0284f14fb82e1e4e20f59df1d6acbdd2eb8a50f791ea48abbe2a91f9fa59de93237763f19ded441973bc2834a64721a210aa1')
+
+prepare() {
+    # Patches to make work with PHP 7.4
+    ( cd ${srcdir}/nextcloud/lib                              ; patch < ../../../versioncheck.patch )
+    ( cd ${srcdir}/nextcloud/lib/private/Log                  ; patch < ../../../../../exception-serializer.patch )
+    ( cd ${srcdir}/nextcloud/lib/private/AppFramework/Utility ; patch < ../../../../../../reflectiontype.patch )
+}
 
 package() {
 # Manifest

@@ -1,0 +1,15 @@
+--- versioncheck.php	2019-12-19 08:47:15.000000000 +0000
++++ versioncheck.php.new	2020-01-30 00:01:51.501011269 +0000
+@@ -9,9 +9,10 @@
+ }
+ 
+ // Show warning if > PHP 7.3 is used as Nextcloud is not compatible with > PHP 7.3 for now
+-if (version_compare(PHP_VERSION, '7.4.0') !== -1) {
++// Indie Computing: works fine for us,
++if (version_compare(PHP_VERSION, '7.5.0') !== -1) {
+ 	http_response_code(500);
+-	echo 'This version of Nextcloud is not compatible with > PHP 7.3.<br/>';
++	echo 'This version of Nextcloud is not compatible with > PHP 7.4.<br/>';
+ 	echo 'You are currently running ' . PHP_VERSION . '.';
+ 	exit(-1);
+ }
