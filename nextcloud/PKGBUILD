@@ -21,6 +21,7 @@ prepare() {
     ( cd ${srcdir}/nextcloud/lib                              ; patch < ../../../versioncheck.patch )
     ( cd ${srcdir}/nextcloud/lib/private/Log                  ; patch < ../../../../../exception-serializer.patch )
     ( cd ${srcdir}/nextcloud/lib/private/AppFramework/Utility ; patch < ../../../../../../reflectiontype.patch )
+    ( cd ${srcdir}/nextcloud/3rdparty/leafo/scssphp/src       ; patch < ../../../../../../compiler.patch )
 }
 
 package() {
