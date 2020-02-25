@@ -2,7 +2,7 @@ developer=https://nextcloud.com/
 url=${developer}
 maintainer=http://indiecomputing.com/
 pkgname=$(basename $(pwd))
-pkgver=3.0.3
+pkgver=3.1.5
 pkgrel=1
 pkgdesc="The Nextcloud notes app"
 _app=nextcloud
@@ -14,7 +14,7 @@ releasepage=("https://apps.nextcloud.com/apps/${_acc}")
 depends=(
     'nextcloud')
 options=('!strip')
-sha512sums=('7e50b16d467cc270433fa992e52672afa1cf048b406b15211d2ea9d696b5d1688f9033015005c0e027760a1e69f943fe2238b672bde6a17dc9f01c64ac4ae5a5')
+sha512sums=('b12fca90fb97cd9434db5847545e06b3587049c2ccad6e8f8f76a12894ca59053278cbd4af3083c455a03639769e4006d5afa4ae35e35c8b8482219b47cf178e')
 
 package() {
 # Manifest
