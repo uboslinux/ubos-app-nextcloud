@@ -4,7 +4,11 @@
     "accessoryinfo" : {
         "appid"         : "nextcloud",
         "accessoryid"   : "fulltextsearch_elasticsearch",
-        "accessorytype" : "app"
+        "accessorytype" : "app",
+        "requires" : [
+            "nextcloud-files-fulltextsearch",
+            "nextcloud-fulltextsearch"
+        ]
     },
 
     "roles" : {
@@ -45,14 +49,35 @@
                     "source"       : "/etc/elasticsearch/log4j2.properties"
                 },
                 {
+                    "type"            : "file",
+                    "name"            : "/etc/elasticsearch/${appconfig.appconfigid}/elasticsearch.keystore",
+                    "source"          : "/dev/null",
+                    "retentionpolicy" : "keep",
+                    "retentionbucket" : "keystore",
+                    "permissions"     : "0660",
+                    "uname"           : "root",
+                    "gname"           : "elasticsearch"
+                },
+                {
                     "type"            : "directory",
-                    "name"            : "/ubos/lib/nextcloud/${appconfig.appconfigid}/fulltextsearch-elasticsearch",
+                    "name"            : "/ubos/lib/nextcloud-fulltextsearch-elasticsearch/${appconfig.appconfigid}",
                     "retentionpolicy" : "keep",
                     "retentionbucket" : "elasticsearch",
                     "dirpermissions"  : "0750",
                     "filepermissions" : "0640",
-                    "uname"       : "elasticsearch",
-                    "gname"       : "elasticsearch"
+                    "uname"           : "elasticsearch",
+                    "gname"           : "elasticsearch"
+                },
+                {
+                    "type"            : "directory",
+                    "name"            : "/ubos/lib/nextcloud-fulltextsearch-elasticsearch/${appconfig.appconfigid}-state",
+                    "retentionpolicy" : "keep",
+                    "retentionbucket" : "state",
+                    "dirpermissions"  : "0750",
+                    "filepermissions" : "0640",
+                    "uname"           : "elasticsearch",
+                    "gname"           : "elasticsearch"
+                    # empty directory, will contain touch file when initial indexing is complete
                 },
                 {
                     "type"  : "directory",
@@ -61,14 +86,39 @@
                     "gname" : "elasticsearch"
                 },
                 {
+                    "type"  : "perlscript",
+                    "source" : "/ubos/share/nextcloud-fulltextsearch-elasticsearch/bin/delete-empty-keystore.pl"
+                },
+                {
+                    "type" : "systemd-service",
+                    "name" : "elasticsearch-keystore@${appconfig.appconfigid}"
+                    # This is auto-activated by elasticsearch@.service, but not auto-deactivated
+                },
+                {
                     "type" : "systemd-service",
                     "name" : "elasticsearch@${appconfig.appconfigid}"
+                },
+                {
+                    "type" : "systemd-service",
+                    "name" : "nextcloud-fulltextsearch-elasticsearch@${appconfig.appconfigid}",
+                    "phase" : "suspendresume"
+                    # After accessories have been activated, so the occ command namespace exists
                 }
             ],
             "installers" : [
                 {
                     "type"   : "perlscript",
                     "source" : "/ubos/share/nextcloud/bin/activate-app.pl"
+                },
+                {
+                    "type"   : "perlscript",
+                    "source" : "/ubos/share/nextcloud-fulltextsearch-elasticsearch/bin/configure.pl"
+                }
+            ],
+            "upgraders" : [
+                {
+                    "type"   : "perlscript",
+                    "source" : "/ubos/share/nextcloud-fulltextsearch-elasticsearch/bin/configure.pl"
                 }
             ]
         }

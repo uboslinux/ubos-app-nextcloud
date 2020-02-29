@@ -13,7 +13,8 @@ source=("${_acc}-${pkgver}.tar.gz::https://github.com/nextcloud/${_acc}/releases
 releasepage=("https://apps.nextcloud.com/apps/${_acc}")
 depends=(
     'nextcloud'
-    'elasticsearch')
+    'elasticsearch'
+    'elasticsearch-ingest-attachment')
 options=('!strip')
 sha512sums=('a39693c1a6294c4d47462a3a628fcf00f686892a8d436651689bc78abd3a85084f559ae1aa37170d199c800ce60703d2bf13558c7496352795098830c9780994')
 
@@ -27,10 +28,17 @@ package() {
 # Template files
     install -D -m0644 ${startdir}/tmpl/* -t ${pkgdir}/ubos/share/${pkgname}/tmpl/
 
+# Systemd
+    install -D -m0644 ${startdir}/systemd/*.service -t ${pkgdir}/usr/lib/systemd/system/
+
 # Logs
     install -d m0755 ${pkgdir}/ubos/logs
 
 # Code
     mkdir -p ${pkgdir}/ubos/share/${_app}/apps
     cp -dr --no-preserve=ownership ${srcdir}/${_acc} ${pkgdir}/ubos/share/${_app}/apps/
+    install -D -m0755 ${startdir}/bin/*.pl -t ${pkgdir}/ubos/share/${pkgname}/bin/
+
+# Data
+    mkdir -p ${pkgdir}/ubos/lib/${pkgname}
 }

@@ -16,13 +16,6 @@ depends=(
 options=('!strip')
 sha512sums=('b2ce36bb230d5b7e3212be91a8fa26c6f24d1fa02d50f0f5ac702566095645aaea4e365574c7af49edcfbce66b76e5a0f120653e39f680ba181dc971846a3ced')
 
-# prepare() {
-#     # Patches to make work with PHP 7.4
-#     ( cd ${srcdir}/nextcloud/lib                              ; patch < ../../../versioncheck.patch )
-#     ( cd ${srcdir}/nextcloud/lib/private/Log                  ; patch < ../../../../../exception-serializer.patch )
-#     ( cd ${srcdir}/nextcloud/lib/private/AppFramework/Utility ; patch < ../../../../../../reflectiontype.patch )
-# }
-
 package() {
 # Manifest
     install -D -m0644 ${startdir}/ubos-manifest.json ${pkgdir}/ubos/lib/ubos/manifests/${pkgname}.json

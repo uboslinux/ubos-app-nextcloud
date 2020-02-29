@@ -11,12 +11,13 @@ use warnings;
 use UBOS::Logging;
 use UBOS::Utils;
 
-my $dir         = $config->getResolve( 'appconfig.apache2.dir' );
-my $datadir     = $config->getResolve( 'appconfig.datadir' ) . '/data';
-my $apacheUname = $config->getResolve( 'apache2.uname' );
-my $context     = $config->getResolve( 'appconfig.context' );
-my $hostname    = $config->getResolve( 'site.hostname' );
-my $protocol    = $config->getResolve( 'site.protocol' );
+my $dir            = $config->getResolve( 'appconfig.apache2.dir' );
+my $datadir        = $config->getResolve( 'appconfig.datadir' ) . '/data';
+my $apacheUname    = $config->getResolve( 'apache2.uname' );
+my $context        = $config->getResolve( 'appconfig.context' );
+my $contextOrSlash = $config->getResolve( 'appconfig.contextorslash' );
+my $hostname       = $config->getResolve( 'site.hostname' );
+my $protocol       = $config->getResolve( 'site.protocol' );
 
 my $ret = 1;
 
@@ -41,13 +42,15 @@ if( 'upgrade' eq $operation ) {
             # Required so the social app has the correct values:
             # occ config:app:get social cloud_url and social_url
     }
+    push @cmds, "config:system:set htaccess.RewriteBase '--value=$contextOrSlash'";
+        # See https://docs.nextcloud.com/server/18/admin_manual/configuration_server/config_sample_php_parameters.html
 
 # Apparently not needed:
-#                  "config:system:set htaccess.RewriteBase '--value=$context'",
 #                  "config:system:set overwritehost '--value=$hostname'",
 #                  "config:system:set overwriteprotocol '--value=$protocol'",
 #                  "config:system:set overwritewebroot '--value=$context'",
     push @cmds, 'config:app:set password_policy enforceNonCommonPassword --value 0';
+    push @cmds, 'maintenance:update:htaccess';
 
     my $out;
     my $err;
