@@ -87,16 +87,13 @@
                 },
                 {
                     "type"  : "perlscript",
-                    "source" : "/ubos/share/nextcloud-fulltextsearch-elasticsearch/bin/delete-empty-keystore.pl"
+                    "source" : "/ubos/share/nextcloud-fulltextsearch-elasticsearch/bin/ensure-keystore.pl"
                 },
                 {
                     "type" : "systemd-service",
-                    "name" : "elasticsearch-keystore@${appconfig.appconfigid}"
-                    # This is auto-activated by elasticsearch@.service, but not auto-deactivated
-                },
-                {
-                    "type" : "systemd-service",
-                    "name" : "elasticsearch@${appconfig.appconfigid}"
+                    "name" : "nextcloud-elasticsearch@${appconfig.appconfigid}",
+                    "phase" : "suspendresume"
+                    # After keystore has been restored from backup
                 },
                 {
                     "type" : "systemd-service",

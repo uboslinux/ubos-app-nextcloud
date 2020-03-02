@@ -14,9 +14,11 @@ releasepage=("https://apps.nextcloud.com/apps/${_acc}")
 depends=(
     'nextcloud'
     'elasticsearch'
-    'elasticsearch-ingest-attachment')
+    'elasticsearch-ingest-attachment'
+    'jre11-openjdk-headless' )
 options=('!strip')
 sha512sums=('a39693c1a6294c4d47462a3a628fcf00f686892a8d436651689bc78abd3a85084f559ae1aa37170d199c800ce60703d2bf13558c7496352795098830c9780994')
+install=install
 
 package() {
 # Manifest

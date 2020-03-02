@@ -10,8 +10,15 @@ use strict;
 use UBOS::Logging;
 use UBOS::Utils;
 
-my $dir  = $config->getResolve( 'appconfig.apache2.dir' );
-my $port = $config->getResolve( 'appconfig.tcpport.main' );
+my $dir         = $config->getResolve( 'appconfig.apache2.dir' );
+my $appConfigId = $config->getResolve( 'appconfig.appconfigid' );
+
+# not resolvable with ${...} in upgrader
+my $port = UBOS::ResourceManager::findProvisionedPortFor(
+        'tcp',
+        $appConfigId,
+        'nextcloud-fulltextsearch-elasticsearch',
+        'main' );
 
 my $cmdPrefix = "cd $dir; sudo -u http php";
 $cmdPrefix .= ' -d memory_limit=512M';

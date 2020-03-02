@@ -1,0 +1,17 @@
+#!/bin/bash
+#
+# Make sure elasticsearch runs with a known JVM
+#
+
+fixJavaVersion() {
+    [[ -e /etc/default/elasticsearch ]] \
+        && perl -i -p -e 's!^JAVA_HOME=(.*)!JAVA_HOME=/usr/lib/jvm/java-11-openjdk!' /etc/default/elasticsearch
+}
+
+post_install() {
+    fixJavaVersion
+}
+
+post_upgrade() {
+    fixJavaVersion
+}
