@@ -35,13 +35,20 @@ if( 'upgrade' eq $operation ) {
     push @cmds, 'db:add-missing-indices --no-interaction';
     push @cmds, 'maintenance:data-fingerprint';
 
+
     if( $hostname eq '*' ) {
+        # maintenance:update:htaccess needs a value, so we temporarily set one
+        push @cmds, "config:system:set overwrite.cli.url '--value=$protocol://localhost$context'";
+        push @cmds, 'maintenance:update:htaccess';
         push @cmds, 'config:system:delete overwrite.cli.url';
+
     } else {
         push @cmds, "config:system:set overwrite.cli.url '--value=$protocol://$hostname$context'";
             # Required so the social app has the correct values:
             # occ config:app:get social cloud_url and social_url
+        push @cmds, 'maintenance:update:htaccess';
     }
+
     push @cmds, "config:system:set htaccess.RewriteBase '--value=$contextOrSlash'";
         # See https://docs.nextcloud.com/server/18/admin_manual/configuration_server/config_sample_php_parameters.html
 
@@ -50,7 +57,6 @@ if( 'upgrade' eq $operation ) {
 #                  "config:system:set overwriteprotocol '--value=$protocol'",
 #                  "config:system:set overwritewebroot '--value=$context'",
     push @cmds, 'config:app:set password_policy enforceNonCommonPassword --value 0';
-    push @cmds, 'maintenance:update:htaccess';
 
     my $out;
     my $err;
