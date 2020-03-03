@@ -2,8 +2,8 @@ developer=https://nextcloud.com/
 url=${developer}
 maintainer=http://indiecomputing.com/
 pkgname=$(basename $(pwd))
-pkgver=1.4.0
-pkgrel=2
+pkgver=1.5.0
+pkgrel=1
 pkgdesc="Extension to the Nextcloud full text search app to communicate with ElasticSearch"
 _app=nextcloud
 _acc=fulltextsearch_elasticsearch
@@ -13,9 +13,12 @@ source=("${_acc}-${pkgver}.tar.gz::https://github.com/nextcloud/${_acc}/releases
 releasepage=("https://apps.nextcloud.com/apps/${_acc}")
 depends=(
     'nextcloud'
-    'elasticsearch')
+    'elasticsearch'
+    'elasticsearch-ingest-attachment'
+    'jre11-openjdk-headless' )
 options=('!strip')
-sha512sums=('8e58e3eccfdc068b4dc28dd680a4c589a29fafe05bb6a11199bfa91e5a5d7c0430b6189e93c83779f014ad5440c0514a30b11989270bad8f730cf7063834266b')
+sha512sums=('a39693c1a6294c4d47462a3a628fcf00f686892a8d436651689bc78abd3a85084f559ae1aa37170d199c800ce60703d2bf13558c7496352795098830c9780994')
+install=install
 
 package() {
 # Manifest
@@ -27,10 +30,17 @@ package() {
 # Template files
     install -D -m0644 ${startdir}/tmpl/* -t ${pkgdir}/ubos/share/${pkgname}/tmpl/
 
+# Systemd
+    install -D -m0644 ${startdir}/systemd/*.service -t ${pkgdir}/usr/lib/systemd/system/
+
 # Logs
     install -d m0755 ${pkgdir}/ubos/logs
 
 # Code
     mkdir -p ${pkgdir}/ubos/share/${_app}/apps
     cp -dr --no-preserve=ownership ${srcdir}/${_acc} ${pkgdir}/ubos/share/${_app}/apps/
+    install -D -m0755 ${startdir}/bin/*.pl -t ${pkgdir}/ubos/share/${pkgname}/bin/
+
+# Data
+    mkdir -p ${pkgdir}/ubos/lib/${pkgname}
 }

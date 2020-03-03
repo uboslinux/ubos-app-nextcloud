@@ -130,8 +130,8 @@
                 },
                 {
                     "type"         : "file",
-                    "name"         : "/etc/systemd/system/nextcloud@${appconfig.appconfigid}.service",
-                    "template"     : "tmpl/nextcloud@.service.tmpl",
+                    "name"         : "/etc/systemd/system/nextcloud17@${appconfig.appconfigid}.service",
+                    "template"     : "tmpl/nextcloud17@.service.tmpl",
                     "templatelang" : "varsubst"
                 },
                 {
@@ -140,7 +140,7 @@
                 },
                 {
                     "type" : "systemd-service",
-                    "name" : "smtp-server17@${appconfig.appconfigid}"
+                    "name" : "smtp-server@${appconfig.appconfigid}"
                 }
             ],
             "installers" : [

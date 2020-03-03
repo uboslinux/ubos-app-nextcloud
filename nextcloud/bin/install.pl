@@ -10,25 +10,26 @@ use strict;
 use UBOS::Logging;
 use UBOS::Utils;
 
-my $apacheUname = $config->getResolve( 'apache2.uname' );
-my $apacheGname = $config->getResolve( 'apache2.gname' );
+my $apacheUname    = $config->getResolve( 'apache2.uname' );
+my $apacheGname    = $config->getResolve( 'apache2.gname' );
 
-my $appConfigId = $config->getResolve( 'appconfig.appconfigid' );
-my $dir         = $config->getResolve( 'appconfig.apache2.dir' );
-my $context     = $config->getResolve( 'appconfig.context' );
-my $datadir     = $config->getResolve( 'appconfig.datadir' ) . '/data';
-my $dbname      = $config->getResolve( 'appconfig.mysql.dbname.maindb' );
-my $dbuser      = $config->getResolve( 'appconfig.mysql.dbuser.maindb' );
-my $dbpass      = $config->getResolve( 'appconfig.mysql.dbusercredential.maindb' );
-my $dbhost      = $config->getResolve( 'appconfig.mysql.dbhost.maindb' );
+my $appConfigId    = $config->getResolve( 'appconfig.appconfigid' );
+my $dir            = $config->getResolve( 'appconfig.apache2.dir' );
+my $context        = $config->getResolve( 'appconfig.context' );
+my $contextOrSlash = $config->getResolve( 'appconfig.contextorslash' );
+my $datadir        = $config->getResolve( 'appconfig.datadir' ) . '/data';
+my $dbname         = $config->getResolve( 'appconfig.mysql.dbname.maindb' );
+my $dbuser         = $config->getResolve( 'appconfig.mysql.dbuser.maindb' );
+my $dbpass         = $config->getResolve( 'appconfig.mysql.dbusercredential.maindb' );
+my $dbhost         = $config->getResolve( 'appconfig.mysql.dbhost.maindb' );
 
-my $adminlogin  = $config->getResolve( 'site.admin.userid' );
-my $adminpass   = $config->getResolve( 'site.admin.credential' );
-my $adminemail  = $config->getResolve( 'site.admin.email' );
-my $hostname    = $config->getResolve( 'site.hostname' );
-my $protocol    = $config->getResolve( 'site.protocol' );
+my $adminlogin     = $config->getResolve( 'site.admin.userid' );
+my $adminpass      = $config->getResolve( 'site.admin.credential' );
+my $adminemail     = $config->getResolve( 'site.admin.email' );
+my $hostname       = $config->getResolve( 'site.hostname' );
+my $protocol       = $config->getResolve( 'site.protocol' );
 
-my $confFile    = "$dir/config/config.php";
+my $confFile       = "$dir/config/config.php";
 
 my $ret = 1;
 
@@ -68,9 +69,10 @@ if( 'install' eq $operation ) {
             # Required so the social app has the correct values:
             # occ config:app:get social cloud_url and social_url
     }
+    push @cmds, "config:system:set htaccess.RewriteBase '--value=$contextOrSlash'";
+        # See https://docs.nextcloud.com/server/18/admin_manual/configuration_server/config_sample_php_parameters.html
 
 # Apparently not needed:
-#            "config:system:set htaccess.RewriteBase '--value=$context'",
 #            "config:system:set overwritehost '--value=$hostname'",
 #            "config:system:set overwriteprotocol '--value=$protocol'",
 #            "config:system:set overwritewebroot '--value=$context'",
@@ -79,6 +81,7 @@ if( 'install' eq $operation ) {
     push @cmds, 'background:cron';
     push @cmds, 'app:disable updatenotification';
     push @cmds, 'config:app:set password_policy enforceNonCommonPassword --value 0';
+    push @cmds, 'maintenance:update:htaccess';
 
     my $out;
     my $err;

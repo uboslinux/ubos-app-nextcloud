@@ -1,0 +1,17 @@
+[Unit]
+Description=Nextcloud full-text search using Elasticsearch
+After=elasticsearch@%i.service
+
+[Service]
+ExecStartPre=/usr/share/ubos-admin/bin/ubos-service-prestart nextcloud-fulltextsearch-elasticsearch@%I
+ExecStopPost=/usr/share/ubos-admin/bin/ubos-service-poststop nextcloud-fulltextsearch-elasticsearch@%I
+
+Type=simple
+ExecStart=/ubos/share/nextcloud-fulltextsearch-elasticsearch/bin/index.pl -v start %i
+ExecStop=/ubos/share/nextcloud-fulltextsearch-elasticsearch/bin/index.pl stop %i
+
+Restart=always
+RestartSec=10
+
+[Install]
+WantedBy=multi-user.target

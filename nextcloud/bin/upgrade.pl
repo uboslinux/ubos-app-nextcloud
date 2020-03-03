@@ -11,12 +11,13 @@ use warnings;
 use UBOS::Logging;
 use UBOS::Utils;
 
-my $dir         = $config->getResolve( 'appconfig.apache2.dir' );
-my $datadir     = $config->getResolve( 'appconfig.datadir' ) . '/data';
-my $apacheUname = $config->getResolve( 'apache2.uname' );
-my $context     = $config->getResolve( 'appconfig.context' );
-my $hostname    = $config->getResolve( 'site.hostname' );
-my $protocol    = $config->getResolve( 'site.protocol' );
+my $dir            = $config->getResolve( 'appconfig.apache2.dir' );
+my $datadir        = $config->getResolve( 'appconfig.datadir' ) . '/data';
+my $apacheUname    = $config->getResolve( 'apache2.uname' );
+my $context        = $config->getResolve( 'appconfig.context' );
+my $contextOrSlash = $config->getResolve( 'appconfig.contextorslash' );
+my $hostname       = $config->getResolve( 'site.hostname' );
+my $protocol       = $config->getResolve( 'site.protocol' );
 
 my $ret = 1;
 
@@ -34,16 +35,24 @@ if( 'upgrade' eq $operation ) {
     push @cmds, 'db:add-missing-indices --no-interaction';
     push @cmds, 'maintenance:data-fingerprint';
 
+
     if( $hostname eq '*' ) {
+        # maintenance:update:htaccess needs a value, so we temporarily set one
+        push @cmds, "config:system:set overwrite.cli.url '--value=$protocol://localhost$context'";
+        push @cmds, 'maintenance:update:htaccess';
         push @cmds, 'config:system:delete overwrite.cli.url';
+
     } else {
         push @cmds, "config:system:set overwrite.cli.url '--value=$protocol://$hostname$context'";
             # Required so the social app has the correct values:
             # occ config:app:get social cloud_url and social_url
+        push @cmds, 'maintenance:update:htaccess';
     }
 
+    push @cmds, "config:system:set htaccess.RewriteBase '--value=$contextOrSlash'";
+        # See https://docs.nextcloud.com/server/18/admin_manual/configuration_server/config_sample_php_parameters.html
+
 # Apparently not needed:
-#                  "config:system:set htaccess.RewriteBase '--value=$context'",
 #                  "config:system:set overwritehost '--value=$hostname'",
 #                  "config:system:set overwriteprotocol '--value=$protocol'",
 #                  "config:system:set overwritewebroot '--value=$context'",

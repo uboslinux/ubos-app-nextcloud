@@ -1,0 +1,15 @@
+--- Compiler.php        2020-01-29 21:22:19.000000000 +0000
++++ Compiler.php.new    2020-02-11 22:04:59.379494145 +0000
+@@ -5227,7 +5227,11 @@
+             $start--;
+         }
+ 
+-        $end    = (int) $args[2][1];
++        if (isset($args[2])) {
++            $end = (int) $args[2][1];
++        } else {
++            $end = 0;
++        }
+         $length = $end < 0 ? $end + 1 : ($end > 0 ? $end - $start : $end);
+ 
+         $string[2] = $length

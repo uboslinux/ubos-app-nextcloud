@@ -56,7 +56,6 @@
                 {
                     "type" : "directorytree",
                     "names" : [
-                        ".htaccess",
                         ".user.ini",
                         "3rdparty",
                         "apps",
@@ -66,7 +65,6 @@
                         "ocs",
                         "ocs-provider",
                         "resources",
-                        "settings",
                         "themes",
                         "AUTHORS",
                         "console.php",
@@ -86,6 +84,14 @@
                     "gname" : "root",
                     "filepermissions" : "preserve",
                     "dirpermissions"  : "preserve"
+                },
+                {
+                    "type"   : "file",
+                    "name"   : ".htaccess",
+                    "source" : "nextcloud/.htaccess",
+                    "uname"  : "${apache2.uname}",
+                    "gname"  : "${apache2.gname}",
+                    "permissions" : "0644"
                 },
                 {
                     "type"  : "directory",
