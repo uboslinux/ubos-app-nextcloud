@@ -115,6 +115,10 @@
             "upgraders" : [
                 {
                     "type"   : "perlscript",
+                    "source" : "/ubos/share/nextcloud/bin/activate-app.pl"
+                },
+                {
+                    "type"   : "perlscript",
                     "source" : "/ubos/share/nextcloud-fulltextsearch-elasticsearch/bin/configure.pl"
                 }
             ]

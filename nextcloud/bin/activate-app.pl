@@ -19,7 +19,7 @@ $cmdPrefix .= ' occ';
 
 my $out;
 
-if( 'install' eq $operation ) {
+if( 'install' eq $operation || 'update' eq $operation ) {
 
     if( UBOS::Utils::myexec( "$cmdPrefix app:enable $appName", undef, \$out, \$out ) != 0 ) {
         error( "Activating Nextcloud app $appName failed:", $out );
