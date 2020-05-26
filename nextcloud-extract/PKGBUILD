@@ -2,7 +2,7 @@ developer=https://nextcloud.com/
 url=${developer}
 maintainer=http://indiecomputing.com/
 pkgname=$(basename $(pwd))
-pkgver=1.2.3
+pkgver=1.2.4
 pkgrel=1
 pkgdesc="The Nextcloud extract app"
 _app=nextcloud
@@ -14,7 +14,7 @@ releasepage=("https://apps.nextcloud.com/apps/${_acc}")
 depends=(
     'nextcloud')
 options=('!strip')
-sha512sums=('4d6bba6ca4cc93cba205c546b1253de0bcc0e9f8c68221ae3b2fa56997159bf242928a0cc24ebb14fef3d24cf56baa9d3b6494b1681482c84dc4c6577f836dcf')
+sha512sums=('a57529786638a0c89358cb0c7cdc70c8b508e94ada925c1894e76a6096b1547b5c52ae65c06d14c58eb62de846f1f8e0b3c7194e1fcd16fe7e0ef5251a10062c')
 
 package() {
 # Manifest
