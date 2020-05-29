@@ -29,7 +29,7 @@
             "nextcloud-notes",
             "nextcloud-onlyoffice",
             "nextcloud-passwords",
-            "nextcloud-social",
+#            "nextcloud-social",
             "nextcloud-socialsharing-email",
             "nextcloud-socialsharing-facebook",
             "nextcloud-socialsharing-twitter",

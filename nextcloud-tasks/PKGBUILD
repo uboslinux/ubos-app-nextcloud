@@ -2,19 +2,19 @@ developer=https://nextcloud.com/
 url=${developer}
 maintainer=http://indiecomputing.com/
 pkgname=$(basename $(pwd))
-pkgver=0.11.3
+pkgver=0.13.1
 pkgrel=1
 pkgdesc="Adds multi-user task management to Nextcloud"
 _app=nextcloud
 _acc=tasks
 arch=('any')
 license=("AGPL3")
-source=("${_acc}-${pkgver}.tar.gz::https://github.com/nextcloud/${_acc}/releases/download/${pkgver}/${_acc}.tar.gz")
+source=("${_acc}-${pkgver}.tar.gz::https://github.com/nextcloud/${_acc}/releases/download/v${pkgver}/${_acc}.tar.gz")
 releasepage=("https://apps.nextcloud.com/apps/${_acc}")
 depends=(
     'nextcloud')
 options=('!strip')
-sha512sums=('ce3bd5f0901eb46b7923b94b38f274379f0bbf751d32346f7f1a59da4fd4ee260e8161637df28a412f385831a1997fb2be2348e26a436106d75a4e99470a917d')
+sha512sums=('270aa046a949a73e76fbc1cb94a5e02a1948b5c584c4b542109b1badfb7aa98d73c63f6b6129f1199ee1537ffcb1366c1391bd178cb8e477094f58221fe2f85c')
 
 package() {
 # Manifest

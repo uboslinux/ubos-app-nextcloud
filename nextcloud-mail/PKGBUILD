@@ -2,7 +2,7 @@ developer=https://nextcloud.com/
 url=${developer}
 maintainer=http://indiecomputing.com/
 pkgname=$(basename $(pwd))
-pkgver=1.1.2
+pkgver=1.3.5
 pkgrel=1
 pkgdesc="The Nextcloud mail app"
 _app=nextcloud
@@ -14,7 +14,7 @@ releasepage=("https://apps.nextcloud.com/apps/${_acc}")
 depends=(
     'nextcloud')
 options=('!strip')
-sha512sums=('243fdf07b412e699d9db8357972fc02b86ef10ea217fb3728dbae48236822f4e291e8d69c740cd7af9efa67b17bdda7432ff9e316b6715abb390a225d4f5954d')
+sha512sums=('3a29b35815e16b9e912acf427f5f15e178879b8998d8b5acd0cf0e45e4821994f325542f6ca89f7cd68705ea83a3e32badfd8b84ba66efe4473fd988ed46ef13')
 
 package() {
 # Manifest
