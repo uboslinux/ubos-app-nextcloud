@@ -70,7 +70,7 @@ JSON
     $json    = <<JSON;
 {
     "elastic_host": "http:\/\/localhost:${port}\/",
-    "elastic_index": "nextcloud"
+    "elastic_index": "nextcloud-$appConfigId"
 }
 JSON
 

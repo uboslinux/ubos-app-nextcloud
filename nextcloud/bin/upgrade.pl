@@ -57,6 +57,7 @@ if( 'upgrade' eq $operation ) {
 #                  "config:system:set overwriteprotocol '--value=$protocol'",
 #                  "config:system:set overwritewebroot '--value=$context'",
     push @cmds, 'config:app:set password_policy enforceNonCommonPassword --value 0';
+    push @cmds, 'db:convert-filecache bigint --no-interaction';
 
     my $out;
     my $err;

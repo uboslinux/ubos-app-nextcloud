@@ -27,8 +27,14 @@ if( 'deploy' eq $operation || 'upgrade' eq $operation ) {
         }
     }
     unless( $keyStoreData ) {
-        if( UBOS::Utils::myexec( "systemctl start elasticsearch-keystore\@$appConfigId.service" )) {
-            error( "Failed to start elasticsearch-keystore\@$appConfigId.service" );
+        # Don't use elasticsearch-keystore@.service -- race condition
+        my $cmd  = 'sudo -u elasticsearch';
+        $cmd    .= " ES_PATH_CONF=/etc/elasticsearch/$appConfigId";
+        $cmd    .= ' /usr/share/elasticsearch/bin/elasticsearch-keystore create';
+
+        my $out;
+        if( UBOS::Utils::myexec( $cmd, undef, \$out, \$out )) {
+            error( 'Failed to create elasticsearch keystore for', $appConfigId, $out );
         }
     }
 }

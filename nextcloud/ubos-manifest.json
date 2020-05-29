@@ -10,6 +10,7 @@
                 "php-gd",
                 "php-imagick",
                 "php-systemd",
+                "smbclient",
                 "smtp-server"
             ],
             "apache2modules" : [
@@ -21,6 +22,7 @@
             ],
             "phpmodules" : [
                 "apcu",
+                "ftp",
                 "gd",
                 "iconv",
                 "imagick",

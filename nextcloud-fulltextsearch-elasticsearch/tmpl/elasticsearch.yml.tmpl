@@ -4,7 +4,7 @@
 #
 # Use a descriptive name for your cluster:
 #
-cluster.name: nextcloud-fulltextsearch-elasticsearch-${appconfig.appconfigid}
+cluster.name: ${package.name}-${appconfig.appconfigid}
 #
 # ------------------------------------ Node ------------------------------------
 #
@@ -24,7 +24,7 @@ path.data: ${appconfig.datadir}/fulltextsearch-elasticsearch
 #
 # Path to log files:
 #
-path.logs: /ubos/logs/nextcloud-fulltextsearch-elasticsearch-${appconfig.appconfigid}
+path.logs: /ubos/logs/${package.name}-${appconfig.appconfigid}
 #
 # ----------------------------------- Memory -----------------------------------
 #
