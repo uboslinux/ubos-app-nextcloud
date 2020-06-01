@@ -1,0 +1,43 @@
+{
+    "type"  : "accessory",
+
+    "accessoryinfo" : {
+        "appid"         : "nextcloud",
+        "accessoryid"   : "files_fulltextsearch",
+        "accessorytype" : "app"
+    },
+
+    "roles" : {
+        "apache2" : {
+            "appconfigitems" : [
+                {
+                    "type"         : "directorytree",
+                    "name"         : "apps/files_fulltextsearch",
+                    "source"       : "/ubos/share/nextcloud/apps/files_fulltextsearch",
+                    "uname"        : "http",
+                    "gname"        : "http"
+                }
+            ],
+            "installers" : [
+                {
+                    "type"   : "perlscript",
+                    "source" : "/ubos/share/nextcloud/bin/activate-app.pl"
+                },
+                {
+                    "type"   : "perlscript",
+                    "source" : "/ubos/share/nextcloud-files-fulltextsearch/bin/configure.pl"
+                }
+            ],
+            "upgraders" : [
+                {
+                    "type"   : "perlscript",
+                    "source" : "/ubos/share/nextcloud/bin/activate-app.pl"
+                },
+                {
+                    "type"   : "perlscript",
+                    "source" : "/ubos/share/nextcloud-files-fulltextsearch/bin/configure.pl"
+                }
+            ]
+        }
+    }
+}

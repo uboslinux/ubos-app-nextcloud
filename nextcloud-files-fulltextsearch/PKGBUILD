@@ -3,7 +3,7 @@ url=${developer}
 maintainer=http://indiecomputing.com/
 pkgname=$(basename $(pwd))
 pkgver=1.4.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Extension to the Nextcloud full text search app to index your users' files."
 _app=nextcloud
 _acc=files_fulltextsearch
@@ -18,9 +18,7 @@ sha512sums=('16dc844bc93d755560e769cbc498e9bcc4b773785ac81e233ba6f1c958bf275f1f6
 
 package() {
 # Manifest
-    mkdir -p -m 0755 ${pkgdir}/ubos/lib/ubos/manifests
-    sed -e "s!@ACCESSORYID@!$_acc!g" ${startdir}/../shared/ubos-manifest-accessory.tmpl.json > ${pkgdir}/ubos/lib/ubos/manifests/${pkgname}.json
-    chmod 0644 ${pkgdir}/ubos/lib/ubos/manifests/${pkgname}.json
+    install -D -m0644 ${startdir}/ubos-manifest.json ${pkgdir}/ubos/lib/ubos/manifests/${pkgname}.json
 
 # Icons
 #    install -D -m644 ${startdir}/appicons/{72x72,144x144}.png ${pkgdir}/ubos/http/_appicons/${pkgname}/
@@ -28,4 +26,5 @@ package() {
 # Code
     mkdir -p ${pkgdir}/ubos/share/${_app}/apps
     cp -dr --no-preserve=ownership ${srcdir}/${_acc} ${pkgdir}/ubos/share/${_app}/apps/
+    install -D -m0755 ${startdir}/bin/*.pl -t ${pkgdir}/ubos/share/${pkgname}/bin/
 }

@@ -3,7 +3,7 @@ url=${developer}
 maintainer=http://indiecomputing.com/
 pkgname=$(basename $(pwd))
 pkgver=1.4.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Core app of the full-text search framework for your Nextcloud."
 _app=nextcloud
 _acc=fulltextsearch
@@ -18,9 +18,7 @@ sha512sums=('43e6f6dcfa3950b08b606d456326db2f2f97816223351746f97e7393004a6c3485d
 
 package() {
 # Manifest
-    mkdir -p -m 0755 ${pkgdir}/ubos/lib/ubos/manifests
-    sed -e "s!@ACCESSORYID@!$_acc!g" ${startdir}/../shared/ubos-manifest-accessory.tmpl.json > ${pkgdir}/ubos/lib/ubos/manifests/${pkgname}.json
-    chmod 0644 ${pkgdir}/ubos/lib/ubos/manifests/${pkgname}.json
+    install -D -m0644 ${startdir}/ubos-manifest.json ${pkgdir}/ubos/lib/ubos/manifests/${pkgname}.json
 
 # Icons
 #    install -D -m644 ${startdir}/appicons/{72x72,144x144}.png ${pkgdir}/ubos/http/_appicons/${pkgname}/
@@ -28,4 +26,5 @@ package() {
 # Code
     mkdir -p ${pkgdir}/ubos/share/${_app}/apps
     cp -dr --no-preserve=ownership ${srcdir}/${_acc} ${pkgdir}/ubos/share/${_app}/apps/
+    install -D -m0755 ${startdir}/bin/*.pl -t ${pkgdir}/ubos/share/${pkgname}/bin/
 }

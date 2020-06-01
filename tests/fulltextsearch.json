@@ -1,0 +1,22 @@
+{
+   "hostname" : "ubos-dev",
+   "admin" : {
+      "username" : "admin",
+      "userid" : "admin",
+      "email" : "test@ubos.net",
+      "credential" : "qwerqwer"
+   },
+   "appconfigs" : [
+      {
+         "context" : "",
+         "appid" : "nextcloud",
+         "accessoryids" : [
+            "nextcloud-files-fulltextsearch",
+            "nextcloud-fulltextsearch",
+            "nextcloud-fulltextsearch-elasticsearch"
+         ],
+         "appconfigid" : "a4d2eb278a3290f7386c9b73fd426fc32d8029083"
+      }
+   ],
+   "siteid" : "sb799d016ea15c97d7f0d8cb198ad9ffb348204f5"
+}
