@@ -2,11 +2,11 @@ developer=https://nextcloud.com/
 url=${developer}
 maintainer=http://indiecomputing.com/
 pkgname=$(basename $(pwd))
-pkgver=0.1.7
+pkgver=3.7.3
 pkgrel=1
-pkgdesc="Nextcloud document server for onlyoffice"
+pkgdesc="Collabora Online"
 _app=nextcloud
-_acc=documentserver_community
+_acc=richdocuments
 arch=('any')
 license=("AGPL3")
 source=("${_acc}-${pkgver}.tar.gz::https://github.com/nextcloud/${_acc}/releases/download/v${pkgver}/${_acc}.tar.gz")
@@ -14,7 +14,7 @@ releasepage=("https://apps.nextcloud.com/apps/${_acc}")
 depends=(
     'nextcloud')
 options=('!strip')
-sha512sums=('b040a39389044d3f8d274f00571d582bf43dc1dc335154449ccce8bf23b51626e1ff7ccacc75fbf1888393fdff794f979b226d8d31a50670b63e15a88925c4f0')
+sha512sums=('0401529b8e31a10faa12a4e7de067ae770ef465f862227b8ca975ff9fed314a57cfc4049e8f3c89494fd1b32387b7aa818b01a727d5514c6556d5d64751e23af')
 
 package() {
 # Manifest
@@ -23,9 +23,10 @@ package() {
     chmod 0644 ${pkgdir}/ubos/lib/ubos/manifests/${pkgname}.json
 
 # Icons
-#    install -D -m644 ${startdir}/appicons/{72x72,144x144}.png ${pkgdir}/ubos/http/_appicons/${pkgname}/
+#    install -D -m0644 ${startdir}/appicons/{72x72,144x144}.png ${pkgdir}/ubos/http/_appicons/${pkgname}/
 
 # Code
     mkdir -p ${pkgdir}/ubos/share/${_app}/apps
+
     cp -dr --no-preserve=ownership ${srcdir}/${_acc} ${pkgdir}/ubos/share/${_app}/apps/
 }

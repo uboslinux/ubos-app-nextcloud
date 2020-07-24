@@ -2,8 +2,8 @@ developer=https://nextcloud.com/
 url=${developer}
 maintainer=http://indiecomputing.com/
 pkgname=$(basename $(pwd))
-pkgver=1.4.1
-pkgrel=2
+pkgver=1.4.2
+pkgrel=1
 pkgdesc="Core app of the full-text search framework for your Nextcloud."
 _app=nextcloud
 _acc=fulltextsearch
@@ -14,7 +14,7 @@ releasepage=("https://apps.nextcloud.com/apps/${_acc}")
 depends=(
     'nextcloud')
 options=('!strip')
-sha512sums=('43e6f6dcfa3950b08b606d456326db2f2f97816223351746f97e7393004a6c3485de9b2f8fc2546cf253c0619cd76a715e2e7e952797594334dea7994b2f65c7')
+sha512sums=('281371c52ea6898eb6a5bcae9ebb3e2741e96f7fc2d8916c2400a644a6f32b2ef8b451f03c4d53bc09770a6ae697ac2c84ac63c6a892e09b2c9a409135ad2ad5')
 
 package() {
 # Manifest
