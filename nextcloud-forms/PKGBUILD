@@ -1,0 +1,31 @@
+developer=https://nextcloud.com/
+url=${developer}
+maintainer=http://indiecomputing.com/
+pkgname=$(basename $(pwd))
+pkgver=2.0.1
+pkgrel=1
+pkgdesc="The Nextcloud forms app"
+_app=nextcloud
+_acc=forms
+arch=('any')
+license=("AGPL3")
+source=("${_acc}-${pkgver}.tar.gz::https://github.com/nextcloud/${_acc}/releases/download/v${pkgver}/${_acc}.tar.gz")
+releasepage=("https://apps.nextcloud.com/apps/${_acc}")
+depends=(
+    'nextcloud')
+options=('!strip')
+sha512sums=('8b07c665e134032d85cb09c199bdb33a0bf107aaf79119ccf661acceb7d37f76458e2debe4e165592c4d8957787aeac2c230cd7dda6eea63f936b0aeac985846')
+
+package() {
+# Manifest
+    mkdir -p -m 0755 ${pkgdir}/ubos/lib/ubos/manifests
+    sed -e "s!@ACCESSORYID@!$_acc!g" ${startdir}/../shared/ubos-manifest-accessory.tmpl.json > ${pkgdir}/ubos/lib/ubos/manifests/${pkgname}.json
+    chmod 0644 ${pkgdir}/ubos/lib/ubos/manifests/${pkgname}.json
+
+# Icons
+#    install -D -m644 ${startdir}/appicons/{72x72,144x144}.png ${pkgdir}/ubos/http/_appicons/${pkgname}/
+
+# Code
+    mkdir -p ${pkgdir}/ubos/share/${_app}/apps
+    cp -dr --no-preserve=ownership ${srcdir}/${_acc} ${pkgdir}/ubos/share/${_app}/apps/
+}
