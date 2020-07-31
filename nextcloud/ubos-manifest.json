@@ -25,6 +25,7 @@
                 "bcmath",
                 "ftp",
                 "gd",
+                "gmp",
                 "iconv",
                 "imagick",
                 "mysqli",
