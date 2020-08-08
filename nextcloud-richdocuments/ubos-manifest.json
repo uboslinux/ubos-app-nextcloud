@@ -1,0 +1,38 @@
+{
+    "type"  : "accessory",
+
+    "accessoryinfo" : {
+        "appids"        : [
+            "nextcloud",
+            "nextcloud18",
+            "nextcloud17",
+            "nextcloud16"
+        ],
+        "accessoryid"   : "richdocuments",
+        "accessorytype" : "app",
+        "requires" : [
+            "nextcloud-richdocumentscode"
+        ]
+    },
+
+    "roles" : {
+        "apache2" : {
+            "appconfigitems" : [
+                {
+                    "type"   : "directorytree",
+                    "name"   : "apps/richdocuments",
+                    "source" : "/ubos/share/nextcloud/apps/richdocuments",
+                    "uname"  : "http",
+                    "gname"  : "http"
+                }
+            ],
+            "installers" : [
+                {
+                    "type"   : "perlscript",
+                    "source" : "/ubos/share/nextcloud/bin/activate-app.pl"
+                }
+            ]
+        }
+    }
+}
+

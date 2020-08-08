@@ -184,5 +184,21 @@
                 }
             ]
         }
+    },
+    "customizationpoints" : {
+        "upload_max_filesize_mb" : {
+            "type"        : "integer",
+            "required"    : false,
+            "default" : {
+                "expression" : "512"
+            }
+        },
+        "memory_limit_mb" : {
+            "type"        : "integer",
+            "required"    : false,
+            "default" : {
+                "expression" : "512"
+            }
+        }
     }
 }

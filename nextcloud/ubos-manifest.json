@@ -186,22 +186,21 @@
                 }
             ]
         }
-    # },
-    # Not yet: see https://github.com/uboslinux/ubos-app-nextcloud/issues/69
-    # "customizationpoints" : {
-    #     "upload_max_filesize_mb" : {
-    #         "type"        : "integer",
-    #         "required"    : false,
-    #         "default" : {
-    #             "expression" : "512"
-    #         }
-    #     },
-    #     "memory_limit_mb" : {
-    #         "type"        : "integer",
-    #         "required"    : false,
-    #         "default" : {
-    #             "expression" : "512"
-    #         }
-    #     }
+    },
+    "customizationpoints" : {
+        "upload_max_filesize_mb" : {
+            "type"        : "integer",
+            "required"    : false,
+            "default" : {
+                "expression" : "512"
+            }
+        },
+        "memory_limit_mb" : {
+            "type"        : "integer",
+            "required"    : false,
+            "default" : {
+                "expression" : "512"
+            }
+        }
     }
 }
