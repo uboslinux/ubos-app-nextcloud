@@ -17,11 +17,11 @@
             "appconfigitems" : [
                 {
                     "type"         : "directory",
-                    "name"         : "${appconfig.datadir}"
+                    "name"         : "/ubos/lib/${package.name}/${appconfig.appconfigid}"
                 },
                 {
                     "type"         : "directory",
-                    "name"         : "${appconfig.datadir}/redis",
+                    "name"         : "/ubos/lib/${package.name}/${appconfig.appconfigid}/redis",
                     "uname"        : "http",
                     "gname"        : "http"
                 },
