@@ -1,0 +1,235 @@
+#!/usr/bin/perl
+#
+# Update nextcloud packages based on apps.json
+#
+
+use strict;
+use warnings;
+
+use Getopt::Long;
+use Scalar::Util qw(looks_like_number);
+use UBOS::Logging;
+use UBOS::Utils;
+
+my $verbose;
+my $logConfigFile;
+my $debug;
+my $help;
+my $appsJsonFile;
+my $dryRun;
+my $build;
+
+my $parseOk = GetOptions(
+        'verbose+'    => \$verbose,
+        'logConfig=s' => \$logConfigFile,
+        'debug'       => \$debug,
+        'h|help'      => \$help,
+        'appsjson=s'  => \$appsJsonFile,
+        'dry-run|n'   => \$dryRun,
+        'build'       => \$build );
+
+UBOS::Logging::initialize( 'update', undef, $verbose, $logConfigFile, $debug );
+
+if( $help ) {
+    synopsisHelpQuit();
+}
+
+my $upstreamJson;
+if( $appsJsonFile ) {
+    $upstreamJson = UBOS::Utils::readJsonFromFile( $appsJsonFile );
+    unless( $upstreamJson ) {
+        fatal( $@ );
+    }
+
+} else {
+    my $out;
+    if( UBOS::Utils::myexec( "curl -L --silent 'https://apps.nextcloud.com/api/v1/apps.json'", undef, \$out, \$out )) {
+        fatal( 'curl failed:', $out );
+    }
+    $upstreamJson = UBOS::Utils::readJsonFromString( $out );
+}
+my %upstreamTable = ();
+map { $upstreamTable{$_->{id}} = $_; } @$upstreamJson;
+
+my @pkgbuilds = glob( '*/PKGBUILD' );
+my %pkgInfo   = ();
+foreach my $pkgbuild ( @pkgbuilds ) {
+    my $dir = $pkgbuild;
+    $dir =~ s!/PKGBUILD$!!;
+
+    my $found = _readVarsFromPkgbuildIn( $dir );
+    if( $found && defined( $found->{_acc} )) {
+        # non-accessories, or cache-redis
+
+        $found->{_dir} = $dir; # add this
+        $pkgInfo{$found->{_acc}} = $found;
+    }
+}
+
+foreach my $accId ( sort keys %pkgInfo ) {
+    my $upstreamInfo = $upstreamTable{$accId};
+    unless( $upstreamInfo ) {
+        warning( 'No found info for:', $accId );
+        next;
+    }
+
+    my $accPkgInfo = $pkgInfo{$accId};
+    my $pkgVer     = $accPkgInfo->{pkgver};
+
+    my $upstreamMaxVer = _findMaxVersion( $accId, $upstreamInfo->{releases} );
+    trace( 'Found', $accId, 'in UBOS version', $pkgVer, 'and most recent upstream version', $upstreamMaxVer );
+
+    # print( "XXX from upstream " . join( ' ', map { $_->{version}} @{$upstreamInfo->{releases}} ) . "\n" );
+
+    if( $pkgVer ne $upstreamMaxVer ) {
+        info( 'Updating', $accId );
+
+        unless( $dryRun ) {
+            my $dir      = $accPkgInfo->{_dir};
+            my $pkgbuild = UBOS::Utils::slurpFile( "$dir/PKGBUILD" );
+            unless( $pkgbuild ) {
+                error( $@ );
+                next;
+            }
+            $pkgbuild =~ s!^pkgver=.*$!pkgver=$upstreamMaxVer!m;
+            $pkgbuild =~ s!^pkgrel=.*$!pkgrel=1!m;
+
+            unless( UBOS::Utils::saveFile( "$dir/PKGBUILD", $pkgbuild )) {
+                error( $@ );
+            }
+
+            my $out;
+            if( UBOS::Utils::myexec( "cd $dir; makepkg -g", undef, \$out, \$out )) {
+                error( 'makepkg -g failed', $out );
+                next;
+            }
+            # sha512sums=('92ec219acc9934b104b6d8d4a28191094b9d6e634568a98c105b2792af2294553c6e75511cb0ddeb3cc6141e1685eb2b8801dc09c940f986eb81a21204904f42')
+
+            if( $out =~ m!(sha\d\d\dsums=\([^)]+\))! ) {
+                my $new = $1;
+
+                unless( $pkgbuild =~ s!sha\d\d\dsums=\([^)]+\)!$new! ) {
+                    error( 'Failed to replace shaXXXsums line in', "$dir/PKGBUILD" );
+                    next;
+                }
+
+                unless( UBOS::Utils::saveFile( "$dir/PKGBUILD", $pkgbuild )) {
+                    error( $@ );
+                }
+            }
+        }
+    }
+}
+
+sub synopsisHelpQuit {
+    print <<END;
+$0 [--verbose] [--logConfig <file>] [--appsjson <file>] [--dry-run|n] [--build]
+END
+    exit( 0 );
+}
+
+sub _findMaxVersion {
+    my $accId        = shift;
+    my $releaseJsons = shift;
+
+    my @bestParsed = ();
+
+    foreach my $releaseInfo ( @$releaseJsons ) {
+        my $version = $releaseInfo->{version};
+
+        my @foundParsed = split( /\./, $version );
+
+        OUTER:
+        for( my $i=0 ; $i < _max( 0 + @bestParsed, 0 + @foundParsed ) ; ++$i ) {
+            if( $i >= @bestParsed ) {
+                foreach my $component ( @foundParsed ) {
+                    unless( looks_like_number( $component )) {
+                        next OUTER;
+                    }
+                }
+                @bestParsed = @foundParsed;
+                last;
+            }
+            if( $i >= @foundParsed ) {
+                #what we have is better than this, because it's longer.
+                last;
+            }
+            if( looks_like_number( $foundParsed[$i] )) {
+                if( $foundParsed[$i] > $bestParsed[$i] ) {
+                    @bestParsed = @foundParsed;
+                    last;
+
+                } elsif( $foundParsed[$i] < $bestParsed[$i] ) {
+                    last; # too far
+
+                } # else continue
+            } else {
+                warning( 'Ignoring non-numeric version for accessory', $accId, ':', $version );
+            }
+        }
+    }
+
+    return join( '.', @bestParsed );
+}
+
+##
+# Helper to read key variables from a PKGBUILD file
+# $pkgBuildDir: the directory that contains the PKGBUILD file
+# return: name-value pairs, or undef
+sub _readVarsFromPkgbuildIn {
+    my $pkgBuildDir = shift;
+    my $pkgBuild    = "$pkgBuildDir/PKGBUILD";
+
+    unless( -r $pkgBuild ) {
+        error( 'Cannot read', $pkgBuild );
+        return undef;
+    }
+
+    my $script = <<'END';
+. PKGBUILD
+echo pkgname: ${pkgname[@]}
+echo pkgrel: ${pkgrel}
+echo pkgver: ${pkgver}
+echo _acc: ${_acc}
+
+END
+
+    my $out;
+    # This must be executed in the correct directory, because PKGBUILD may contain ${dirname}
+    if( UBOS::Utils::myexec( "cd '$pkgBuildDir'; /bin/bash", $script, \$out )) {
+        error( 'Executing PKGBUILD failed:', $pkgBuild );
+        return undef;
+    }
+
+    my $ret = {};
+    foreach my $line ( split /\n/, $out ) {
+        if( $line =~ m!^([_a-z]+)\s*:\s*(.*)$! ) {
+            my( $key, $value ) = ( $1, $2 );
+            $value =~ s!^\s+!!;
+            $value =~ s!\s+$!!;
+            if( !$value ) {
+                $ret->{$key} = undef;
+
+            } elsif( $value =~ m!\s+! ) {
+                # list
+                $ret->{$key} = [ split( /\s+/, $value ) ];
+
+            } else {
+                $ret->{$key} = $value;
+            }
+        } else {
+            warning( 'Ignoring PKGBUILD read by _readVarsFromPkgbuildIn line in', $pkgBuild, ':', $line );
+        }
+    }
+
+    return $ret;
+}
+
+sub _max {
+    my $a = shift;
+    my $b = shift;
+
+    return ( $a > $b ) ? $a : $b;
+}
+
+1;
