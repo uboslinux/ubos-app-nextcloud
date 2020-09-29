@@ -14,7 +14,7 @@ depends=(
     'php-systemd'
     'smtp-server')
 options=('!strip')
-sha512sums=('62dc2100e42e7bc1b112efda756a6a8d1dc5d818e3287041d56fbc05ab90f04b2545320715ea39e9018abbe9f9297a02d2432e55720da3fd0b59badf263e8575')
+sha512sums=('8f5dd0941114819a5ebd6e3da2e7cbaaa7a7ae9adbb44d62cdfb2202d266c576e05ef5ec8b6c25b21a88c5a48df26bfb15d60dfd63a2b5443bac3f9b063504a6')
 
 package() {
 # Manifest

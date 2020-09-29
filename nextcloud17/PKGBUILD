@@ -14,7 +14,7 @@ depends=(
     'php-systemd'
     'smtp-server')
 options=('!strip')
-sha512sums=('c9a711fb1ad6871233fea581d6cbfe7083e925683235a86023842d3c9d65db6779218bce06c5960743fb277bb779c6cad4eb40eca65ade9e50f8459cbee531c3')
+sha512sums=('ba1759baf9a886f7cebc738d863bd1930048f395960a888b3bbfe21b51cc6880c3b72a5400d104549b8563738dff747f34b806dcd5bbf85a6ef3874c4d576d15')
 
 prepare() {
     # Patches to make work with PHP 7.4
