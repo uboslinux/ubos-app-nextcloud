@@ -2,8 +2,8 @@ developer=https://nextcloud.com/
 url=${developer}
 maintainer=http://indiecomputing.com/
 pkgname=$(basename $(pwd))
-pkgver=3.7.3
-pkgrel=2
+pkgver=3.7.4
+pkgrel=1
 pkgdesc="Collabora Online"
 _app=nextcloud
 _acc=richdocuments
@@ -14,7 +14,7 @@ releasepage=("https://apps.nextcloud.com/apps/${_acc}")
 depends=(
     'nextcloud')
 options=('!strip')
-sha512sums=('0401529b8e31a10faa12a4e7de067ae770ef465f862227b8ca975ff9fed314a57cfc4049e8f3c89494fd1b32387b7aa818b01a727d5514c6556d5d64751e23af')
+sha512sums=('4a710a3a76f9f1329cdad67929fbffed224e2832b8ad6f808ae6b9ff33d15bf02f862239f3ad794bee1ca72ebc271dd1522fe2efdf7390c57ddc4431e4f57240')
 
 package() {
 # Manifest

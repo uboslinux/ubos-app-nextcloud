@@ -2,7 +2,7 @@ developer=https://nextcloud.com/
 url=${developer}
 maintainer=http://indiecomputing.com/
 pkgname=$(basename $(pwd))
-pkgver=0.13.2
+pkgver=0.13.3
 pkgrel=1
 pkgdesc="Adds multi-user task management to Nextcloud"
 _app=nextcloud
@@ -14,7 +14,7 @@ releasepage=("https://apps.nextcloud.com/apps/${_acc}")
 depends=(
     'nextcloud')
 options=('!strip')
-sha512sums=('565b65941e1d6ab78a1158983941ed139e89286ce929149bbd99a19c212c2b7b4c0a225139c87ee4823aae5239fc2cb8fda8539d719d7186789b71cb4d769e84')
+sha512sums=('f5f0f367b6ee18f38fef17b267f2f0ae44833f135e80d7a2bd1149940ba89b5630335f773d40ef1da8fe4499906dcae3435bfe760aea32d701fa8a4e9e17e37c')
 
 package() {
 # Manifest

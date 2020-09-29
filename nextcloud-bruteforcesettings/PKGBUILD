@@ -2,7 +2,7 @@ developer=https://nextcloud.com/
 url=${developer}
 maintainer=http://indiecomputing.com/
 pkgname=$(basename $(pwd))
-pkgver=1.6.0
+pkgver=2.0.1
 pkgrel=1
 pkgdesc="The Nextcloud bruteforce settings app"
 _app=nextcloud
@@ -14,7 +14,7 @@ releasepage=("https://apps.nextcloud.com/apps/${_acc}")
 depends=(
     'nextcloud')
 options=('!strip')
-sha512sums=('c920860095a4fb203a31ed3675668ca5c7391c24799c547926a4ea1c677b7c3650e89926bb0c4bdfca40e72a878b20a5abea12499b901df2a493a86aa1b85386')
+sha512sums=('5627ba804466cc9a1ff36ae3459abf06191270078a5c4f84e71842d401110e1260399eca20c93a2e9f24a3b7f5ef46f99a827122cc6a36e3d2b4c7553d6dcca2')
 
 package() {
 # Manifest
