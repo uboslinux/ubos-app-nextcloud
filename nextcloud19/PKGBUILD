@@ -2,8 +2,8 @@ developer=https://nextcloud.com/
 url=${developer}
 maintainer=http://indiecomputing.com/
 pkgname=$(basename $(pwd))
-pkgver=17.0.10
-pkgrel=1
+pkgver=19.0.4
+pkgrel=2
 pkgdesc="A safe home for all your data"
 arch=('any')
 license=("AGPL3")
@@ -14,15 +14,7 @@ depends=(
     'php-systemd'
     'smtp-server')
 options=('!strip')
-sha512sums=('331d8ed7ff0e78bbaa457f880384c423ef0afd55d085fd3e28825abeb326aeae360daa894585f1b574d013fb1022caa42c32a477a5b70bcc09207b1925c0a371')
-
-prepare() {
-    # Patches to make work with PHP 7.4
-    ( cd ${srcdir}/nextcloud/lib                              ; patch < ../../../versioncheck.patch )
-    ( cd ${srcdir}/nextcloud/lib/private/Log                  ; patch < ../../../../../exception-serializer.patch )
-    ( cd ${srcdir}/nextcloud/lib/private/AppFramework/Utility ; patch < ../../../../../../reflectiontype.patch )
-    ( cd ${srcdir}/nextcloud/3rdparty/leafo/scssphp/src       ; patch < ../../../../../../compiler.patch )
-}
+sha512sums=('e128397ebe67c70f6ce2846f12f43a4927a1ef48ba69799494f10e7a4481c578239c7f6442b5310d8fba42779b619603e1044bed044b322dce363d3eceaef7a9')
 
 package() {
 # Manifest
@@ -32,7 +24,7 @@ package() {
     install -D -m0644 ${startdir}/appicons/{72x72,144x144}.png -t ${pkgdir}/ubos/http/_appicons/${pkgname}/
 
 # Systemd
-    install -D -m0644 ${startdir}/systemd/nextcloud17@.timer -t ${pkgdir}/etc/systemd/system/
+    install -D -m0644 ${startdir}/systemd/nextcloud19@.timer -t ${pkgdir}/etc/systemd/system/
 
 # Data
     mkdir -p ${pkgdir}/ubos/lib/${pkgname}

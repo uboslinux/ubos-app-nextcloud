@@ -2,7 +2,7 @@ developer=https://nextcloud.com/
 url=${developer}
 maintainer=http://indiecomputing.com/
 pkgname=$(basename $(pwd))
-pkgver=3.3.0
+pkgver=3.4.0
 pkgrel=1
 pkgdesc="The Nextcloud contacts app"
 _app=nextcloud
@@ -14,7 +14,7 @@ releasepage=("https://apps.nextcloud.com/apps/${_acc}")
 depends=(
     'nextcloud')
 options=('!strip')
-sha512sums=('83c1c1743fac91834620f7d965ecfbe7119c37950cf351cb9069dc1a5c952b3326e3107b667664b01a124aa13cfc6f06f93ab3d125f4c7354184222a663046b2')
+sha512sums=('f50819f3f3a22326e6b9e27a9e3f6b4971eed185e87dbb0b429312ab5027a70323c8f28372bc6079f54e2205e12cca77d4e2ccea33d2a595d5ce615809318a63')
 
 package() {
 # Manifest
