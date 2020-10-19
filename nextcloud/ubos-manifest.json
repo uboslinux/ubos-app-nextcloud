@@ -30,6 +30,7 @@
                 "imagick",
                 "mysqli",
                 "pdo_mysql",
+                "smbclient",
                 "systemd"
             ],
 

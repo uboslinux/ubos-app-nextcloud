@@ -3,7 +3,7 @@ url=${developer}
 maintainer=http://indiecomputing.com/
 pkgname=$(basename $(pwd))
 pkgver=20.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A safe home for all your data"
 arch=('any')
 license=("AGPL3")
@@ -11,6 +11,7 @@ source=("https://download.nextcloud.com/server/releases/nextcloud-${pkgver}.tar.
 releasepage=('https://nextcloud.com/changelog/')
 depends=(
     'php'
+    'php-smbclient'
     'php-systemd'
     'smtp-server')
 options=('!strip')
