@@ -2,8 +2,8 @@ developer=https://nextcloud.com/
 url=${developer}
 maintainer=http://indiecomputing.com/
 pkgname=$(basename $(pwd))
-pkgver=1.5.2
-pkgrel=2
+pkgver=2.0.0
+pkgrel=1
 pkgdesc="Extension to the Nextcloud full text search app to communicate with ElasticSearch"
 _app=nextcloud
 _acc=fulltextsearch_elasticsearch
@@ -17,8 +17,8 @@ depends=(
     'elasticsearch-ingest-attachment'
     'jre11-openjdk-headless' )
 options=('!strip')
-sha512sums=('598f1761f720fc7e214730a9e1696d94fec18b5672ad48943459c7a0ad39f94970ea4ae45f9a2d580983c67f151477b23015fb3a72bf9ad49ebbe9b8ba6fa4ad')
 install=install
+sha512sums=('fad2a2aa9109aa8c564dbcc4a934f8eb34c6944d655972be1af7869f85ba91867c08dcc3fb3d1bd21b17c0b537a051f19ac3f364d5d4bc5bf5b459984f339175')
 
 package() {
 # Manifest

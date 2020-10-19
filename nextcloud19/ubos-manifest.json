@@ -9,7 +9,9 @@
                 "php-apcu",
                 "php-gd",
                 "php-imagick",
-                "php-systemd"
+                "php-systemd",
+                "smbclient",
+                "smtp-server"
             ],
             "apache2modules" : [
                 "env",
@@ -20,7 +22,10 @@
             ],
             "phpmodules" : [
                 "apcu",
+                "bcmath",
+                "ftp",
                 "gd",
+                "gmp",
                 "iconv",
                 "imagick",
                 "mysqli",
@@ -41,7 +46,7 @@
                     "location" : "${appconfig.context}/remote.php/dav/"
                 },
                 "webfinger" : {
-                    "proxy" : "${site.protocol}://${site.hostname}${appconfig.context}/public.php?service=webfinger"
+                    "proxy" : "${site.protocol}://${site.hostnameorlocalhost}${appconfig.context}/public.php?service=webfinger"
                 },
                 "host-meta" : {
                     "location" : "${appconfig.context}/public.php?service=host-meta"
@@ -55,7 +60,6 @@
                 {
                     "type" : "directorytree",
                     "names" : [
-                        ".htaccess",
                         ".user.ini",
                         "3rdparty",
                         "apps",
@@ -65,7 +69,6 @@
                         "ocs",
                         "ocs-provider",
                         "resources",
-                        "settings",
                         "themes",
                         "AUTHORS",
                         "console.php",
@@ -85,6 +88,14 @@
                     "gname" : "root",
                     "filepermissions" : "preserve",
                     "dirpermissions"  : "preserve"
+                },
+                {
+                    "type"   : "file",
+                    "name"   : ".htaccess",
+                    "source" : "nextcloud/.htaccess",
+                    "uname"  : "${apache2.uname}",
+                    "gname"  : "${apache2.gname}",
+                    "permissions" : "0644"
                 },
                 {
                     "type"  : "directory",
@@ -130,12 +141,16 @@
                 {
                     "type"         : "file",
                     "name"         : "/etc/systemd/system/nextcloud@${appconfig.appconfigid}.service",
-                    "template"     : "tmpl/nextcloud16@.service.tmpl",
+                    "template"     : "tmpl/nextcloud19@.service.tmpl",
                     "templatelang" : "varsubst"
                 },
                 {
                     "type"         : "systemd-timer",
-                    "name"         : "nextcloud16@${appconfig.appconfigid}"
+                    "name"         : "nextcloud19@${appconfig.appconfigid}"
+                },
+                {
+                    "type" : "systemd-service",
+                    "name" : "smtp-server@${appconfig.appconfigid}"
                 }
             ],
             "installers" : [
@@ -170,6 +185,22 @@
                     "charset"    : "utf8mb4"
                 }
             ]
+        }
+    },
+    "customizationpoints" : {
+        "upload_max_filesize_mb" : {
+            "type"        : "integer",
+            "required"    : false,
+            "default" : {
+                "expression" : "512"
+            }
+        },
+        "memory_limit_mb" : {
+            "type"        : "integer",
+            "required"    : false,
+            "default" : {
+                "expression" : "512"
+            }
         }
     }
 }

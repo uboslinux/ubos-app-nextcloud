@@ -2,8 +2,8 @@ developer=https://nextcloud.com/
 url=${developer}
 maintainer=http://indiecomputing.com/
 pkgname=$(basename $(pwd))
-pkgver=17.0.8
-pkgrel=2
+pkgver=17.0.10
+pkgrel=1
 pkgdesc="A safe home for all your data"
 arch=('any')
 license=("AGPL3")
@@ -14,7 +14,7 @@ depends=(
     'php-systemd'
     'smtp-server')
 options=('!strip')
-sha512sums=('c9a711fb1ad6871233fea581d6cbfe7083e925683235a86023842d3c9d65db6779218bce06c5960743fb277bb779c6cad4eb40eca65ade9e50f8459cbee531c3')
+sha512sums=('331d8ed7ff0e78bbaa457f880384c423ef0afd55d085fd3e28825abeb326aeae360daa894585f1b574d013fb1022caa42c32a477a5b70bcc09207b1925c0a371')
 
 prepare() {
     # Patches to make work with PHP 7.4

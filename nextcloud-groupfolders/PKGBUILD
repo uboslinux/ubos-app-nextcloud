@@ -2,19 +2,19 @@ developer=https://nextcloud.com/
 url=${developer}
 maintainer=http://indiecomputing.com/
 pkgname=$(basename $(pwd))
-pkgver=6.0.6
+pkgver=8.1.0
 pkgrel=1
 pkgdesc="The Nextcloud group folders app"
 _app=nextcloud
 _acc=groupfolders
 arch=('any')
 license=("AGPL3")
-source=("${_acc}-${pkgver}.tar.gz::https://github.com/nextcloud/${_acc}/releases/download/v${pkgver}/${_acc}.tar.gz")
+source=("${_acc}-${pkgver}.tar.gz::https://github.com/nextcloud/${_acc}/releases/download/v${pkgver}/${_acc}-${pkgver}.tar.gz")
 releasepage=("https://apps.nextcloud.com/apps/${_acc}")
 depends=(
     'nextcloud')
 options=('!strip')
-sha512sums=('8b07c665e134032d85cb09c199bdb33a0bf107aaf79119ccf661acceb7d37f76458e2debe4e165592c4d8957787aeac2c230cd7dda6eea63f936b0aeac985846')
+sha512sums=('fabb750cfcff1e18e5f9d4ca2a8f656a717afdd1259233e0b103be555fd05289d214ac817b86580f439e64b725893b579aaf9566c5dc1e57c7794eb1fa1e71d1')
 
 package() {
 # Manifest

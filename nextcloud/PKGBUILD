@@ -2,8 +2,8 @@ developer=https://nextcloud.com/
 url=${developer}
 maintainer=http://indiecomputing.com/
 pkgname=$(basename $(pwd))
-pkgver=19.0.1
-pkgrel=3
+pkgver=20.0.0
+pkgrel=2
 pkgdesc="A safe home for all your data"
 arch=('any')
 license=("AGPL3")
@@ -11,10 +11,11 @@ source=("https://download.nextcloud.com/server/releases/nextcloud-${pkgver}.tar.
 releasepage=('https://nextcloud.com/changelog/')
 depends=(
     'php'
+    'php-smbclient'
     'php-systemd'
     'smtp-server')
 options=('!strip')
-sha512sums=('aa4db108bff2b452123e5513bde03fe4c2f1da58c1987d74a246a69714fedf121ca9ed6151609d87c91dd6109419b764ba02c5c3c1669c5ddd5a49118e68f0c0')
+sha512sums=('45f50a9922831f2170c5cbd94bc9e7c144d4a7a6635b044a306ddc685d5dec733c52a63737c6b15b63918ee67149de9ea9a53337eeaf2e0a9007d8f248759405')
 
 package() {
 # Manifest

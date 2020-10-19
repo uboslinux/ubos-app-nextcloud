@@ -2,7 +2,7 @@ developer=https://nextcloud.com/
 url=${developer}
 maintainer=http://indiecomputing.com/
 pkgname=$(basename $(pwd))
-pkgver=0.1.4
+pkgver=0.1.7
 pkgrel=1
 pkgdesc="Nextcloud Auto Mail Accounts"
 _app=nextcloud
@@ -14,7 +14,7 @@ releasepage=("https://apps.nextcloud.com/apps/${_acc}")
 depends=(
     'nextcloud')
 options=('!strip')
-sha512sums=('49d6b9deba089bc27b1f953836cf1eed4c33a12484350f42289e6449a37cf6ba2a990e4f2efe02b4ea7f64f7032dffa8bde601ad7c8d17fb26f1c17d92d11d6c')
+sha512sums=('0ea73d29a40cb724c673a51128d34a6f1ff4f0d9f10f3573cba4367d2a07fef4e8f986e07c8d494a4503b5fe7cc8157a30e6618e7d1021bc31f3e126d40338fa')
 
 package() {
 # Manifest

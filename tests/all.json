@@ -17,7 +17,7 @@
             "nextcloud-documentserver-community",
             "nextcloud-extract",
             "nextcloud-files-fulltextsearch",
-            "nextcloud-files-rightclick",
+            "nextcloud-forms",
             "nextcloud-fulltextsearch-elasticsearch",
             "nextcloud-fulltextsearch",
             "nextcloud-group-everyone",
@@ -29,13 +29,14 @@
             "nextcloud-notes",
             "nextcloud-onlyoffice",
             "nextcloud-passwords",
-#            "nextcloud-social",
+            "nextcloud-richdocuments",
+            "nextcloud-richdocumentscode",
+            "nextcloud-social",
             "nextcloud-socialsharing-email",
             "nextcloud-socialsharing-facebook",
             "nextcloud-socialsharing-twitter",
             "nextcloud-spreed",
             "nextcloud-tasks",
-            "nextcloud-text",
             "nextcloud-twofactor-totp"
          ]
       }
