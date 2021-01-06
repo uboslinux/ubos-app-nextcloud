@@ -1,5 +1,5 @@
 [Unit]
-Description=Advanced key-value store, configured as Nextcloud Cache
+Description=Redis Cache for Nextcloud
 After=network.target
 
 [Service]
