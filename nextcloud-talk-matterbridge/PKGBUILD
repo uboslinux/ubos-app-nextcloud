@@ -1,0 +1,32 @@
+developer=https://nextcloud.com/
+url=${developer}
+maintainer=http://indiecomputing.com/
+pkgname=$(basename $(pwd))
+pkgver=1.21.0
+pkgrel=1
+pkgdesc="Nextcloud Taslk Matterbridge"
+_app=nextcloud
+_acc=talk_matterbridge
+arch=('any')
+license=("Apache2.0")
+source=("${_acc}-${pkgver}.tar.gz::https://github.com/nextcloud/${_acc}/releases/download/v${pkgver}/${_acc}.tar.gz")
+releasepage=("https://apps.nextcloud.com/apps/${_acc}")
+depends=(
+    'nextcloud')
+options=('!strip')
+sha512sums=('175dc7ef38f081a79efc118c67651542c123ad4f729482f8af3687a4ad16b1bc7fa2ea2d9008e951c316521f641ba0db693508ed116e46a56813a065496542d7')
+
+package() {
+# Manifest
+    mkdir -p -m 0755 ${pkgdir}/ubos/lib/ubos/manifests
+    sed -e "s!@ACCESSORYID@!$_acc!g" ${startdir}/../shared/ubos-manifest-accessory.tmpl.json > ${pkgdir}/ubos/lib/ubos/manifests/${pkgname}.json
+    chmod 0644 ${pkgdir}/ubos/lib/ubos/manifests/${pkgname}.json
+
+# Icons
+#    install -D -m644 ${startdir}/appicons/{72x72,144x144}.png ${pkgdir}/ubos/http/_appicons/$pkgname/
+
+# Code
+    mkdir -p ${pkgdir}/ubos/share/${_app}/apps
+
+    cp -dr --no-preserve=ownership ${srcdir}/${_acc} ${pkgdir}/ubos/share/${_app}/apps/
+}
