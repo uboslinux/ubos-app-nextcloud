@@ -33,6 +33,9 @@ my $command     = $ARGV[0];
 my $appConfigId = $ARGV[1];
 
 my $appConfig = UBOS::Host::findAppConfigurationById( $appConfigId );
+unless( $appConfig ) {
+    fatal( 'Failed to find AppConfiguration', $appConfigId );
+}
 my $dir       = $appConfig->vars()->getResolve( 'appconfig.apache2.dir' );
 
 my $cmdPrefix = "cd $dir; sudo -u http php";

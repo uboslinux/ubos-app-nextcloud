@@ -2,7 +2,7 @@ developer=https://nextcloud.com/
 url=${developer}
 maintainer=http://indiecomputing.com/
 pkgname=$(basename $(pwd))
-pkgver=4.2.800
+pkgver=6.4.203
 pkgrel=1
 pkgdesc="Collabora Online - Built-in CODE Server"
 _app=nextcloud
@@ -14,7 +14,7 @@ releasepage=("https://apps.nextcloud.com/apps/${_acc}")
 depends=(
     'nextcloud')
 options=('!strip')
-sha512sums=('3d12bfa2652355a021365bda72bd496017bfc20452585464b57f40845e4f706280833fc5a358f4bb8c9c1d2824ab7ff9ceac4ec6382ec2ba93c7aa3cf5a54ea1')
+sha512sums=('576c6aec4f3924011942f2fe60e623f6f4c4e31901a69030529081d77c6b2af411fa33f31e80c6aff8f60feb8811d0cbbcf0e20d55f2ce0430d5a97a8b33c556')
 
 package() {
 # Manifest
