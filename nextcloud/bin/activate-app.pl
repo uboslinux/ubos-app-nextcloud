@@ -23,7 +23,11 @@ if( 'install' eq $operation || 'upgrade' eq $operation ) {
 
     if( UBOS::Utils::myexec( "$cmdPrefix app:enable $appName", undef, \$out, \$out ) != 0 ) {
         if( $out =~ m!not compatible with this version! ) {
-            info( "Not automatically activating Nextcloud app $appName because it has not been tested with this version of Nextcloud" );
+            if( UBOS::Logging::isTraceActive() ) {
+                warning( "Not automatically activating Nextcloud app $appName because it has not been tested with this version of Nextcloud:", $out );
+            } else {
+                warning( "Not automatically activating Nextcloud app $appName because it has not been tested with this version of Nextcloud" );
+            }
         } else {
             error( "Activating Nextcloud app $appName failed:", $out );
         }
