@@ -3,7 +3,7 @@ url=${developer}
 maintainer=http://indiecomputing.com/
 pkgname=$(basename $(pwd))
 pkgver=20.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Extension to the Nextcloud full text search app to communicate with ElasticSearch"
 _app=nextcloud
 _acc=fulltextsearch_elasticsearch
@@ -19,6 +19,11 @@ depends=(
 options=('!strip')
 install=install
 sha512sums=('d921e47286c0884bb99fb15dc08975bf322b01fdc0605484efbf4e3c3fb57b88112524028be4553645f977b5262108738be0a06f160e0b1d3067c2c6072050bd')
+
+prepare() {
+   pwd
+   patch -p1 < ../symphony-return-int.patch
+}
 
 package() {
 # Manifest
