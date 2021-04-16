@@ -32,7 +32,10 @@ if( 'upgrade' eq $operation ) {
     my @cmds = ();
     push @cmds, 'maintenance:mimetype:update-db';
     push @cmds, 'maintenance:mimetype:update-js';
+    push @cmds, 'config:system:set allow_local_remote_servers --type boolean --value true';
+    push @cmds, 'db:add-missing-columns';
     push @cmds, 'db:add-missing-indices --no-interaction';
+    push @cmds, 'db:add-missing-primary-keys';
     push @cmds, 'maintenance:data-fingerprint';
 
 

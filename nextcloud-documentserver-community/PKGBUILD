@@ -2,7 +2,7 @@ developer=https://nextcloud.com/
 url=${developer}
 maintainer=http://indiecomputing.com/
 pkgname=$(basename $(pwd))
-pkgver=0.1.8
+pkgver=0.1.9
 pkgrel=1
 pkgdesc="Nextcloud document server for onlyoffice"
 _app=nextcloud
@@ -14,7 +14,7 @@ releasepage=("https://apps.nextcloud.com/apps/${_acc}")
 depends=(
     'nextcloud')
 options=('!strip')
-sha512sums=('06bdafaab1aa4e47e442f84ea706091b6b23fbd805b9252c5c91928fdf15b5c30b4860aa5eed8821aaec68f1213b87ab821e96c43875550526b9ba7940ebacf8')
+sha512sums=('bd130a5d88c1e8a16afdc4a2bb2a106753020136d9491d7b2904a10bb85e08a49bb1ecbf5b0b6542d1bc7d7b30fbe00b36d269ef0581db858912617192ff8e0c')
 
 package() {
 # Manifest

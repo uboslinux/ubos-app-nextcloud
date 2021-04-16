@@ -22,12 +22,15 @@
             ],
             "phpmodules" : [
                 "apcu",
+                "bcmath",
                 "ftp",
                 "gd",
+                "gmp",
                 "iconv",
                 "imagick",
                 "mysqli",
                 "pdo_mysql",
+                "smbclient",
                 "systemd"
             ],
 
@@ -138,13 +141,13 @@
                 },
                 {
                     "type"         : "file",
-                    "name"         : "/etc/systemd/system/nextcloud18@${appconfig.appconfigid}.service",
-                    "template"     : "tmpl/nextcloud18@.service.tmpl",
+                    "name"         : "/etc/systemd/system/nextcloud20@${appconfig.appconfigid}.service",
+                    "template"     : "tmpl/nextcloud20@.service.tmpl",
                     "templatelang" : "varsubst"
                 },
                 {
                     "type"         : "systemd-timer",
-                    "name"         : "nextcloud18@${appconfig.appconfigid}"
+                    "name"         : "nextcloud20@${appconfig.appconfigid}"
                 },
                 {
                     "type" : "systemd-service",

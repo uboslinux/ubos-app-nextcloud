@@ -22,7 +22,7 @@ if( 'install' eq $operation || 'upgrade' eq $operation ) {
 
     my $json = <<'JSON';
 {
-    "search_platform": "OCA\\FullTextSearch_ElasticSearch\\Platform\\ElasticSearchPlatform"
+    "search_platform": "OCA\\FullTextSearch_Elasticsearch\\Platform\\ElasticSearchPlatform"
 }
 JSON
 

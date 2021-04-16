@@ -63,6 +63,7 @@ if( 'install' eq $operation ) {
     push @cmds, "config:system:set trusted_domains 0 --value '$hostname'";
     push @cmds, 'config:system:set log_type --value=systemd';
     push @cmds, 'config:system:set mysql.utf8mb4 --type boolean --value=true';
+    push @cmds, 'config:system:set allow_local_remote_servers --type boolean --value true';
 
     unless( $hostname eq '*' ) {
         push @cmds, "config:system:set overwrite.cli.url '--value=$protocol://$hostname$context'";

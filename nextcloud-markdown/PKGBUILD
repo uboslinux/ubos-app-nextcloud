@@ -2,7 +2,7 @@ developer=https://nextcloud.com/
 url=${developer}
 maintainer=http://indiecomputing.com/
 pkgname=$(basename $(pwd))
-pkgver=2.3.1
+pkgver=2.3.3
 pkgrel=1
 pkgdesc="The Nextcloud markdown editor"
 _app=nextcloud
@@ -14,7 +14,7 @@ releasepage=("https://apps.nextcloud.com/apps/${_acc}")
 depends=(
     'nextcloud')
 options=('!strip')
-sha512sums=('745754bafb74f17dbd7680746140ed2c88a7f1700d16f51596950bcc7cedf320ab5ff672594beeeeb16781d4ae9abd6bd985e3cdb007306a712b25e4e80a3323')
+sha512sums=('8a418d3fdfd9e3a99380b397a91e0dc8b6ca3f380357b73b0d7dea698b355aa4b0c2364cf2bd500295159ed618c07e3b3170b9d9605970210e5134e6eddc5975')
 
 package() {
 # Manifest

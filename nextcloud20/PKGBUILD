@@ -2,7 +2,7 @@ developer=https://nextcloud.com/
 url=${developer}
 maintainer=http://indiecomputing.com/
 pkgname=$(basename $(pwd))
-pkgver=18.0.12
+pkgver=20.0.9
 pkgrel=1
 pkgdesc="A safe home for all your data"
 arch=('any')
@@ -11,10 +11,11 @@ source=("https://download.nextcloud.com/server/releases/nextcloud-${pkgver}.tar.
 releasepage=('https://nextcloud.com/changelog/')
 depends=(
     'php'
+    'php-smbclient'
     'php-systemd'
     'smtp-server')
 options=('!strip')
-sha512sums=('cd9679a730768d143f9cabda8c5b29782369bed7310d31a408358a8b5f0e9794a7ce802e1fdfbb78fbc936160fa681be874d252c4d5e3f985951ad8c2fd48f81')
+sha512sums=('e37ee8874e73d340e7072afe1dc85ed798d5bd3dae4fc8d777bbbc8daa728a8eac260dca92441c269275c086f512881c837d767a860d5ee3bbc1abb445914e2d')
 
 package() {
 # Manifest
@@ -24,7 +25,7 @@ package() {
     install -D -m0644 ${startdir}/appicons/{72x72,144x144}.png -t ${pkgdir}/ubos/http/_appicons/${pkgname}/
 
 # Systemd
-    install -D -m0644 ${startdir}/systemd/nextcloud18@.timer -t ${pkgdir}/etc/systemd/system/
+    install -D -m0644 ${startdir}/systemd/nextcloud20@.timer -t ${pkgdir}/etc/systemd/system/
 
 # Data
     mkdir -p ${pkgdir}/ubos/lib/${pkgname}
