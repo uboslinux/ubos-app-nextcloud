@@ -16,7 +16,7 @@
             "apache2modules" : [
                 "env",
                 "headers",
-                "php7",
+                "php",
                 "rewrite",
                 "setenvif"
             ],

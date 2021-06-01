@@ -3,7 +3,7 @@
 #
 
 <Directory "${appconfig.apache2.dir}">
-  <IfModule php7_module>
+  <IfModule php_module>
     php_admin_value open_basedir ${appconfig.apache2.dir}:/tmp/:/ubos/tmp:/ubos/share/:/dev:${appconfig.datadir}:${site.apache2.sitedocumentdir}/_errors/:/proc/meminfo
   </IfModule>
 
@@ -23,7 +23,7 @@
    Dav off
   </IfModule>
 
-  <IfModule mod_php7.c>
+  <IfModule php_module>
    php_value upload_max_filesize ${installable.customizationpoints.upload_max_filesize_mb.value}M
    php_value post_max_size ${installable.customizationpoints.upload_max_filesize_mb.value}M
    php_value memory_limit ${installable.customizationpoints.memory_limit_mb.value}M
