@@ -3,7 +3,7 @@ url=${developer}
 maintainer=http://indiecomputing.com/
 pkgname=$(basename $(pwd))
 pkgver=21.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Extension to the Nextcloud full text search app to communicate with ElasticSearch"
 _app=nextcloud
 _acc=fulltextsearch_elasticsearch
@@ -39,7 +39,7 @@ package() {
     install -D -m0644 ${startdir}/systemd/*.service -t ${pkgdir}/usr/lib/systemd/system/
 
 # Logs
-    install -d m0755 ${pkgdir}/ubos/logs
+    install -d m0755 ${pkgdir}/ubos/log
 
 # Code
     mkdir -p ${pkgdir}/ubos/share/${_app}/apps

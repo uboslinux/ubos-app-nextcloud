@@ -81,7 +81,7 @@
                 },
                 {
                     "type"  : "directory",
-                    "name"  : "/ubos/logs/nextcloud-fulltextsearch-elasticsearch-${appconfig.appconfigid}",
+                    "name"  : "/ubos/log/nextcloud-fulltextsearch-elasticsearch-${appconfig.appconfigid}",
                     "uname" : "elasticsearch",
                     "gname" : "elasticsearch"
                 },
