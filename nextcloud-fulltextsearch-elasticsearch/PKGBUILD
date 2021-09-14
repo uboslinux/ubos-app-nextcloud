@@ -2,14 +2,14 @@ developer=https://nextcloud.com/
 url=${developer}
 maintainer=http://indiecomputing.com/
 pkgname=$(basename $(pwd))
-pkgver=21.0.0
-pkgrel=2
+pkgver=22.0.1
+pkgrel=1
 pkgdesc="Extension to the Nextcloud full text search app to communicate with ElasticSearch"
 _app=nextcloud
 _acc=fulltextsearch_elasticsearch
 arch=('any')
 license=("AGPL3")
-source=("${_acc}-${pkgver}.tar.gz::https://github.com/nextcloud/${_acc}/releases/download/v${pkgver}/${_acc}-${pkgver}.tar.gz")
+source=("${_acc}-${pkgver}.tar.gz::https://github.com/nextcloud-releases/${_acc}/releases/download/${pkgver}/${_acc}-${pkgver}.tar.gz")
 releasepage=("https://apps.nextcloud.com/apps/${_acc}")
 depends=(
     'nextcloud'
@@ -18,12 +18,7 @@ depends=(
     'jre11-openjdk-headless' )
 options=('!strip')
 install=install
-sha512sums=('7b5195aa0400479d49537c1bf7feb0c993c2de39baeae93f50d21165199b98a592d088b305d775f724d3e7e4fa49c8a4be9ab5e76e65e638ec7699484c3bab21')
-
-prepare() {
-   pwd
-   patch -p1 < ../symphony-return-int.patch
-}
+sha512sums=('72f43c972184528077e41cff4ebb0c4fb74bcea91f62527f895a8cc32f82efd7224aae3f60e749a7d2d2ba86f475308c55295d56c67cfc4ee540a16c172eec4f')
 
 package() {
 # Manifest

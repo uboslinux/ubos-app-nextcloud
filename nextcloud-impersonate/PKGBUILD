@@ -2,19 +2,19 @@ developer=https://nextcloud.com/
 url=${developer}
 maintainer=http://indiecomputing.com/
 pkgname=$(basename $(pwd))
-pkgver=1.8.0
+pkgver=1.9.0
 pkgrel=1
 pkgdesc="The Nextcloud impersonate app"
 _app=nextcloud
 _acc=impersonate
 arch=('any')
 license=("AGPL3")
-source=("${_acc}-${pkgver}.tar.gz::https://github.com/nextcloud/${_acc}/releases/download/v${pkgver}/${_acc}.tar.gz")
+source=("${_acc}-${pkgver}.tar.gz::https://github.com/nextcloud-releases/${_acc}/releases/download/v${pkgver}/${_acc}.tar.gz")
 releasepage=("https://apps.nextcloud.com/apps/${_acc}")
 depends=(
     'nextcloud')
 options=('!strip')
-sha512sums=('9760899a453bd865500bfeb06bdfe450f0fb24b055d07f46ac6b5a6d66229ee53e16781ccf4ae2d83dfbd3d32483da0d2ff7025d0d3ebbc8ec4e2bb3bfb53036')
+sha512sums=('54afadef68887e1a0efe8d3bc89c82dab1b0a4be46a0e780d2c44e2e5fa01d4ac3ca671f0a5e26d1762818a9e2bdc2a7efe686620bc974e0d5463509de16274c')
 
 package() {
 # Manifest

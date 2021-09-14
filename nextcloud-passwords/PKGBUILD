@@ -2,19 +2,20 @@ developer=https://nextcloud.com/
 url=${developer}
 maintainer=http://indiecomputing.com/
 pkgname=$(basename $(pwd))
-pkgver=2021.4.1
+pkgver=2021.9.20
+# NOTE: must update integer in URL below
 pkgrel=1
 pkgdesc="The Nextcloud password app"
 _app=nextcloud
 _acc=passwords
 arch=('any')
 license=("AGPL3")
-source=("${_acc}-${pkgver}.tar.gz::https://git.mdns.eu/nextcloud/${_acc}/-/jobs/9646/artifacts/raw/${_acc}.tar.gz")
+source=("${_acc}-${pkgver}.tar.gz::https://git.mdns.eu/nextcloud/${_acc}/-/jobs/12799/artifacts/raw/${_acc}.tar.gz")
 releasepage=("https://apps.nextcloud.com/apps/${_acc}")
 depends=(
     'nextcloud')
 options=('!strip')
-sha512sums=('dbe24b138edaf06e070012a98a6d258dd371ecbab65d2155ebc14ee1071f106392cfa3bbcab6c282fc3ba45adcdda5c4bb201e3db7d683ac26f5065839723b9e')
+sha512sums=('79b5a22b938642a74482e35f64081434a5c76ba703fa8f732053a4f843fe53fb1c89ba0cd619301f51db9e833a041a32d5bbbf39b503d41eaebd065e776e1782')
 
 package() {
 # Manifest

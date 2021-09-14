@@ -2,19 +2,19 @@ developer=https://nextcloud.com/
 url=${developer}
 maintainer=http://indiecomputing.com/
 pkgname=$(basename $(pwd))
-pkgver=1.9.5
+pkgver=1.10.3
 pkgrel=1
 pkgdesc="The Nextcloud mail app"
 _app=nextcloud
 _acc=mail
 arch=('any')
 license=("AGPL3")
-source=("${_acc}-${pkgver}.tar.gz::https://github.com/nextcloud/${_acc}/releases/download/v${pkgver}/${_acc}.tar.gz")
+source=("${_acc}-${pkgver}.tar.gz::https://github.com/nextcloud-releases/${_acc}/releases/download/v${pkgver}/${_acc}.tar.gz")
 releasepage=("https://apps.nextcloud.com/apps/${_acc}")
 depends=(
     'nextcloud')
 options=('!strip')
-sha512sums=('cd4a14580c2239e2d0f3702c02884b54298be82c87b884e365ff4ca64737a1a040e2721ddb7e74a4689d86e32d6690e495970d00db62a44409b7f0ca8ea9be88')
+sha512sums=('93c32b9d6b474c158e2d0dcbcc178cad63aa1062402b963a148acc948ec95319f62ef22c2718fea8abeed1ebd50e0962026bb4c0d90b533f5a17d22c37bc7870')
 
 package() {
 # Manifest

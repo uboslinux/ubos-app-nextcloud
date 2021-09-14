@@ -30,6 +30,7 @@
                 "imagick",
                 "mysqli",
                 "pdo_mysql",
+                "smbclient",
                 "systemd"
             ],
 
@@ -140,13 +141,13 @@
                 },
                 {
                     "type"         : "file",
-                    "name"         : "/etc/systemd/system/nextcloud19@${appconfig.appconfigid}.service",
-                    "template"     : "tmpl/nextcloud19@.service.tmpl",
+                    "name"         : "/etc/systemd/system/nextcloud@${appconfig.appconfigid}.service",
+                    "template"     : "tmpl/nextcloud@.service.tmpl",
                     "templatelang" : "varsubst"
                 },
                 {
                     "type"         : "systemd-timer",
-                    "name"         : "nextcloud19@${appconfig.appconfigid}"
+                    "name"         : "nextcloud@${appconfig.appconfigid}"
                 },
                 {
                     "type" : "systemd-service",

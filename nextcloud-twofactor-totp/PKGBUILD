@@ -2,19 +2,19 @@ developer=https://nextcloud.com/
 url=${developer}
 maintainer=http://indiecomputing.com/
 pkgname=$(basename $(pwd))
-pkgver=6.0.0
+pkgver=6.1.0
 pkgrel=1
 pkgdesc="The Nextcloud two-factor TOTP provider"
 _app=nextcloud
 _acc=twofactor_totp
 arch=('any')
 license=("AGPL3")
-source=("${_acc}-${pkgver}.tar.gz::https://github.com/nextcloud/${_acc}/releases/download/v${pkgver}/${_acc}.tar.gz")
+source=("${_acc}-${pkgver}.tar.gz::https://github.com/nextcloud-releases/${_acc}/releases/download/v${pkgver}/${_acc}.tar.gz")
 releasepage=("https://apps.nextcloud.com/apps/${_acc}")
 depends=(
     'nextcloud')
 options=('!strip')
-sha512sums=('e6077bae85e353dda0c7a53ea9ce5ea2e47d5fc30164f37c92999433450ec692c696064e9c96e25cb2bb88a0dab078ff31ddbc72312cdb4f42d78f36fb939b69')
+sha512sums=('f6deca9f99bf839a06b834644d8cd71917bdca222a6c23151ba22d2284b60121fee82d39aa438572cbfb23c9f424b8e5b77ba10662ddc43848098333b3b65ff3')
 
 package() {
 # Manifest

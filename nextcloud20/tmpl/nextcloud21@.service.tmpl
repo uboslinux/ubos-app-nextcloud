@@ -1,0 +1,10 @@
+[Unit]
+Description=Nextcloud21 cron.php job (${appconfig.appconfigid})
+
+[Service]
+User=${apache2.uname}
+ExecStartPre=/usr/share/ubos-admin/bin/ubos-service-prestart nextcloud21@${appconfig.appconfigid}
+ExecStart=/usr/bin/php -f ${appconfig.apache2.dir}/cron.php
+
+[Install]
+WantedBy=basic.target
