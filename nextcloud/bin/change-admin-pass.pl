@@ -18,23 +18,46 @@ my $adminpass   = $config->getResolve( 'site.admin.credential' );
 my $ret         = 1;
 
 if( 'upgrade' eq $operation ) {
-# Run occ upgrade
-    my $cmd = "cd '$dir';";
-    $cmd .= "sudo -u '$apacheUname'";
-    $cmd .= ' OC_PASS="' . $adminpass . '"';
-    $cmd .= ' php';
-    $cmd .= ' -d always_populate_raw_post_data=-1';
-    $cmd .= ' -d memory_limit=512M';
-    $cmd .= ' occ';
-    $cmd .= ' user:resetpassword';
-    $cmd .= ' "' . $adminlogin . '"';
-    $cmd .= ' --password-from-env';
-
     my $out;
     my $err;
-    if( UBOS::Utils::myexec( $cmd, undef, \$out, \$err )) {
-        error( "$cmd failed:\n$out\n$err" );
+
+    my $cmdPrefix1 = "cd '$dir';";
+    $cmdPrefix1 .= "sudo -u '$apacheUname'";
+
+    my $cmdPrefix2 .= ' php -d always_populate_raw_post_data=-1';
+    $cmdPrefix2 .= ' -d memory_limit=512M';
+    $cmdPrefix2 .= ' occ';
+
+    my $getCmd = $cmdPrefix1 . $cmdPrefix2 . ' config:app:get password_policy minLength';
+    my $passwordMinLength;
+
+    if( UBOS::Utils::myexec( $getCmd, undef, \$out, \$err )) {
+        error( "$getCmd failed:\n$out\n$err" );
         $ret = 0;
+        $passwordMinLength = 10; # Nextcloud default in 22
+    } else {
+        $passwordMinLength = $out;
+        $passwordMinLength =~ s!^\s+!!;
+        $passwordMinLength =~ s!\s+$!!;
+    }
+
+    my @cmds = ();
+    # Temporarily disable Nextcloud's password rules
+    push @cmds, $cmdPrefix1 . $cmdPrefix2 . ' config:app:set password_policy enforceHaveIBeenPwned --value 0';
+    push @cmds, $cmdPrefix1 . $cmdPrefix2 . ' config:app:set password_policy enforceNonCommonPassword --value 0';
+    push @cmds, $cmdPrefix1 . $cmdPrefix2 . ' config:app:set password_policy minLength --value 8';
+
+    push @cmds, $cmdPrefix1 . ' OC_PASS="' . $adminpass . '"' . $cmdPrefix2 . ' user:resetpassword "' . $adminlogin . '" --password-from-env';
+
+    push @cmds, $cmdPrefix1 . $cmdPrefix2 . ' config:app:set password_policy enforceHaveIBeenPwned --value 1';
+    push @cmds, $cmdPrefix1 . $cmdPrefix2 . ' config:app:set password_policy enforceNonCommonPassword --value 1';
+    push @cmds, $cmdPrefix1 . $cmdPrefix2 . ' config:app:set password_policy minLength --value ' . $passwordMinLength;
+
+    for my $cmd ( @cmds ) {
+        if( UBOS::Utils::myexec( $cmd, undef, \$out, \$err )) {
+            error( "$cmd failed:\n$out\n$err" );
+            $ret = 0;
+        }
     }
 }
 
