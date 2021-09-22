@@ -54,6 +54,9 @@
                 },
                 "host-meta.json" : {
                     "location" : "${appconfig.context}/public.php?service=host-meta-json"
+                },
+                "nodeinfo" : {
+                    "location" : "${appconfig.context}/index.php/.well-known/nodeinfo"
                 }
             },
 
