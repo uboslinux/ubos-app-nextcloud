@@ -2,7 +2,7 @@ developer=https://nextcloud.com/
 url=${developer}
 maintainer=http://indiecomputing.com/
 pkgname=$(basename $(pwd))
-pkgver=2021.9.20
+pkgver=2021.11.20
 # NOTE: must update integer in URL below
 pkgrel=1
 pkgdesc="The Nextcloud password app"

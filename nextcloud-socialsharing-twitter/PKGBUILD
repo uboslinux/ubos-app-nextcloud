@@ -2,19 +2,19 @@ developer=https://nextcloud.com/
 url=${developer}
 maintainer=http://indiecomputing.com/
 pkgname=$(basename $(pwd))
-pkgver=2.2.0
+pkgver=2.4.0
 pkgrel=1
 pkgdesc="The Nextcloud social sharing via Twitter app"
 _app=nextcloud
 _acc=socialsharing_twitter
 arch=('any')
 license=("AGPL3")
-source=("${_acc}-${pkgver}.tar.gz::https://github.com/nextcloud/socialsharing/releases/download/v${pkgver}/${_acc}.tar.gz")
+source=("${_acc}-${pkgver}.tar.gz::https://github.com/nextcloud-releases/socialsharing/releases/download/v${pkgver}/${_acc}.tar.gz")
 releasepage=("https://apps.nextcloud.com/apps/${_acc}")
 depends=(
     'nextcloud')
 options=('!strip')
-sha512sums=('8a4077c452f5f7552d8b125829ee50acca97bb30e6177c96356d38f91e7f99736bdd31231d2dd99ea2d346c39745be1c0b67876303cb9679c5677e606343fb8d')
+sha512sums=('9c560a18da083c82c5b0366ff217387feca91b503baecf96999651edd78b38735b6897f91eed551d6ff7bc5a6d98eca3080cc3127d59b5a01741264151f2867d')
 
 package() {
 # Manifest
