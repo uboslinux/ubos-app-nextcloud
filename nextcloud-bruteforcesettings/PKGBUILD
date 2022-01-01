@@ -9,12 +9,12 @@ _app=nextcloud
 _acc=bruteforcesettings
 arch=('any')
 license=("AGPL3")
-source=("${_acc}-${pkgver}.tar.gz::https://github.com/nextcloud/${_acc}/releases/download/v${pkgver}/${_acc}.tar.gz")
+source=("${_acc}-${pkgver}.tar.gz::https://github.com/nextcloud-releases/${_acc}/releases/download/v${pkgver}/${_acc}-v${pkgver}.tar.gz")
 releasepage=("https://apps.nextcloud.com/apps/${_acc}")
 depends=(
     'nextcloud')
 options=('!strip')
-sha512sums=('d0ecf036dc34f22e0a75a963d4699277e96ddf781029c8d1fcb9f8764ffd2a780790d827943c645e9cfa67d12fb0b79a43c7ce2a5016e65453d700971e35a346')
+sha512sums=('268f8fe604a3a5a93bcf13959f1eb543f0e889ae46659b978b4152a547c6fb98d4cdd3a1970cab58810e7368fca826a38d4149d7f1feea818ad912ec60bee0c4')
 
 package() {
 # Manifest
