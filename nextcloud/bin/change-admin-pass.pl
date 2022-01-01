@@ -32,7 +32,7 @@ if( 'upgrade' eq $operation ) {
     my $passwordMinLength;
 
     if( UBOS::Utils::myexec( $getCmd, undef, \$out, \$err )) {
-        error( "$getCmd failed:\n$out\n$err" );
+        # No error message; if no value is set, this exits with 1
         $ret = 0;
         $passwordMinLength = 10; # Nextcloud default in 22
     } else {
