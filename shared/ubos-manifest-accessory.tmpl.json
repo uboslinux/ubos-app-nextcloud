@@ -4,9 +4,9 @@
     "accessoryinfo" : {
         "appids"        : [
             "nextcloud",
-            "nextcloud18",
-            "nextcloud17",
-            "nextcloud16"
+            "nextcloud22",
+            "nextcloud21",
+            "nextcloud20"
         ],
         "accessoryid"   : "@ACCESSORYID@",
         "accessorytype" : "app"

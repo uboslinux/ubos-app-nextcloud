@@ -2,7 +2,14 @@
     "type"  : "accessory",
 
     "accessoryinfo" : {
-        "appid" : "nextcloud"
+        "appids"        : [
+            "nextcloud",
+            "nextcloud22",
+            "nextcloud21",
+            "nextcloud20"
+        ],
+        "accessoryid"   : "cache-redis",
+        "accessorytype" : "app"
     },
 
     "roles" : {

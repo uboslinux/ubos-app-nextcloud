@@ -2,7 +2,12 @@
     "type"  : "accessory",
 
     "accessoryinfo" : {
-        "appid"         : "nextcloud",
+        "appids"        : [
+            "nextcloud",
+            "nextcloud22",
+            "nextcloud21",
+            "nextcloud20"
+        ],
         "accessoryid"   : "files_fulltextsearch",
         "accessorytype" : "app"
     },

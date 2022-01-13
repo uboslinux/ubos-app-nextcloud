@@ -3,7 +3,7 @@ url=${developer}
 maintainer=http://indiecomputing.com/
 pkgname=$(basename $(pwd))
 pkgver=21.11.6
-pkgrel=1
+pkgrel=2
 pkgdesc="Collabora Online - Built-in CODE Server"
 _app=nextcloud
 _acc=richdocumentscode
@@ -12,7 +12,8 @@ license=("AGPL3")
 source=("${_acc}-${pkgver}.tar.gz::https://github.com/CollaboraOnline/${_acc}/releases/download/${pkgver}/${_acc}.tar.gz")
 releasepage=("https://apps.nextcloud.com/apps/${_acc}")
 depends=(
-    'nextcloud')
+    'nextcloud'
+    'fuse2' )
 options=('!strip')
 sha512sums=('692cddf4def830c9b035969cfb124dcb9173574c2a67549424c5bc0ae562aae6c75c8e6d2652670907b6b56870e6166ed56683d6e92179263ad973df6f0a2858')
 

@@ -4,13 +4,13 @@ maintainer=http://indiecomputing.com/
 pkgname=$(basename $(pwd))
 pkgver=2021.12.20
 # NOTE: must update integer in URL below
-pkgrel=1
+pkgrel=2
 pkgdesc="The Nextcloud password app"
 _app=nextcloud
 _acc=passwords
 arch=('any')
 license=("AGPL3")
-source=("${_acc}-${pkgver}.tar.gz::https://git.mdns.eu/nextcloud/${_acc}/-/jobs/12799/artifacts/raw/${_acc}.tar.gz")
+source=("${_acc}-${pkgver}.tar.gz::https://git.mdns.eu/nextcloud/${_acc}/-/jobs/13439/artifacts/raw/${_acc}.tar.gz")
 releasepage=("https://apps.nextcloud.com/apps/${_acc}")
 depends=(
     'nextcloud')
