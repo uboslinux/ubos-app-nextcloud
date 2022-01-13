@@ -4,7 +4,7 @@ maintainer=http://indiecomputing.com/
 pkgname=$(basename $(pwd))
 pkgver=2021.12.20
 # NOTE: must update integer in URL below
-pkgrel=2
+pkgrel=3
 pkgdesc="The Nextcloud password app"
 _app=nextcloud
 _acc=passwords
@@ -15,7 +15,7 @@ releasepage=("https://apps.nextcloud.com/apps/${_acc}")
 depends=(
     'nextcloud')
 options=('!strip')
-sha512sums=('79b5a22b938642a74482e35f64081434a5c76ba703fa8f732053a4f843fe53fb1c89ba0cd619301f51db9e833a041a32d5bbbf39b503d41eaebd065e776e1782')
+sha512sums=('125cb536391dafcb825d0918508fc59846c70a73e053b8a1987f3af7a28f98fc1ffcabd90bb2bbf4cb14faa89dfccdffefd8a94a9b664dfae4c7abc8ea1ea362')
 
 package() {
 # Manifest
