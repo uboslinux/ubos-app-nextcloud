@@ -154,7 +154,7 @@
                 },
                 {
                     "type" : "systemd-service",
-                    "name" : "smtp-server22@${appconfig.appconfigid}"
+                    "name" : "smtp-server@${appconfig.appconfigid}"
                 }
             ],
             "installers" : [
