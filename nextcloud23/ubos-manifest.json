@@ -54,6 +54,9 @@
                 },
                 "host-meta.json" : {
                     "location" : "${appconfig.context}/public.php?service=host-meta-json"
+                },
+                "nodeinfo" : {
+                    "location" : "${appconfig.context}/index.php/.well-known/nodeinfo"
                 }
             },
 
@@ -141,13 +144,13 @@
                 },
                 {
                     "type"         : "file",
-                    "name"         : "/etc/systemd/system/nextcloud21@${appconfig.appconfigid}.service",
-                    "template"     : "tmpl/nextcloud21@.service.tmpl",
+                    "name"         : "/etc/systemd/system/nextcloud23@${appconfig.appconfigid}.service",
+                    "template"     : "tmpl/nextcloud23@.service.tmpl",
                     "templatelang" : "varsubst"
                 },
                 {
                     "type"         : "systemd-timer",
-                    "name"         : "nextcloud21@${appconfig.appconfigid}"
+                    "name"         : "nextcloud23@${appconfig.appconfigid}"
                 },
                 {
                     "type" : "systemd-service",

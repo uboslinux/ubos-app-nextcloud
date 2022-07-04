@@ -5,6 +5,11 @@
 <Directory "${appconfig.apache2.dir}">
   <IfModule php_module>
     php_admin_value open_basedir ${appconfig.apache2.dir}:/tmp/:/ubos/tmp:/ubos/share/:/dev:${appconfig.datadir}:${site.apache2.sitedocumentdir}/_errors/:/proc/meminfo
+    php_admin_value output_buffering 0
+
+    php_value upload_max_filesize ${installable.customizationpoints.upload_max_filesize_mb.value}M
+    php_value post_max_size ${installable.customizationpoints.upload_max_filesize_mb.value}M
+    php_value memory_limit ${installable.customizationpoints.memory_limit_mb.value}M
   </IfModule>
 
   <IfModule mod_autoindex.c>
@@ -20,12 +25,6 @@
   </IfModule>
 
   <IfModule mod_dav.c>
-   Dav off
-  </IfModule>
-
-  <IfModule php_module>
-   php_value upload_max_filesize ${installable.customizationpoints.upload_max_filesize_mb.value}M
-   php_value post_max_size ${installable.customizationpoints.upload_max_filesize_mb.value}M
-   php_value memory_limit ${installable.customizationpoints.memory_limit_mb.value}M
+    Dav off
   </IfModule>
 </Directory>

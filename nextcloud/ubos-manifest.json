@@ -68,6 +68,7 @@
                         "3rdparty",
                         "apps",
                         "core",
+                        "dist",
                         "lib",
                         "ocm-provider",
                         "ocs",

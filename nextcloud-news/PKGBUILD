@@ -2,8 +2,8 @@ developer=https://nextcloud.com/
 url=${developer}
 maintainer=http://indiecomputing.com/
 pkgname=$(basename $(pwd))
-pkgver=17.0.1
-pkgrel=2
+pkgver=18.1.0
+pkgrel=1
 pkgdesc="The Nextcloud news app"
 _app=nextcloud
 _acc=news
@@ -14,7 +14,7 @@ releasepage=("https://apps.nextcloud.com/apps/${_acc}")
 depends=(
     'nextcloud')
 options=('!strip')
-sha512sums=('17e5404196a22b2ee932c24cbffd9315b735005d6dcd27304bd9ac9d14afc821c072881403598b3fb50117080e22f8bb5a6d61b1d5494fe161c204978efd8496')
+sha512sums=('dec67c1ef538f6eb73da294585f32670709ec97f7372e9457cc0a72eb85b4ff47790f7a9fe54e4683638c877455b20ae6fc2ce7d5c38d47ce42874857564a6a5')
 
 package() {
 # Manifest

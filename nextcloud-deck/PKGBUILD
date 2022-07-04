@@ -2,19 +2,19 @@ developer=https://nextcloud.com/
 url=${developer}
 maintainer=http://indiecomputing.com/
 pkgname=$(basename $(pwd))
-pkgver=1.6.0
-pkgrel=2
+pkgver=1.7.1
+pkgrel=1
 pkgdesc="The Nextcloud deck app"
 _app=nextcloud
 _acc=deck
 arch=('any')
 license=("AGPL3")
-source=("${_acc}-${pkgver}.tar.gz::https://github.com/nextcloud-releases/${_acc}/releases/download/v${pkgver}/${_acc}.tar.gz")
+source=("${_acc}-${pkgver}.tar.gz::https://github.com/nextcloud-releases/${_acc}/releases/download/v${pkgver}/${_acc}-v${pkgver}.tar.gz")
 releasepage=("https://apps.nextcloud.com/apps/${_acc}")
 depends=(
     'nextcloud')
 options=('!strip')
-sha512sums=('522b4d9f5eb347dcc07f53610511e8f8a01fe5a1d584ee87599ab5575217f811855c5acca1913e0fdb285e8c47c6f1654d047bfe907b1a43784b879de20ba44d')
+sha512sums=('7d489dea724d8dd3bcca6d50379eba2b344bf44936bbc47a6a6001b0349b5886e8da2ebd5489cff2a4110294f8ef6c4fd4efa8b235d2ba5d19390bd5174eb6c6')
 
 package() {
 # Manifest

@@ -81,7 +81,6 @@ if( 'install' eq $operation ) {
     push @cmds, 'db:convert-filecache-bigint --no-interaction';
     push @cmds, 'background:cron';
     push @cmds, 'app:disable updatenotification';
-    push @cmds, 'config:app:set password_policy enforceNonCommonPassword --value 0';
     push @cmds, 'maintenance:update:htaccess';
 
     my $out;

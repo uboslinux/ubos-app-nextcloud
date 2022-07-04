@@ -1,10 +1,10 @@
 [Unit]
-Description=Run Nextcloud cron.php every 15 minutes (%i)
+Description=Run Nextcloud23 cron.php every 15 minutes (%i)
 
 [Timer]
 OnBootSec=5min
 OnUnitActiveSec=15min
-Unit=nextcloud21@%i.service
+Unit=nextcloud23@%i.service
 
 [Install]
 WantedBy=timers.target

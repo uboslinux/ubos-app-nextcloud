@@ -2,8 +2,8 @@ developer=https://nextcloud.com/
 url=${developer}
 maintainer=http://indiecomputing.com/
 pkgname=$(basename $(pwd))
-pkgver=21.0.7
-pkgrel=2
+pkgver=23.0.6
+pkgrel=1
 pkgdesc="A safe home for all your data"
 arch=('any')
 license=("AGPL3")
@@ -15,7 +15,7 @@ depends=(
     'php-systemd'
     'smtp-server')
 options=('!strip')
-sha512sums=('a4ef72b1d657ce793fb2519469add9a370c749987780385528889986bfa87bd072343e74dd6d19a13e8d3fdb3a22fe29b1e6b4c9a82ecc8845273d89340f98fd')
+sha512sums=('e7ac52a7a3793bc710de71c4ead7a7477f697c39ea35ee553745a9355271cd6ac838758ef6a5c80ca1202369fb5cc899f78c594ee4e7561c6984719b0670d53b')
 
 package() {
 # Manifest
@@ -25,7 +25,7 @@ package() {
     install -D -m0644 ${startdir}/appicons/{72x72,144x144}.png -t ${pkgdir}/ubos/http/_appicons/${pkgname}/
 
 # Systemd
-    install -D -m0644 ${startdir}/systemd/nextcloud21@.timer -t ${pkgdir}/etc/systemd/system/
+    install -D -m0644 ${startdir}/systemd/nextcloud23@.timer -t ${pkgdir}/etc/systemd/system/
 
 # Data
     mkdir -p ${pkgdir}/ubos/lib/${pkgname}

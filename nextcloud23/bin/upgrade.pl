@@ -38,7 +38,6 @@ if( 'upgrade' eq $operation ) {
     push @cmds, 'db:add-missing-primary-keys';
     push @cmds, 'maintenance:data-fingerprint';
 
-
     if( $hostname eq '*' ) {
         # maintenance:update:htaccess needs a value, so we temporarily set one
         push @cmds, "config:system:set overwrite.cli.url '--value=$protocol://localhost$context'";
