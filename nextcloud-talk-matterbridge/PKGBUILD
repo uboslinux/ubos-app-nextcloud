@@ -2,8 +2,8 @@ developer=https://nextcloud.com/
 url=${developer}
 maintainer=http://indiecomputing.com/
 pkgname=$(basename $(pwd))
-pkgver=1.23.2
-pkgrel=2
+pkgver=1.26.0
+pkgrel=0
 pkgdesc="Nextcloud Taslk Matterbridge"
 _app=nextcloud
 _acc=talk_matterbridge
@@ -14,7 +14,7 @@ releasepage=("https://apps.nextcloud.com/apps/${_acc}")
 depends=(
     'nextcloud')
 options=('!strip')
-sha512sums=('c08ff4fec1bdc296f24884251565dae4199837767a57c12bb385fb9eda8200450e01805c17e3788b096b0bf5729029786dc4b6a58b9e7b887c9bc46e9d65faea')
+sha512sums=('610e90af5069f005a5962f47c9d5ecd1222434d67f00c2f289949f7e917ced0804d1db27d7c24839e335207cbdf5a5a80fe5a877f8ee63bc2f500e7dde2de405')
 
 package() {
 # Manifest
