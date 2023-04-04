@@ -34,7 +34,7 @@
             "nextcloud-passwords",
             "nextcloud-richdocuments",
             "nextcloud-richdocumentscode",
-            "nextcloud-social",
+#            "nextcloud-social",
             "nextcloud-socialsharing-email",
             "nextcloud-socialsharing-facebook",
             "nextcloud-socialsharing-twitter",
