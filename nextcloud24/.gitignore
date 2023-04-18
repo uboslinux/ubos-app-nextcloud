@@ -1,0 +1,4 @@
+nextcloud-*.tar.bz2
+nextcloud-*.pkg*
+nextcloud24-*.pkg*
+nextcloud-server/

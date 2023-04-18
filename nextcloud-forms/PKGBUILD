@@ -2,7 +2,7 @@ developer=https://nextcloud.com/
 url=${developer}
 maintainer=http://indiecomputing.com/
 pkgname=$(basename $(pwd))
-pkgver=2.5.2
+pkgver=3.2.0
 pkgrel=1
 pkgdesc="The Nextcloud forms app"
 _app=nextcloud
@@ -14,7 +14,7 @@ releasepage=("https://apps.nextcloud.com/apps/${_acc}")
 depends=(
     'nextcloud')
 options=('!strip')
-sha512sums=('50bbad1297bb6bc09a2301e4fc3baf4fe20084198f618b8a9773d0f087a788319275f284750de35b25bd3683e9ae383fc44de2828d2d15b03f31848af2cc5c2e')
+sha512sums=('ebf44be0ed443a2a449b88e15a849166035c90e8c8e63daa0b04308fe544af48a0795604691dd31b27b4c9b832b9540a5c88d21e1274477d7a55f2c3eda5879a')
 
 package() {
 # Manifest
