@@ -5,7 +5,7 @@
 
 fixJavaVersion() {
     [[ -e /etc/default/elasticsearch ]] \
-        && perl -i -p -e 's!^JAVA_HOME=(.*)!JAVA_HOME=/usr/lib/jvm/java-11-openjdk!' /etc/default/elasticsearch
+        && perl -i -p -e 's!^(ES_)?JAVA_HOME=(.*)!ES_JAVA_HOME=/usr/lib/jvm/java-20-openjdk!' /etc/default/elasticsearch
 }
 
 post_install() {

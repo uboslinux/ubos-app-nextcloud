@@ -1,5 +1,5 @@
 {
-   "hostname" : "ubos-dev",
+   "hostname" : "*",
    "admin" : {
       "username" : "admin",
       "userid" : "admin",

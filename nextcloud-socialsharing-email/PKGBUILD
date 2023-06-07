@@ -2,7 +2,7 @@ developer=https://nextcloud.com/
 url=${developer}
 maintainer=http://indiecomputing.com/
 pkgname=$(basename $(pwd))
-pkgver=2.5.0
+pkgver=2.6.0
 pkgrel=1
 pkgdesc="The Nextcloud social sharing via email app"
 _app=nextcloud
@@ -14,7 +14,7 @@ releasepage=("https://apps.nextcloud.com/apps/${_acc}")
 depends=(
     'nextcloud')
 options=('!strip')
-sha512sums=('0e354416fc49733e121912035ba9cae3d986c79355c6c3a944cd1f86668c5476d8e2d962040aeb925467e5c085a23738c6c514265c68ff63b73232fa9b54da9a')
+sha512sums=('fe8382b346260666cd30d1865770b5e23479d195f824c3701a382e425a2708e27680b34813cfaec78960544b59f783e8d34dcb719146016f0d13264d0f9bbe8e')
 
 package() {
 # Manifest

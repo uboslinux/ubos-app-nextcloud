@@ -2,6 +2,7 @@
 # But without the elasticsearch-keystore@.service functionality. It is
 # handled in an AppConfigItem. So that when site undeploy/redeploy, the
 # key store is created again.
+# Added a longer TimeoutStartSec
 
 [Unit]
 Description=Nextcloud Elasticsearch %I
@@ -12,7 +13,7 @@ Documentation=http://www.elastic.co
 # After=network-online.target
 
 [Service]
-Type=notify
+Type=simple
 RuntimeDirectory=elasticsearch
 PrivateTmp=true
 Environment=ES_HOME=/usr/share/elasticsearch

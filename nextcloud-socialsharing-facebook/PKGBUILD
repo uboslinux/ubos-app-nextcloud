@@ -2,7 +2,7 @@ developer=https://nextcloud.com/
 url=${developer}
 maintainer=http://indiecomputing.com/
 pkgname=$(basename $(pwd))
-pkgver=2.5.0
+pkgver=2.6.0
 pkgrel=1
 pkgdesc="The Nextcloud social sharing via Facebook app"
 _app=nextcloud
@@ -14,7 +14,7 @@ releasepage=("https://apps.nextcloud.com/apps/${_acc}")
 depends=(
     'nextcloud')
 options=('!strip')
-sha512sums=('283924b9cd36068063c6c427b1978aff9cf6d6838f4a94ccde87e70155ed8fae46a4366952d36679983d38b0555e22482dc8701bc7936551d8ac77095137a54d')
+sha512sums=('355422033951e0fabc45dad9a464b3e4cd6c9556d1a91cc936cf76a4f262c9c8532de8e4c1548db028e9ad50eb2b6d5cf507d4eae9e19cd6b6ee03d0a2b5a8e3')
 
 package() {
 # Manifest

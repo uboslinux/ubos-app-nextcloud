@@ -2,7 +2,7 @@ developer=https://nextcloud.com/
 url=${developer}
 maintainer=http://indiecomputing.com/
 pkgname=$(basename $(pwd))
-pkgver=2.5.0
+pkgver=2.6.0
 pkgrel=1
 pkgdesc="The Nextcloud social sharing via Twitter app"
 _app=nextcloud
@@ -14,7 +14,7 @@ releasepage=("https://apps.nextcloud.com/apps/${_acc}")
 depends=(
     'nextcloud')
 options=('!strip')
-sha512sums=('94df47262db22c9a8525bf99c8df1124b30a8277ba6fb8a4a4742b94310c936750f3e159037570c3ce1ff867a41391777b20f19cf9a10b7226da44229d0f182b')
+sha512sums=('a4c3adf5e241a09f23092fea67a7a56de4ee4d6f155592aeebc1d95c5c874693f58653b11c7b09d031b8e77b37023b48f7cdca176a04ee72bc963a390134a8b2')
 
 package() {
 # Manifest

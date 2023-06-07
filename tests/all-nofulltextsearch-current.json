@@ -1,0 +1,55 @@
+{
+   "hostname" : "*",
+   "tls" : {
+      "crt" : "-----BEGIN CERTIFICATE-----\nMIIEozCCAosCFCX+0Kq+PREXAM1LEyA/9Yg+nhkfMA0GCSqGSIb3DQEBCwUAMA4x\nDDAKBgNVBAMMA2FiYzAeFw0yMjAxMDEwNDQzMjhaFw0zMTEyMzAwNDQzMjhaMA4x\nDDAKBgNVBAMMA2FiYzCCAiIwDQYJKoZIhvcNAQEBBQADggIPADCCAgoCggIBAMgT\n7iGt36My7ZsRK3hpG6bn1kHyM6HtWKjUByQaod7TneWP9SEycGJxOz8hejFoKPBD\nlt2t24jxlK9v7yhg5MStAqTF8oYKEC91oHNvbGGf4IPZ0hjqgtGHO+yR9w++OwFB\nK0tofOmVb98j5Txfv4/NQi1jY4Zvg6mCAoKG9ytwumHDc1WdiciW1zTNKLoxG+aS\ne9S4GKt8jK8AQor4WS1mUBKPBN/DYcJDjOpcY1UWocdmKURjVFg4NmLiKFE/THaw\neuMma2B0Ukrxw1Re3FEtZUjs+9skjhvyT+4wASl6M4svPSh/8SN9DLJE+m0DPB0t\nwYGBRDF6z6vTjyCKtYelalAMoejC+mWolXFlQ8ge3avxn8a7Fp0qNj6HS5Kl1YQw\niLsLUYZJwfZYgvi/0R5WCeCOAS36HlsUwHv2KRnWuHeNwsfTaNn+yEl+4a3OqwYy\nJEbedyVs17C5RdNgLJjvBv2mV0TDRX+pZv5LLOpDqBfasoJZPb4Szhop4cxQk7ui\nFpaAfjtqbtrX/UWDEHvqlgUqfS9RGF8srcMTRJSS/UoAZywPTZnOn9zji7Qvt/0A\nsGk9Ty66BIgDLZVXEf60jJjXUv1CeeXljPlTmBDnfA1y7xLGQr0Cs31NhwqkIwvf\nf4X/B9HBkGlh/Z6v4oNg96YjcMBzL/PT+EKIZxTfAgMBAAEwDQYJKoZIhvcNAQEL\nBQADggIBAAP87m7BolLWfI4dw1symzaMHz3stSGn+WQ0uE4vINjVxJJBQLXPiHqj\nmIBjtLIZGJJemvVIkQ3pmGepwgDc1K4CE/t9XHbaUBW/6IBz//dWxzNE99t+JuOP\nI2hzxaRJeey04ZcmKynJRXGxNI6UtF/+9YUhlmSKHqcvVrYXOlA7ztwBVgKfrPDO\nr+qDmFmXZAIVeU8NIY52kskKSMBESkc1OLRY+hIoiy7y6uF0fdF7F1S5IAo5mCsG\nlkeusakI80jvHMB+jVJ4fTLQWqzkVLj0XR36vfxq9SqtRhuMFKAqoCvQOlqqzR4Q\ncDSWwJvM1lCkgLtQieLcefiwlG7RrVtqFrlIXhQePunPFgR4hJtfoE0x3Aq1cAHS\nlW71A30b0CAlSPU3fVETEpfOGnB/U1IVwU7ET4RwR67pZlgqayLDcvgSqfzmlFDv\nkU9ltFL7fa7Z71b4TgyHxfIQ+Hu2ZesgnyLgwxG56QiQjpvxqNhrn4+mKH0hft8N\n+faW7/OEHis2cuHGUT96IUK/KPfTp/kE2nN+1HFToRTBfs7hSIPK6qkiY+YyeK1r\nRbNwG7MFqpFws8MMG0rwtuDPwPDAx3eqlBpi7nhk86Nu+FV/0nhpT+VeLrJHR2Ek\nWzaokrlLVx50JKlTRYuGUueu4lE0Xl6EX/RirbZatEXi+mOJgL9I\n-----END CERTIFICATE-----\n",
+      "key" : "-----BEGIN RSA PRIVATE KEY-----\n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\n-----END RSA PRIVATE KEY-----\n"
+   },
+   "appconfigs" : [
+      {
+         "appconfigid" : "a412f14cc997d1d3de69dae416a811ce1e21a7bd8",
+         "context" : "/next",
+         "appid" : "nextcloud",
+         "accessoryids" : [
+            "nextcloud-audioplayer",
+            "nextcloud-bookmarks",
+            "nextcloud-bruteforcesettings",
+            "nextcloud-cache-redis",
+            "nextcloud-calendar",
+            "nextcloud-contacts",
+            "nextcloud-deck",
+            "nextcloud-documentserver-community",
+            "nextcloud-extract",
+#            "nextcloud-files-fulltextsearch",
+            "nextcloud-forms",
+#            "nextcloud-fulltextsearch-elasticsearch",
+#            "nextcloud-fulltextsearch",
+            "nextcloud-group-everyone",
+            "nextcloud-groupfolders",
+            "nextcloud-impersonate",
+            "nextcloud-mail",
+            "nextcloud-markdown",
+            "nextcloud-news",
+            "nextcloud-notes",
+            "nextcloud-onlyoffice",
+            "nextcloud-passwords",
+            "nextcloud-richdocuments",
+            "nextcloud-richdocumentscode",
+#            "nextcloud-social",
+            "nextcloud-socialsharing-email",
+            "nextcloud-socialsharing-facebook",
+            "nextcloud-socialsharing-twitter",
+            "nextcloud-spreed",
+            "nextcloud-talk-matterbridge",
+            "nextcloud-tasks",
+            "nextcloud-twofactor-totp"
+         ]
+      }
+   ],
+   "admin" : {
+      "email" : "test@ubos.net",
+      "username" : "admin",
+      "credential" : "qwerqwer",
+      "userid" : "admin"
+   },
+   "siteid" : "s7febb0b4cd348d86f95b47eb8b1292e220460321"
+}
