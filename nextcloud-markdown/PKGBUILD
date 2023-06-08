@@ -9,7 +9,7 @@ _app=nextcloud
 _acc=files_markdown
 arch=('any')
 license=("AGPL3")
-source=("${_acc}-${pkgver}.tar.gz::https://github.com/icewind1991/${_acc}/releases/download/v${pkgver}/${_acc}.tar.gz")
+source=("${_acc}-${pkgver}.tar.gz::https://github.com/icewind1991/${_acc}/releases/download/v${pkgver}/${_acc}-v${pkgver}.tar.gz")
 releasepage=("https://apps.nextcloud.com/apps/${_acc}")
 depends=(
     'nextcloud')
