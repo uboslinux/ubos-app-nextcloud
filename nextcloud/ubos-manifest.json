@@ -31,7 +31,8 @@
                 "mysqli",
                 "pdo_mysql",
                 "smbclient",
-                "systemd"
+                "systemd",
+                "sysvsem"
             ],
 
             "wellknown" : {
