@@ -2,7 +2,7 @@ developer=https://nextcloud.com/
 url=${developer}
 maintainer=http://indiecomputing.com/
 pkgname=$(basename $(pwd))
-pkgver=3.3.1
+pkgver=3.4.1
 pkgrel=1
 pkgdesc="Nextcloud Audio Player"
 _app=nextcloud
@@ -14,7 +14,7 @@ releasepage=("https://apps.nextcloud.com/apps/${_acc}")
 depends=(
     'nextcloud')
 options=('!strip')
-sha512sums=('71bd54af7b29ad15f6bce8570b31b3a40df9f9de9b1507d50bb7fbb83c8c020ae96294afe63948779bc20e69b05c642c774799d4a86f6320b0b82a2bbdeda546')
+sha512sums=('8251529464a70eafcc93e4520589161b2b225848bb30b1a6e6d7ee53baed99eede22d0a870684ada175bb9a7d0aeed708f4db3779c6d83b33237c5c1934d3ae6')
 
 package() {
 # Manifest

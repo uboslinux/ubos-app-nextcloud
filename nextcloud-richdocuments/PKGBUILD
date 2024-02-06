@@ -2,7 +2,7 @@ developer=https://nextcloud.com/
 url=${developer}
 maintainer=http://indiecomputing.com/
 pkgname=$(basename $(pwd))
-pkgver=8.0.2
+pkgver=8.0.7
 pkgrel=1
 pkgdesc="Nextcloud Office"
 _app=nextcloud
@@ -14,7 +14,7 @@ releasepage=("https://apps.nextcloud.com/apps/${_acc}")
 depends=(
     'nextcloud')
 options=('!strip')
-sha512sums=('9bc8844dd26fd5b9bd2890161c08f93173690f484a6b2d31455c1b0c5d5f8bd63dba096e268aac01cdba9b8f3efcc4ed9017bacde0cfe0e512700bba7c176317')
+sha512sums=('4a537216971a26559fc6407f1b9de3aa55294b5640f97bb0f5d6799603bd994374c563717460f22a85e99d39154c779192110fc89480f4c988f9ba3554ed7461')
 
 package() {
 # Manifest

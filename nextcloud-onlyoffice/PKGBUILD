@@ -2,7 +2,7 @@ developer=https://onlyoffice.com/
 url=${developer}
 maintainer=http://indiecomputing.com/
 pkgname=$(basename $(pwd))
-pkgver=7.8.0
+pkgver=7.9.4
 pkgrel=1
 pkgdesc="The Nextcloud OnlyOffice integration app"
 _app=nextcloud
@@ -14,7 +14,7 @@ releasepage=("https://apps.nextcloud.com/apps/${_acc}")
 depends=(
     'nextcloud')
 options=('!strip')
-sha512sums=('43b5b904e09528a386963134503e8e8a1ed65132999ccc075849dde8d96005f738c74f608a49f75d6fbd62c586bcaaf6aece9f2c28acdabbe6ea654944351526')
+sha512sums=('7436239ec84ebd51e0d4604de07797e8bc6e2a56e3912c8d341f40942262bd3c51539f50d8dabb5700be3c072c8f43283790902d0b46470cae48c5185ffe95df')
 
 package() {
 # Manifest

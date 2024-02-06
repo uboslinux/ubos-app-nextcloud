@@ -2,19 +2,19 @@ developer=https://nextcloud.com/
 url=${developer}
 maintainer=http://indiecomputing.com/
 pkgname=$(basename $(pwd))
-pkgver=2.6.0
+pkgver=3.0.1
 pkgrel=1
 pkgdesc="The Nextcloud social sharing via Facebook app"
 _app=nextcloud
 _acc=socialsharing_facebook
 arch=('any')
 license=("AGPL3")
-source=("${_acc}-${pkgver}.tar.gz::https://github.com/nextcloud-releases/socialsharing/releases/download/v${pkgver}/${_acc}.tar.gz")
+source=("${_acc}-${pkgver}.tar.gz::https://github.com/nextcloud-releases/socialsharing/releases/download/v${pkgver}/${_acc}-v${pkgver}.tar.gz")
 releasepage=("https://apps.nextcloud.com/apps/${_acc}")
 depends=(
     'nextcloud')
 options=('!strip')
-sha512sums=('355422033951e0fabc45dad9a464b3e4cd6c9556d1a91cc936cf76a4f262c9c8532de8e4c1548db028e9ad50eb2b6d5cf507d4eae9e19cd6b6ee03d0a2b5a8e3')
+sha512sums=('e80a0fa07f39bd123dab1c89370b01a17f6065c83ada6da85a450ccc9858ce531dd5bfa657b0e8be67a537e1c442abe0d4ac3675bd8b62cb97e098ec0adac77c')
 
 package() {
 # Manifest

@@ -2,7 +2,7 @@ developer=https://nextcloud.com/
 url=${developer}
 maintainer=http://indiecomputing.com/
 pkgname=$(basename $(pwd))
-pkgver=0.1.12
+pkgver=0.1.13
 pkgrel=1
 pkgdesc="The Nextcloud everyone group app"
 _app=nextcloud
@@ -14,7 +14,7 @@ releasepage=("https://apps.nextcloud.com/apps/${_acc}")
 depends=(
     'nextcloud')
 options=('!strip')
-sha512sums=('c85c19985e27c4897d3a968fef6a0fbd9e6db76ad1b8c3e236277dea2634c956157e59d48e9fa0109099075a94a9deb52f48edb85b45110e17f5c28ada12053f')
+sha512sums=('b61b397b11203e29eb1a3dd6ed926d6725df35f3cc602d0362ee3e382152d71508a9420b2501903a48aa153cbca8236a2ef142ea4e67f806c0368f55bea410c5')
 
 package() {
 # Manifest

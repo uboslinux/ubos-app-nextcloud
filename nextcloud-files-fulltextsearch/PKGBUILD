@@ -2,7 +2,7 @@ developer=https://nextcloud.com/
 url=${developer}
 maintainer=http://indiecomputing.com/
 pkgname=$(basename $(pwd))
-pkgver=26.0.0
+pkgver=26.0.1
 pkgrel=1
 pkgdesc="Extension to the Nextcloud full text search app to index your users' files."
 _app=nextcloud
@@ -14,7 +14,7 @@ releasepage=("https://apps.nextcloud.com/apps/${_acc}")
 depends=(
     'nextcloud')
 options=('!strip')
-sha512sums=('ee98f595ee2c8f970a80fb16a1c30514c4788bb02d5bd14dc768cd9a9dd9802e42de4b472c4077be0d3e2112a496bdb4bea06fedf35f1b6661ce29ea63880c63')
+sha512sums=('fcbf9f6c6c3a5658c82bb1caecf430bb42a40ce8680b54c01219e0b263f480dbad7eeb9cbf8ad770521ecd5ceaba305d3cc87fa2e9828942485edf6af88fc1b3')
 
 package() {
 # Manifest

@@ -2,7 +2,7 @@ developer=https://nextcloud.com/
 url=${developer}
 maintainer=http://indiecomputing.com/
 pkgname=$(basename $(pwd))
-pkgver=16.0.4
+pkgver=16.0.10
 pkgrel=1
 pkgdesc="The Nextcloud talk app"
 _app=nextcloud
@@ -14,7 +14,7 @@ releasepage=("https://apps.nextcloud.com/apps/${_acc}")
 depends=(
     'nextcloud')
 options=('!strip')
-sha512sums=('66d56671bdab89a203e9d21e1d0221cdc634db9a9a7dd71a0881fa19456aacca3f7c850d2bf0f92676981394806733de251af703d51a77705b1ad8b8773c9750')
+sha512sums=('b8531ceca07fb5d378ac60d3823be02d06df8e70d5d4088929469b67dbd424ebba76f1e5f47d6a06e2220d53f6f50cdd1060622b1690a2776b05a20a9fdfbcd3')
 
 package() {
 # Manifest
