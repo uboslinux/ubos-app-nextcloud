@@ -71,7 +71,6 @@
                         "core",
                         "dist",
                         "lib",
-                        "ocm-provider",
                         "ocs",
                         "ocs-provider",
                         "resources",
