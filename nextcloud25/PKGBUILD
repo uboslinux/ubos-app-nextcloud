@@ -3,7 +3,7 @@ url=${developer}
 maintainer=http://indiecomputing.com/
 pkgname=$(basename $(pwd))
 pkgver=25.0.13
-pkgrel=1
+pkgrel=2
 pkgdesc="A safe home for all your data"
 arch=('any')
 license=("AGPL3")
@@ -36,4 +36,7 @@ package() {
     install -D -m0644 ${startdir}/tmpl/*.tmpl -t ${pkgdir}/ubos/share/${pkgname}/tmpl/
 
     cp -dr --no-preserve=ownership ${startdir}/src/nextcloud ${pkgdir}/ubos/share/${pkgname}/
+
+    # Remove the PHP version check. On UBOS, this has no advantages and some disadvantages
+    echo '<?php' > ${pkgdir}/ubos/share/${pkgname}/nextcloud/lib/versioncheck.php
 }

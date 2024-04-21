@@ -146,7 +146,7 @@
                 {
                     "type"         : "file",
                     "name"         : "/etc/systemd/system/nextcloud25@${appconfig.appconfigid}.service",
-                    "template"     : "tmpl/nextcloud@.service.tmpl",
+                    "template"     : "tmpl/nextcloud25@.service.tmpl",
                     "templatelang" : "varsubst"
                 },
                 {
