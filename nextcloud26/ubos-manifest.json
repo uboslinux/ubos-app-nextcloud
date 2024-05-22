@@ -14,8 +14,10 @@
                 "smtp-server"
             ],
             "apache2modules" : [
+                "dir",
                 "env",
                 "headers",
+                "mime",
                 "php",
                 "rewrite",
                 "setenvif"
@@ -31,7 +33,8 @@
                 "mysqli",
                 "pdo_mysql",
                 "smbclient",
-                "systemd"
+                "systemd",
+                "sysvsem"
             ],
 
             "wellknown" : {
@@ -70,7 +73,6 @@
                         "core",
                         "dist",
                         "lib",
-                        "ocm-provider",
                         "ocs",
                         "ocs-provider",
                         "resources",
@@ -145,13 +147,13 @@
                 },
                 {
                     "type"         : "file",
-                    "name"         : "/etc/systemd/system/nextcloud25@${appconfig.appconfigid}.service",
-                    "template"     : "tmpl/nextcloud25@.service.tmpl",
+                    "name"         : "/etc/systemd/system/nextcloud26@${appconfig.appconfigid}.service",
+                    "template"     : "tmpl/nextcloud26@.service.tmpl",
                     "templatelang" : "varsubst"
                 },
                 {
                     "type"         : "systemd-timer",
-                    "name"         : "nextcloud25@${appconfig.appconfigid}"
+                    "name"         : "nextcloud26@${appconfig.appconfigid}"
                 },
                 {
                     "type" : "systemd-service",

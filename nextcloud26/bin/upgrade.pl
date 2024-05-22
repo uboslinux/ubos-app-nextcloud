@@ -80,7 +80,7 @@ if( 'upgrade' eq $operation ) {
 Unfortunately, Nextcloud cannot currently upgrade your installation. This is because you skipped at least
 one major Nextcloud version since you last upgraded, and the Nextcloud upgrader does not know how to handle
 this yet. You will have to do the upgrade work manually, unfortunately. There is more information at
-https://ubos.net/docs/users/apps/nextcloud.html
+https://ubos.net/docs/operation/apps/nextcloud/
 MSG
             $ret = 0;
 

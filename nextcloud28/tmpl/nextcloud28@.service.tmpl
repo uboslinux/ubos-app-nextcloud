@@ -1,0 +1,14 @@
+[Unit]
+Description=Nextcloud cron.php job (${appconfig.appconfigid})
+
+[Service]
+User=${apache2.uname}
+ExecStartPre=/usr/share/ubos-admin/bin/ubos-service-prestart nextcloud28@${appconfig.appconfigid}
+ExecStart=/usr/bin/php -f ${appconfig.apache2.dir}/cron.php
+Restart=always
+RestartSec=300
+# Note: this will run the first time while the post-install script might still be running
+# We accept that this will fail, but then keep trying again after a while
+
+[Install]
+WantedBy=basic.target

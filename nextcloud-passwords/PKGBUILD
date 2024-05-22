@@ -4,7 +4,7 @@ maintainer=http://indiecomputing.com/
 pkgname=$(basename $(pwd))
 pkgver=2023.12.32
 # NOTE: must update integer in URL below
-pkgrel=1
+pkgrel=2
 pkgdesc="The Nextcloud password app"
 _app=nextcloud
 _acc=passwords

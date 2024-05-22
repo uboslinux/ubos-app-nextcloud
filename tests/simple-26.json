@@ -1,0 +1,15 @@
+{
+   "hostname" : "nextcloud26.example.com",
+   "admin" : {
+      "userid" : "admin",
+      "email" : "test@ubos.net",
+      "credential" : "qwerqwer",
+      "username" : "admin"
+   },
+   "appconfigs" : [
+      {
+         "context" : "/next",
+         "appid" : "nextcloud26"
+      }
+   ]
+}

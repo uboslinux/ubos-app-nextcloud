@@ -1,0 +1,43 @@
+developer=https://nextcloud.com/
+url=${developer}
+maintainer=http://indiecomputing.com/
+pkgname=$(basename $(pwd))
+pkgver=28.0.5
+pkgrel=2
+pkgdesc="A safe home for all your data"
+arch=('any')
+license=("AGPL3")
+source=("https://download.nextcloud.com/server/releases/nextcloud-${pkgver}.tar.bz2")
+releasepage=('https://nextcloud.com/changelog/')
+depends=(
+    'libsodium'
+    'php'
+    'php-smbclient'
+    'php-systemd'
+    'smtp-server')
+options=('!strip')
+sha512sums=('a6f25e6ddced8087366537793c28869a6bbda0d165aa4d99858745fdfab7679a717e82cab17f72b73105bbeca917d58ff5a9e19ec820b688b5f85397de76457f')
+
+package() {
+# Manifest
+    install -D -m0644 ${startdir}/ubos-manifest.json ${pkgdir}/ubos/lib/ubos/manifests/${pkgname}.json
+
+# Icons
+    install -D -m0644 ${startdir}/appicons/{72x72,144x144}.png -t ${pkgdir}/ubos/http/_appicons/${pkgname}/
+
+# Systemd
+    install -D -m0644 ${startdir}/systemd/*.timer -t ${pkgdir}/etc/systemd/system/
+
+# Data
+    mkdir -p ${pkgdir}/ubos/lib/${pkgname}
+
+# Code
+    install -D -m0755 ${startdir}/bin/*.pl -t ${pkgdir}/ubos/share/${pkgname}/bin/
+
+    install -D -m0644 ${startdir}/tmpl/*.tmpl -t ${pkgdir}/ubos/share/${pkgname}/tmpl/
+
+    cp -dr --no-preserve=ownership ${startdir}/src/nextcloud ${pkgdir}/ubos/share/${pkgname}/
+
+    # Remove the PHP version check. On UBOS, this has no advantages and some disadvantages
+    echo '<?php' > ${pkgdir}/ubos/share/${pkgname}/nextcloud/lib/versioncheck.php
+}
