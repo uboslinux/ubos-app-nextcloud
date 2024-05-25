@@ -14,7 +14,7 @@ releasepage=("https://apps.nextcloud.com/apps/${_acc}")
 depends=(
     'nextcloud')
 options=('!strip')
-sha512sums=('fd69b1400c52db851f54054b8c01701347a14110fcd8ebf51ea6676f748fda0eeb3c6cd1695d940e8ac31eb73064b178ee1de5fa372cc77c4ada2e1b47b26ed7')
+sha512sums=('f7f2302be719b4ef5bdb5505f77b2b27a676fd8de4eba0d5d67b8dfbc328265b56db9f98683a8041621a560df5869a0513294fe1d622e55815972ba2831a8a27')
 
 package() {
 # Manifest

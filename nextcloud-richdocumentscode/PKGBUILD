@@ -15,7 +15,7 @@ depends=(
     'nextcloud'
     'fuse2' )
 options=('!strip')
-sha512sums=('b2246e85bb9714c9cdbb07a1e7de6bfffc7a6df379e91f265d8106db17d6f3ef2bfee1ccc6d83c2f2418f1086d5708541c0d0abaadff29d95372b35fea8a1289')
+sha512sums=('ac0aac73673b5b1632612dba993d21f2cc2ff8687b2a789880d27f2c7d98bcc84c6f79e485c3818997e1ebe01fcf65c4ec471f223db2f47b67deeeeaa673eb5a')
 
 package() {
 # Manifest

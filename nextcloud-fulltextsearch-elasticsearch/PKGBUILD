@@ -18,7 +18,7 @@ depends=(
     'java-runtime-headless' )
 options=('!strip')
 install=install
-sha512sums=('6bb9e11e951be1f9272934853f1443d1dbcab43b4efd88d318911ecb93def9b32b38341a59ec45633b4d159e7b794cace1f043b252fc011fa62865e576bd0663')
+sha512sums=('e7cef2bba7b3004b394f7294738282b4727e32090dc4ec6acd9889c220b7e2f90731ccda1f86e5d1f0470c51f820f8e8e782debf3db12ff3abc5d6f1645ed209')
 
 package() {
 # Manifest
